@@ -8,7 +8,6 @@ import sonrLogo from "./sonr.png";
 
 type Props = {
   show: any;
-  navigation?: any;
   createButtonHandler?: any;
   secureButtonHandler?: any;
   skipButtonHandler?: any;
@@ -17,8 +16,12 @@ type Props = {
 const SlidingUpPanelComponent = (props: Props) => {
   const slideRef = useRef(null);
   useEffect(() => {
-    slideRef.current.show(320);
-  }, []);
+    if (props.show) {
+      slideRef.current.show(320);
+    } else {
+      slideRef.current.hide();
+    }
+  }, [props.show]);
   return (
     <SlidingUpPanel ref={slideRef}>
       <View style={styles.slidePanel}>
