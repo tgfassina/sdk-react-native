@@ -16,8 +16,9 @@ const PrimaryButton: React.FC<Props> = ({ onPress, text }) => {
         locations={[0.0, 0.5, 1]}
         start={{ x: 0.6, y: 1.5 }}
         end={{ x: 0.4, y: -0.5 }}
-      />
-      <Text style={styles.buttonText}>{text}</Text>
+      >
+        <Text style={styles.buttonText}>{text}</Text>
+      </LinearGradient>
     </TouchableOpacity>
   );
 };
@@ -25,18 +26,17 @@ const PrimaryButton: React.FC<Props> = ({ onPress, text }) => {
 const styles = StyleSheet.create({
   buttonGradient: {
     borderRadius: 6,
-    width: "100%",
-    height: "100%",
-    position: "absolute",
+    height: 48,
+    width: 296,
+    alignItems: "center",
   },
   buttonText: {
     // fontFamily: "THICCCBOI_ExtraBold",
     textAlign: "center",
-    color: "white",
+    color: "#fff",
     padding: 14,
     fontSize: 18,
     fontWeight: "800",
-    lineHeight: 20,
     letterSpacing: 0,
   },
 });
