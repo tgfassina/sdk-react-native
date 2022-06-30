@@ -2,7 +2,12 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-const PrimaryButton = ({ onPress, text }) => {
+interface Props {
+  onPress: () => void;
+  text: string;
+}
+
+const PrimaryButton: React.FC<Props> = ({ onPress, text }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <LinearGradient
@@ -25,6 +30,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   buttonText: {
+    // fontFamily: "THICCCBOI_ExtraBold",
     textAlign: "center",
     color: "white",
     padding: 14,
