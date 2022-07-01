@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonText: {
-    // fontFamily: "THICCCBOI_ExtraBold",
+    fontFamily: "THICCCBOI_ExtraBold",
     textAlign: "center",
     color: "#fff",
     padding: 14,

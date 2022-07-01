@@ -1,7 +1,6 @@
 import React from "react";
 import {
   StyleSheet,
-  View,
   Text,
   StyleProp,
   ViewStyle,
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#1792FF",
     padding: 14,
-    // fontFamily: "THICCCBOI_ExtraBold",
+    fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 18,
     fontWeight: "800",
     lineHeight: 20,
