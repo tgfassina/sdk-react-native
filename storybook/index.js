@@ -22,7 +22,7 @@ Font.loadAsync({
 	THICCCBOI_Medium: require("../assets/fonts/THICCCBOI-Medium.ttf"),
 	THICCCBOI_Regular: require("../assets/fonts/THICCCBOI-Regular.ttf"),
 
-const StorybookUIRoot = getStorybookUI({});
 
+const StorybookUIRoot = getStorybookUI({ asyncStorage: null });
 
 export default StorybookUIRoot;
