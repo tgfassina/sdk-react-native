@@ -13,15 +13,13 @@ import "./rn-addons";
 addDecorator(withKnobs);
 
 Font.loadAsync({
-}),
-  configure(async () => {
-    require("./stories");
-  }, module);
 	THICCCBOI_ExtraBold: require("../assets/fonts/THICCCBOI-ExtraBold.ttf"),
 	THICCCBOI_Bold: require("../assets/fonts/THICCCBOI-Bold.ttf"),
 	THICCCBOI_Medium: require("../assets/fonts/THICCCBOI-Medium.ttf"),
 	THICCCBOI_Regular: require("../assets/fonts/THICCCBOI-Regular.ttf"),
+});
 
+configure(async () => require("./stories"), module);
 
 const StorybookUIRoot = getStorybookUI({ asyncStorage: null });
 
