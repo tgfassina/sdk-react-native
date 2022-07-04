@@ -13,84 +13,90 @@ type Props = {
 };
 
 const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
-  let walletAddressInput;
-  return (
-    <View style={styles.slidePanel}>
-      <LinearGradient
-        style={styles.gradientContainer}
-        colors={["#37324A", "#1D1A27"]}
-        locations={[0.2, 1]}
-        start={{ x: 0.0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-      />
-      <View style={styles.header}>
-        <SonrLogo />
-        <Text style={styles.close} onPress={() => props.closeHandler()}>
-          Close
-        </Text>
-      </View>
-      <Text style={styles.subtitle2}>Welcome Back</Text>
-      <WalletAddress
-        label="Walled Address or .snr Domain"
-        text={walletAddressInput}
-      />
-      {/* <PrimaryButton
+	let walletAddressInput;
+	return (
+		<View style={styles.container}>
+			<LinearGradient
+				style={styles.gradientContainer}
+				colors={["#37324A", "#1D1A27"]}
+				locations={[0.2, 1]}
+				start={{ x: 0.0, y: 0 }}
+				end={{ x: 1, y: 1 }}
+			/>
+
+			<View style={styles.header}>
+				<SonrLogo />
+				<Text style={styles.close} onPress={() => props.closeHandler()}>
+					Close
+				</Text>
+			</View>
+
+			<View style={styles.content}>
+				<Text style={styles.title}>Welcome Back</Text>
+				<WalletAddress
+					label="Walled Address or .snr Domain"
+					text={walletAddressInput}
+				/>
+				<SecondaryButton
+					style={{ marginTop: 16 }}
+					onPress={() => {}}
+					text="Login"
+				/>
+				{/* <PrimaryButton
 				style={{ marginTop: 20 }}
 				onPress={() => props.continueButtonHandler}
 				icon={KeyPrint()}
 				text="Continue with Keyprint"
 			/> */}
-			<Text style={styles.subtitle3}>OR CONTINUE WITH</Text>
-			<SecondaryButton
-				onPress={() => props.vaultPasswordHandler()}
-				text="Vault Password"
-			/>
-			<Text
-				onPress={() => props.createAccountHandler()}
-				style={styles.createAccount}
-			>
-				Create Account
-			</Text>
+				<Text style={styles.subtitle3}>OR CONTINUE WITH</Text>
+				<SecondaryButton
+					onPress={() => props.vaultPasswordHandler()}
+					text="Vault Password"
+				/>
+				<Text
+					onPress={() => props.createAccountHandler()}
+					style={styles.createAccount}
+				>
+					Create Account
+				</Text>
+			</View>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
-	header: {
-		flexDirection: "row",
-		width: "90%",
-		margin: 32,
-		justifyContent: "space-between",
-		alignItems: "center",
-	},
-	close: {
-		fontFamily: "THICCCBOI_ExtraBold",
-		fontStyle: "normal",
-		fontWeight: "800",
-		fontSize: 14,
-		lineHeight: 16,
-		letterSpacing: 0.02,
-		color: "#AEACB8",
+	container: {
+		flex: 1,
 	},
 	gradientContainer: {
 		width: "100%",
 		height: "100%",
 		position: "absolute",
 	},
-	slidePanel: {
-		flex: 1,
+	header: {
+		padding: 32,
+		flexDirection: "row",
+		justifyContent: "space-between",
 		alignItems: "center",
-		borderRadius: 36,
 	},
-	subtitle2: {
+	content: {
+		paddingVertical: 24,
+		paddingHorizontal: 40,
+	},
+	close: {
+		fontFamily: "THICCCBOI_ExtraBold",
+		fontStyle: "normal",
+		fontWeight: "800",
+		fontSize: 14,
+		color: "#AEACB8",
+	},
+	title: {
 		fontFamily: "THICCCBOI_ExtraBold",
 		fontSize: 34,
 		fontWeight: "800",
-		lineHeight: 40,
 		textAlign: "center",
 		color: "#fff",
-		paddingBottom: 64,
-		marginTop: 24,
+		marginBottom: 64,
 	},
 	subtitle3: {
 		fontFamily: "THICCCBOI_Regular",
