@@ -5,7 +5,6 @@ import {
 	StyleProp,
 	ViewStyle,
 	TouchableOpacity,
-	TextStyle,
 } from "react-native";
 
 interface Props {
@@ -24,7 +23,7 @@ const SecondaryButton: React.FC<Props> = ({ onPress, text, style }) => {
 
 const styles = StyleSheet.create({
 	container: {
-		justifyContent: "center",
+		alignSelf: "stretch",
 		backgroundColor: "rgba(255, 255, 255, 0.1)",
 		paddingVertical: 8,
 		paddingHorizontal: 12,
