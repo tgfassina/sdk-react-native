@@ -26,12 +26,12 @@ const styles = StyleSheet.create({
   },
   input: {
     flexDirection: "row",
-    justifyContent: "center",
+    alignItems: "center",
     borderColor: "#F6F5FA",
     borderStyle: "solid",
     borderWidth: 1,
     borderRadius: 6,
-    height: 40,
+    paddingHorizontal: 12
   },
   labelText: {
     fontFamily: "THICCCBOI_Regular",
@@ -43,8 +43,9 @@ const styles = StyleSheet.create({
     color: "#F6F5FA",
   },
   textInput: {
-    width: 256,
-    height: 40,
+    flex: 1,
+    paddingVertical: 12,
+    marginLeft: 12,
     fontFamily: "THICCCBOI_Regular",
     fontStyle: "normal",
     fontWeight: "500",
