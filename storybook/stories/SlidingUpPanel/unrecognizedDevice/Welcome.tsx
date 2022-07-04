@@ -34,8 +34,6 @@ const SlidingUpWelcome = (props: Props) => {
       <SecondaryButton
         onPress={() => props.secureButtonHandler()}
         text="Secure Login"
-        containerStyle={styles.secButtonBorder}
-        textStyle={{ color: "#1792FF" }}
       />
 
       <Text onPress={() => props.skipButtonHandler()} style={styles.skipText}>
@@ -46,15 +44,6 @@ const SlidingUpWelcome = (props: Props) => {
 };
 
 const styles = StyleSheet.create({
-  secButtonBorder: {
-    borderColor: "#1792FF",
-    marginTop: 10,
-    height: 48,
-    width: 296,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderStyle: "solid",
-  },
   gradientContainer: {
     width: "100%",
     height: "100%",
