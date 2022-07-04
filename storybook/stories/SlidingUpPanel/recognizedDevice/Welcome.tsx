@@ -36,12 +36,12 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
 				label="Walled Address or .snr Domain"
 				text={walletAddressInput}
 			/>
-			<PrimaryButton
+			{/* <PrimaryButton
 				style={{ marginTop: 20 }}
 				onPress={() => props.continueButtonHandler}
 				icon={KeyPrint()}
 				text="Continue with Keyprint"
-			/>
+			/> */}
 			<Text style={styles.subtitle3}>OR CONTINUE WITH</Text>
 			<SecondaryButton
 				onPress={() => props.vaultPasswordHandler()}
