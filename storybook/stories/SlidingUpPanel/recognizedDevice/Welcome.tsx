@@ -1,10 +1,8 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import KeyPrint from "../../icons/KeyPrint";
 import SonrLogo from "../../icons/SonrLogo";
 import WalletAddress from "../../Input/WalletAddress";
-import PrimaryButton from "../../PrimaryButton";
 import SecondaryButton from "../../SecondaryButton";
 
 type Props = {
@@ -26,7 +24,7 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
 				end={{ x: 1, y: 1 }}
 			/>
 			<View style={styles.header}>
-				<SonrLogo iconStyle={styles.sonrLogo} textStyle={styles.sonrText} />
+				<SonrLogo />
 				<Text style={styles.close} onPress={() => props.closeHandler()}>
 					Close
 				</Text>
@@ -81,14 +79,6 @@ const styles = StyleSheet.create({
 		margin: 32,
 		justifyContent: "space-between",
 		alignItems: "center",
-	},
-	sonrLogo: {
-		width: 32,
-		height: 32,
-	},
-	sonrText: {
-		width: 92,
-		height: 20,
 	},
 	close: {
 		fontFamily: "THICCCBOI_ExtraBold",

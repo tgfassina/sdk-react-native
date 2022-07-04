@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
-import sonrLogo from '../SlidingUpPanel/sonr.png';
+import SonrLogo from '../icons/SonrLogo';
 
 export default class Welcome extends React.Component {
   showApp = (event) => {
@@ -17,8 +17,8 @@ export default class Welcome extends React.Component {
   render() {
     return (
       <View style={styles.wrapper}>
+        <SonrLogo />
         <Text style={styles.header}>Welcome to SDK React Native Storybook</Text>
-        <Image source={sonrLogo} style={styles.sonrLogo} />
       </View>
     );
   }
@@ -37,11 +37,12 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#000",
   },
   header: {
     fontSize: 18,
-    marginBottom: 18,
+    marginVertical: 18,
     textAlign: "center",
     color: "#FFF",
   },
@@ -49,11 +50,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 10,
     lineHeight: 18,
-  },
-  sonrLogo: {
-    height: 62,
-    width: 182,
-    marginLeft: "auto",
-    marginRight: "auto",
   },
 });

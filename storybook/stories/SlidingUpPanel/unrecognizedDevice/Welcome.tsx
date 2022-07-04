@@ -1,6 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import SonrLogo from "../../icons/SonrLogo";
 import PrimaryButton from "../../PrimaryButton";
 import SecondaryButton from "../../SecondaryButton";
@@ -23,7 +23,7 @@ const SlidingUpWelcome = (props: Props) => {
 			/>
 			<Text style={styles.subtitle2}>BEAM CONNECTS WITH</Text>
 
-			<SonrLogo iconStyle={styles.sonrLogo} textStyle={styles.sonrText} />
+			<SonrLogo />
 
 			<PrimaryButton
 				onPress={() => props.createButtonHandler()}
@@ -76,14 +76,6 @@ const styles = StyleSheet.create({
 		color: "white",
 		marginTop: 24,
 		marginBottom: 14,
-	},
-	sonrLogo: {
-		height: 40,
-		width: 40,
-	},
-	sonrText: {
-		height: 40,
-		width: 120,
 	},
 	skipText: {
 		fontFamily: "THICCCBOI_ExtraBold",
