@@ -6,10 +6,11 @@ import WalletAddress from "../../Input/WalletAddress";
 import SecondaryButton from "../../SecondaryButton";
 
 type Props = {
-  continueButtonHandler?: () => any;
-  vaultPasswordHandler?: () => any;
-  createAccountHandler?: () => any;
-  closeHandler?: () => any;
+	continueButtonHandler?: () => any;
+	vaultPasswordHandler?: () => any;
+	createAccountHandler?: () => any;
+	closeHandler?: () => any;
+	onSuccess: () => void;
 };
 
 const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
@@ -39,7 +40,7 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
 				/>
 				<SecondaryButton
 					style={{ marginTop: 16 }}
-					onPress={() => {}}
+					onPress={props.onSuccess}
 					text="Login"
 				/>
 				{/* <PrimaryButton
