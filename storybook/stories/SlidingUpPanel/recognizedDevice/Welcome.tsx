@@ -1,6 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import KeyPrint from "../../icons/KeyPrint";
 import SonrLogo from "../../icons/SonrLogo";
 import WalletAddress from "../../Input/WalletAddress";
@@ -19,14 +19,14 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
 	return (
 		<View style={styles.slidePanel}>
 			<LinearGradient
-				style={[styles.gradientContainer]}
+				style={styles.gradientContainer}
 				colors={["#37324A", "#1D1A27"]}
 				locations={[0.2, 1]}
 				start={{ x: 0.0, y: 0 }}
 				end={{ x: 1, y: 1 }}
 			/>
 			<View style={styles.header}>
-				<SonrLogo />
+				<SonrLogo iconStyle={styles.sonrLogo} textStyle={styles.sonrText} />
 				<Text style={styles.close} onPress={() => props.closeHandler()}>
 					Close
 				</Text>
@@ -83,8 +83,12 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	sonrLogo: {
+		width: 32,
 		height: 32,
-		width: 93,
+	},
+	sonrText: {
+		width: 92,
+		height: 20,
 	},
 	close: {
 		fontFamily: "THICCCBOI_ExtraBold",

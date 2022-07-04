@@ -23,14 +23,12 @@ const SlidingUpWelcome = (props: Props) => {
 			/>
 			<Text style={styles.subtitle2}>BEAM CONNECTS WITH</Text>
 
-			<Image
-				source={require("../../../../assets/images/sonr.png")}
-				style={styles.sonrLogo}
-			/>
+			<SonrLogo iconStyle={styles.sonrLogo} textStyle={styles.sonrText} />
 
 			<PrimaryButton
 				onPress={() => props.createButtonHandler()}
 				text="Create Account"
+				style={{ marginTop: 40 }}
 			/>
 
 			<SecondaryButton
@@ -80,9 +78,12 @@ const styles = StyleSheet.create({
 		marginBottom: 14,
 	},
 	sonrLogo: {
-		height: 62,
-		width: 182,
-		marginBottom: 40,
+		height: 40,
+		width: 40,
+	},
+	sonrText: {
+		height: 40,
+		width: 120,
 	},
 	skipText: {
 		fontFamily: "THICCCBOI_ExtraBold",
