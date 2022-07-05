@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import PropTypes from "prop-types";
+import React from "react";
+import { Image, StyleSheet, Text, View } from "react-native";
 
-import SonrLogo from '../icons/SonrLogo';
+import SonrLogo from "../icons/SonrLogo";
 
 export default class Welcome extends React.Component {
   showApp = (event) => {
