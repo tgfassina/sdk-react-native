@@ -15,6 +15,7 @@ type Props = {
 	secureTextEntry?: boolean;
 	labelStyle?: StyleProp<TextStyle>;
 	inputStyle?: StyleProp<ViewStyle>;
+	textInputStyle?: StyleProp<TextStyle>;
 	icon: any;
 };
 
@@ -25,7 +26,7 @@ const IconText: React.FC<Props> = (props: Props) => {
 			<View style={[styles.input, props.inputStyle]}>
 				{props.icon}
 				<TextInput
-					style={styles.textInput}
+					style={[styles.textInput, props.textInputStyle]}
 					value={props.text}
 					secureTextEntry={props.secureTextEntry}
 				/>

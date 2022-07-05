@@ -24,22 +24,25 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 			</View>
 			<Text style={styles.subtitle2}>Connect with Vault</Text>
 			<Text style={styles.subtitle3}>ENTER YOUR VAULT PASSWORD</Text>
+
 			<VaultPassword
 				label="Vault Password"
 				text={walletAddressInput}
 				secureTextEntry={true}
 				labelStyle={{ color: "#4F4A60", marginBottom: 8 }}
-				inputStyle={{ borderColor: "#9893A2" }}
+				inputStyle={styles.vaultInputStyle}
 				icon={SecuritySafe()}
+				textInputStyle={{color: "#37324A",}}
 			/>
+
 			<PrimaryButton
-				style={{ marginTop: 250 }}
+				style={{ marginTop: 250, marginBottom: 16 }}
 				onPress={() => props.continueButtonHandler}
 				text="Submit"
 			/>
 
-			<View style={styles.centerRow}>
-				<Text>Don't have an account</Text>
+			<View style={[styles.centerRow, {justifyContent: "center"}]}>
+				<Text>Don't have an account?</Text>
 				<Text
 					onPress={() => props.createAccountHandler()}
 					style={styles.createAccount}
@@ -55,7 +58,7 @@ const styles = StyleSheet.create({
 	centerRow: {
 		flexDirection: "row",
 		width: "90%",
-		alignItems: "center",
+		alignItems: "center"
 	},
 	header: {
 		margin: 32,
@@ -101,7 +104,13 @@ const styles = StyleSheet.create({
 		fontWeight: "800",
 		lineHeight: 16,
 		color: "#1792FF",
+		marginLeft: 8
 	},
+	vaultInputStyle: {
+		borderColor: "#9893A2",
+		width: 256,
+		height: 40
+	}
 });
 
 export default ConnectWithVault;

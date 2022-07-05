@@ -34,7 +34,7 @@ storiesOf("SlidingUpPanel", module)
 			</>
 		);
 	})
-	.add("Show recognized device 2nd screen - connect vault ", () => {
+	.add("Show recognized device 2nd screen - connect vault", () => {
 		return (
 			<>
 				<SlidingUpPanel show={number("Enabled", 640)}>

@@ -5,7 +5,7 @@ const SecuritySafe = () => (
 	<Svg
 		width="16"
 		height="16"
-		style={{ margin: 6 }}
+		style={{ margin: 10 }}
 		viewBox="0 0 16 16"
 		fill="none"
 	>
