@@ -8,38 +8,38 @@ import { number } from "@storybook/addon-knobs";
 import ConnectWithVault from "./recognizedDevice/ConnectWithVault";
 
 storiesOf("SlidingUpPanel", module)
-	.addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
-	.add("Show welcome for unrecognized device", () => {
-		return (
-			<>
-				<SlidingUpPanel show={number("Enabled", 320)}>
-					<SlidingUpWelcome />
-				</SlidingUpPanel>
-			</>
-		);
-	})
-	.add("Dont Show", () => {
-		return (
-			<>
-				<SlidingUpPanel show={number("Disabled", 0)}></SlidingUpPanel>
-			</>
-		);
-	})
-	.add("Show welcome for recognized device", () => {
-		return (
-			<>
-				<SlidingUpPanel show={number("Enabled", 640)}>
-					<SlidingUpRecognizedWelcome />
-				</SlidingUpPanel>
-			</>
-		);
-	})
-	.add("Show recognized device 2nd screen - connect vault", () => {
-		return (
-			<>
-				<SlidingUpPanel show={number("Enabled", 640)}>
-					<ConnectWithVault />
-				</SlidingUpPanel>
-			</>
-		);
-	});
+  .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
+  .add("Show welcome for unrecognized device", () => {
+    return (
+      <>
+        <SlidingUpPanel show={number("Enabled", 320)}>
+          <SlidingUpWelcome />
+        </SlidingUpPanel>
+      </>
+    );
+  })
+  .add("Dont Show", () => {
+    return (
+      <>
+        <SlidingUpPanel show={number("Disabled", 0)}></SlidingUpPanel>
+      </>
+    );
+  })
+  .add("Show welcome for recognized device", () => {
+    return (
+      <>
+        <SlidingUpPanel show={number("Enabled", 640)}>
+          <SlidingUpRecognizedWelcome />
+        </SlidingUpPanel>
+      </>
+    );
+  })
+  .add("Show recognized device 2nd screen - connect vault", () => {
+    return (
+      <>
+        <SlidingUpPanel show={number("Enabled", 640)}>
+          <ConnectWithVault />
+        </SlidingUpPanel>
+      </>
+    );
+  });
