@@ -8,24 +8,41 @@ import {
   TextStyle,
   ViewStyle,
 } from "react-native";
+import SecuritySafe from "../icons/SecuritySafe";
+import IconUser from "../icons/User";
+
+const iconSvg = {
+  user: IconUser,
+  security: SecuritySafe,
+};
 
 type Props = {
   label: string;
   text: string;
+  warning?: string;
   secureTextEntry?: boolean;
   labelStyle?: StyleProp<TextStyle>;
   inputStyle?: StyleProp<ViewStyle>;
   textInputStyle?: StyleProp<TextStyle>;
   onChangeText: Dispatch<SetStateAction<string>>;
-  icon: any;
+  icon: string;
 };
 
 const IconText: React.FC<Props> = (props: Props) => {
+  const Icon = iconSvg[props.icon];
+
+  let fillColor = undefined;
+  let borderStyle = undefined;
+  if (props.warning) {
+    fillColor = "#FF2866";
+    borderStyle = { borderColor: "#FF2866" };
+  }
+
   return (
     <View style={styles.containerInput}>
       <Text style={[styles.labelText, props.labelStyle]}>{props.label}</Text>
-      <View style={[styles.input, props.inputStyle]}>
-        {props.icon}
+      <View style={[styles.input, props.inputStyle, borderStyle]}>
+        {Icon({ fillColor })}
         <TextInput
           style={[styles.textInput, props.textInputStyle]}
           value={props.text}
@@ -33,6 +50,7 @@ const IconText: React.FC<Props> = (props: Props) => {
           secureTextEntry={props.secureTextEntry}
         />
       </View>
+      <Text style={styles.warningText}>{props.warning}</Text>
     </View>
   );
 };
@@ -70,6 +88,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 20,
     color: "#F6F5FA",
+  },
+  warningText: {
+    fontFamily: "THICCCBOI_Medium",
+    fontStyle: "normal",
+    fontWeight: "500",
+    textAlign: "left",
+    fontSize: 12,
+    lineHeight: 16,
+    color: "#FF2866",
   },
 });
 

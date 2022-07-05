@@ -36,7 +36,7 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
         label="Walled Address or .snr Domain"
         text={walletAddressInput}
         onChangeText={() => {}}
-        icon={IconUser()}
+        icon="user"
       />
       {/* <PrimaryButton
 				style={{ marginTop: 20 }}

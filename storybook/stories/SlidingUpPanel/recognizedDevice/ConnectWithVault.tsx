@@ -3,7 +3,6 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import SonrLogo from "../../icons/SonrLogo";
 import VaultPassword from "../../Input/IconText";
 import PrimaryButton from "../../PrimaryButton";
-import SecuritySafe from "../../icons/SecuritySafe";
 import BackButton from "../../icons/BackButton";
 
 type Props = {
@@ -38,7 +37,7 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
         secureTextEntry={true}
         labelStyle={{ color: "#4F4A60", marginBottom: 8 }}
         inputStyle={styles.vaultInputStyle}
-        icon={SecuritySafe()}
+        icon="security"
         textInputStyle={{ color: "#37324A" }}
       />
 
