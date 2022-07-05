@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import {
 	View,
 	Text,
@@ -16,6 +16,7 @@ type Props = {
 	labelStyle?: StyleProp<TextStyle>;
 	inputStyle?: StyleProp<ViewStyle>;
 	textInputStyle?: StyleProp<TextStyle>;
+	onChangeText: Dispatch<SetStateAction<string>>;
 	icon: any;
 };
 
@@ -28,6 +29,7 @@ const IconText: React.FC<Props> = (props: Props) => {
 				<TextInput
 					style={[styles.textInput, props.textInputStyle]}
 					value={props.text}
+					onChangeText={props.onChangeText}
 					secureTextEntry={props.secureTextEntry}
 				/>
 			</View>

@@ -6,14 +6,15 @@ import PrimaryButton from "../../PrimaryButton";
 import SecuritySafe from "../../icons/SecuritySafe";
 
 type Props = {
-	continueButtonHandler?: () => any;
+	submitButtonHandler?: () => any;
 	vaultPasswordHandler?: () => any;
 	createAccountHandler?: () => any;
 	closeHandler?: () => any;
 };
 
 const ConnectWithVault: React.FC<Props> = (props: Props) => {
-	let walletAddressInput;
+	const [walletAddressInput, setWalletAddressInput] = React.useState("");
+
 	return (
 		<View style={styles.slidePanel}>
 			<View style={[styles.header, styles.centerRow]}>
@@ -28,6 +29,7 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 			<VaultPassword
 				label="Vault Password"
 				text={walletAddressInput}
+				onChangeText={setWalletAddressInput}
 				secureTextEntry={true}
 				labelStyle={{ color: "#4F4A60", marginBottom: 8 }}
 				inputStyle={styles.vaultInputStyle}
@@ -37,8 +39,9 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
 			<PrimaryButton
 				style={{ marginTop: 250, marginBottom: 16 }}
-				onPress={() => props.continueButtonHandler}
+				onPress={() => props.submitButtonHandler}
 				text="Submit"
+				disabled={(walletAddressInput.length < 1)}
 			/>
 
 			<View style={[styles.centerRow, {justifyContent: "center"}]}>

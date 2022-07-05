@@ -14,14 +14,15 @@ interface Props {
   text: string;
   style?: StyleProp<ViewStyle>;
   icon?: any;
+  disabled: boolean
 }
 
-const PrimaryButton: React.FC<Props> = ({ onPress, text, style, icon }) => {
+const PrimaryButton: React.FC<Props> = ({ onPress, text, style, icon, disabled }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={style}>
+    <TouchableOpacity onPress={onPress} style={style} disabled={disabled}>
       <LinearGradient
         style={styles.container}
-        colors={["#63B6FF", "#1792FF", "#046DE8"]}
+        colors={ disabled ? ["#4F4A60", "#4F4A60", "#4F4A60"] : ["#63B6FF", "#1792FF", "#046DE8"]}
         locations={[0.0, 0.5, 1]}
         start={{ x: 0.6, y: 1.5 }}
         end={{ x: 0.4, y: -0.5 }}
