@@ -11,19 +11,15 @@ type Props = {
 };
 
 const SlidingUpPanelComponent = (props: Props) => {
-	const slideRef = useRef(null);
-	useEffect(() => {
-		if (props.show > 0) {
-			slideRef.current.show(props.show);
-		} else {
-			slideRef.current.hide();
-		}
-	}, [props.show]);
-	return (
-		<SlidingUpPanel ref={slideRef}>
-			{props.children}
-		</SlidingUpPanel>
-	);
+  const slideRef = useRef(null);
+  useEffect(() => {
+    if (props.show > 0) {
+      slideRef.current.show(props.show);
+    } else {
+      slideRef.current.hide();
+    }
+  }, [props.show]);
+  return <SlidingUpPanel ref={slideRef}>{props.children}</SlidingUpPanel>;
 };
 
 export default SlidingUpPanelComponent;

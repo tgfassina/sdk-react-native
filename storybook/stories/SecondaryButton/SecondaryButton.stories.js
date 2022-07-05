@@ -4,5 +4,5 @@ import SecondaryButton from ".";
 import CenterViewDark from "../CenterViewDark";
 
 storiesOf("SecondaryButton", module)
-	.addDecorator((getStory) => <CenterViewDark>{getStory()}</CenterViewDark>)
-	.add("with text", () => <SecondaryButton onPress={() => {}} text="Hello2" />);
+  .addDecorator((getStory) => <CenterViewDark>{getStory()}</CenterViewDark>)
+  .add("with text", () => <SecondaryButton onPress={() => {}} text="Hello2" />);

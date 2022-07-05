@@ -28,7 +28,7 @@ storiesOf("SlidingUpPanel", module)
     return (
       <>
         <SlidingUpPanel show={number("Enabled", 640)}>
-          <SlidingUpRecognizedWelcome onSuccess={() => alert("OK")}  />
+          <SlidingUpRecognizedWelcome onSuccess={() => alert("OK")} />
         </SlidingUpPanel>
       </>
     );
