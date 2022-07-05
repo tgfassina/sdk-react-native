@@ -2,8 +2,9 @@ import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SonrLogo from "../../icons/SonrLogo";
-import WalletAddress from "../../Input/WalletAddress";
+import WalletAddress from "../../Input/IconText";
 import SecondaryButton from "../../SecondaryButton";
+import IconUser from "../../icons/User";
 
 type Props = {
 	continueButtonHandler?: () => any;
@@ -33,6 +34,7 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
 			<WalletAddress
 				label="Walled Address or .snr Domain"
 				text={walletAddressInput}
+				icon={IconUser()}
 			/>
 			{/* <PrimaryButton
 				style={{ marginTop: 20 }}
