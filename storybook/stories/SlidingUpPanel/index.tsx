@@ -19,17 +19,7 @@ const SlidingUpPanelComponent = (props: Props) => {
       slideRef.current.hide();
     }
   }, [props.show]);
-  return (
-    <SlidingUpPanel containerStyle={styles.container} ref={slideRef}>
-      {props.children}
-    </SlidingUpPanel>
-  );
+  return <SlidingUpPanel ref={slideRef}>{props.children}</SlidingUpPanel>;
 };
-
-const styles = StyleSheet.create({
-  container: {
-    borderRadius: 26,
-  },
-});
 
 export default SlidingUpPanelComponent;

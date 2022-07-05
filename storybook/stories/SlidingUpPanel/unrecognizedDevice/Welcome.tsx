@@ -13,7 +13,7 @@ type Props = {
 
 const SlidingUpWelcome = (props: Props) => {
   return (
-    <View style={styles.slidePanel}>
+    <View style={styles.container}>
       <LinearGradient
         style={[styles.gradientContainer]}
         colors={["#686375", "#1D1A27"]}
@@ -21,63 +21,56 @@ const SlidingUpWelcome = (props: Props) => {
         start={{ x: 0.6, y: 1.5 }}
         end={{ x: 0.4, y: -0.5 }}
       />
-      <Text style={styles.subtitle2}>BEAM CONNECTS WITH</Text>
 
-      <SonrLogo />
+      <View style={styles.content}>
+        <View style={{ alignItems: "center", marginBottom: 40 }}>
+          <SonrLogo />
+        </View>
 
-      <PrimaryButton
-        onPress={() => props.createButtonHandler()}
-        text="Create Account"
-        style={{ marginTop: 40 }}
-      />
+        <PrimaryButton
+          onPress={() => props.createButtonHandler()}
+          text="Create Account"
+          style={{ marginBottom: 10 }}
+        />
 
-      <SecondaryButton
-        onPress={() => props.secureButtonHandler()}
-        text="Secure Login"
-        containerStyle={styles.secButtonBorder}
-        textStyle={{ color: "#1792FF" }}
-      />
+        <SecondaryButton
+          onPress={() => props.secureButtonHandler()}
+          text="Secure Login"
+        />
 
-      <Text onPress={() => props.skipButtonHandler()} style={styles.skipText}>
-        Skip
-      </Text>
+        <Text onPress={() => props.skipButtonHandler()} style={styles.skipText}>
+          Skip
+        </Text>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  secButtonBorder: {
-    borderColor: "#1792FF",
-    marginTop: 10,
-    height: 48,
-    width: 296,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderStyle: "solid",
+  container: {
+    flex: 1,
   },
   gradientContainer: {
     width: "100%",
     height: "100%",
     position: "absolute",
   },
-  slidePanel: {
-    flex: 1,
-    alignItems: "center",
-    backgroundColor: "#686375",
-    borderRadius: 36,
+  content: {
+    padding: 40,
   },
-  subtitle2: {
-    fontFamily: "THICCCBOI_Regular",
+  subtitle: {
+    textTransform: "uppercase",
+    fontFamily: "THICCCBOI_Bold",
     fontSize: 14,
     fontWeight: "700",
     lineHeight: 20,
     letterSpacing: 0.04,
-    textAlign: "left",
     color: "white",
     marginTop: 24,
     marginBottom: 14,
   },
   skipText: {
+    textAlign: "center",
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 14,
     fontWeight: "800",

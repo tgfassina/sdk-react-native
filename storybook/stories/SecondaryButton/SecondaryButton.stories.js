@@ -1,14 +1,8 @@
-import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react-native";
 import React from "react";
 import SecondaryButton from ".";
-import CenterView from "../CenterView";
+import CenterViewDark from "../CenterViewDark";
 
 storiesOf("SecondaryButton", module)
-  .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
-  .add("with text", () => (
-    <SecondaryButton
-      onPress={action("clicked-text")}
-      text="Hello2"
-    ></SecondaryButton>
-  ));
+  .addDecorator((getStory) => <CenterViewDark>{getStory()}</CenterViewDark>)
+  .add("with text", () => <SecondaryButton onPress={() => {}} text="Hello2" />);
