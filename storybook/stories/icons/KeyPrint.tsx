@@ -1,14 +1,8 @@
-import React from "react";
-import Svg, { Path } from "react-native-svg";
+import React from 'react';
+import Svg, { Path } from 'react-native-svg';
 
 const KeyPrint = () => (
-  <Svg
-    width="21"
-    height="21"
-    style={{ margin: 6 }}
-    viewBox="0 0 21 20"
-    fill="none"
-  >
+  <Svg width="21" height="21" style={{ margin: 6 }} viewBox="0 0 21 20" fill="none">
     <Path
       d="M9.77708 9.07956V8.13791C9.77708 7.87761 9.57336 7.66716 9.32138 7.66716C9.0694 7.66716 8.86569 7.87761 8.86569 8.13791V9.07956C8.86569 10.8997 7.43708 12.3751 5.67542 12.3751H5.21973V13.3168H5.67542C7.94077 13.3168 9.77708 11.4196 9.77708 9.07956Z"
       fill="white"

@@ -1,14 +1,8 @@
-import React from "react";
-import Svg, { Path } from "react-native-svg";
+import React from 'react';
+import Svg, { Path } from 'react-native-svg';
 
 const User = () => (
-  <Svg
-    width="24"
-    height="24"
-    style={{ margin: 6 }}
-    viewBox="0 0 24 24"
-    fill="none"
-  >
+  <Svg width="24" height="24" style={{ margin: 6 }} viewBox="0 0 24 24" fill="none">
     <Path
       stroke-linecap="round"
       stroke-linejoin="round"

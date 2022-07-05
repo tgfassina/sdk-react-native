@@ -36,15 +36,15 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     padding: 24,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#000",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#000',
   },
   header: {
     fontSize: 18,
     marginVertical: 18,
-    textAlign: "center",
-    color: "#FFF",
+    textAlign: 'center',
+    color: '#FFF',
   },
   content: {
     fontSize: 12,
