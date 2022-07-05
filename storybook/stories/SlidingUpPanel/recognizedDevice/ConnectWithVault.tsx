@@ -1,9 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import SonrLogo from "../../icons/SonrLogo";
 import VaultPassword from "../../Input/IconText";
 import PrimaryButton from "../../PrimaryButton";
 import SecuritySafe from "../../icons/SecuritySafe";
+import BackButton from "../../icons/BackButton";
 
 type Props = {
   submitButtonHandler?: () => any;
@@ -26,6 +27,10 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
       <Text style={styles.subtitle2}>Connect with Vault</Text>
       <Text style={styles.subtitle3}>ENTER YOUR VAULT PASSWORD</Text>
 
+      <TouchableOpacity style={styles.backButton}>
+        <BackButton />
+      </TouchableOpacity>
+
       <VaultPassword
         label="Vault Password"
         text={walletAddressInput}
@@ -38,7 +43,7 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
       />
 
       <PrimaryButton
-        style={{ marginTop: 250, marginBottom: 16 }}
+        style={styles.submitButton}
         onPress={() => props.submitButtonHandler}
         text="Submit"
         disabled={walletAddressInput.length < 1}
@@ -58,6 +63,23 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 };
 
 const styles = StyleSheet.create({
+  backButton: {
+    backgroundColor: "#6763761A",
+    position: "absolute",
+    width: 32,
+    height: 32,
+    left: 16,
+    top: 136,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  submitButton: {
+    marginTop: 250,
+    marginBottom: 16,
+    width: 280,
+    height: 48,
+  },
   centerRow: {
     flexDirection: "row",
     width: "90%",
