@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { StyleSheet } from 'react-native';
-import SlidingUpPanel from 'rn-sliding-up-panel';
+import React, { useEffect, useRef } from "react";
+import { StyleSheet } from "react-native";
+import SlidingUpPanel from "rn-sliding-up-panel";
 
 type Props = {
   show: number;

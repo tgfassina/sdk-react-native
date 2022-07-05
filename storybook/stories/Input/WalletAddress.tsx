@@ -1,6 +1,6 @@
-import React from 'react';
-import { Image, View, Text, StyleSheet, TextInput } from 'react-native';
-import IconUser from '../icons/User';
+import React from "react";
+import { Image, View, Text, StyleSheet, TextInput } from "react-native";
+import IconUser from "../icons/User";
 
 type Props = {
   label: string;
@@ -21,36 +21,36 @@ const WalletAddress: React.FC<Props> = (props: Props) => {
 
 const styles = StyleSheet.create({
   walletInput: {
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: "column",
+    justifyContent: "center",
   },
   input: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    borderColor: '#F6F5FA',
-    borderStyle: 'solid',
+    flexDirection: "row",
+    justifyContent: "center",
+    borderColor: "#F6F5FA",
+    borderStyle: "solid",
     borderWidth: 1,
     borderRadius: 6,
     height: 40,
   },
   labelText: {
-    fontFamily: 'THICCCBOI_Regular',
-    fontStyle: 'normal',
-    fontWeight: '500',
-    textAlign: 'left',
+    fontFamily: "THICCCBOI_Regular",
+    fontStyle: "normal",
+    fontWeight: "500",
+    textAlign: "left",
     fontSize: 14,
     lineHeight: 16,
-    color: '#F6F5FA',
+    color: "#F6F5FA",
   },
   textInput: {
     width: 256,
     height: 40,
-    fontFamily: 'THICCCBOI_Regular',
-    fontStyle: 'normal',
-    fontWeight: '500',
+    fontFamily: "THICCCBOI_Regular",
+    fontStyle: "normal",
+    fontWeight: "500",
     fontSize: 16,
     lineHeight: 20,
-    color: '#F6F5FA',
+    color: "#F6F5FA",
   },
 });
 

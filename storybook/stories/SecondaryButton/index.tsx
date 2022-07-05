@@ -1,5 +1,12 @@
-import React from 'react';
-import { StyleSheet, Text, StyleProp, ViewStyle, TouchableOpacity, TextStyle } from 'react-native';
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  StyleProp,
+  ViewStyle,
+  TouchableOpacity,
+  TextStyle,
+} from "react-native";
 
 interface Props {
   onPress: () => void;
@@ -8,9 +15,17 @@ interface Props {
   textStyle?: StyleProp<TextStyle>;
 }
 
-const SecondaryButton: React.FC<Props> = ({ onPress, text, containerStyle, textStyle }) => {
+const SecondaryButton: React.FC<Props> = ({
+  onPress,
+  text,
+  containerStyle,
+  textStyle,
+}) => {
   return (
-    <TouchableOpacity style={[styles.container, containerStyle]} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles.container, containerStyle]}
+      onPress={onPress}
+    >
       <Text style={[textStyle, styles.buttonText]}>{text}</Text>
     </TouchableOpacity>
   );
@@ -18,13 +33,13 @@ const SecondaryButton: React.FC<Props> = ({ onPress, text, containerStyle, textS
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   buttonText: {
-    textAlign: 'center',
-    fontFamily: 'THICCCBOI_ExtraBold',
+    textAlign: "center",
+    fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 18,
-    fontWeight: '800',
+    fontWeight: "800",
     lineHeight: 20,
     letterSpacing: 0,
   },
