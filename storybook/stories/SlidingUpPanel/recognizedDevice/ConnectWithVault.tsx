@@ -40,11 +40,9 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
         text={walletAddressInput}
         onChangeText={setWalletAddressInput}
         secureTextEntry={true}
-        labelStyle={{ color: "#4F4A60", marginBottom: 8 }}
-        inputStyle={styles.vaultInputStyle}
         icon="security"
-        textInputStyle={{ color: "#37324A" }}
         warning={props.warningMessage}
+        lightTheme={true}
       />
 
       {props.displayTooltip && (
@@ -181,9 +179,6 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     color: "#1792FF",
     marginLeft: 8,
-  },
-  vaultInputStyle: {
-    borderColor: "#9893A2",
   },
 });
 

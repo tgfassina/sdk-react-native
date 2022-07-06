@@ -22,11 +22,9 @@ type Props = {
   text: string;
   warning?: string;
   secureTextEntry?: boolean;
-  labelStyle?: StyleProp<TextStyle>;
-  inputStyle?: StyleProp<ViewStyle>;
-  textInputStyle?: StyleProp<TextStyle>;
   onChangeText: Dispatch<SetStateAction<string>>;
   icon: string;
+  lightTheme?: boolean;
 };
 
 const IconText: React.FC<Props> = (props: Props) => {
@@ -39,13 +37,22 @@ const IconText: React.FC<Props> = (props: Props) => {
     borderStyle = { borderColor: "#FF2866" };
   }
 
+  let labelStyle = undefined;
+  let inputStyle = undefined;
+  let textInputStyle = undefined;
+  if (props.lightTheme) {
+    labelStyle = { color: "#4F4A60" };
+    inputStyle = { borderColor: "#9893A2" };
+    textInputStyle = { color: "#37324A" };
+  }
+
   return (
     <View style={styles.containerInput}>
-      <Text style={[styles.labelText, props.labelStyle]}>{props.label}</Text>
-      <View style={[styles.input, props.inputStyle, borderStyle]}>
+      <Text style={[styles.labelText, labelStyle]}>{props.label}</Text>
+      <View style={[styles.input, inputStyle, borderStyle]}>
         {Icon({ fillColor })}
         <TextInput
-          style={[styles.textInput, props.textInputStyle]}
+          style={[styles.textInput, textInputStyle]}
           value={props.text}
           onChangeText={props.onChangeText}
           secureTextEntry={props.secureTextEntry}
@@ -80,6 +87,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 16,
     color: "#F6F5FA",
+    marginBottom: 8,
   },
   textInput: {
     flex: 1,
