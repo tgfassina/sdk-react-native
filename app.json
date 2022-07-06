@@ -3,7 +3,8 @@
     "name": "sdk-react-native",
     "slug": "sdk-react-native",
     "version": "1.0.0",
-    "assetBundlePatterns": ["**/*"]
+    "assetBundlePatterns": ["**/*"],
+    "entryPoint": "/App"
   },
   "name": "sdk-react-native"
 }
