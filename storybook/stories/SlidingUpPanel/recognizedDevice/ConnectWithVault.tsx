@@ -133,8 +133,8 @@ const styles = StyleSheet.create({
   submitButton: {
     marginTop: "auto",
     marginBottom: 16,
-    width: 280,
-    height: 48,
+    width: "100%",
+    paddingHorizontal: 60,
   },
   centerRow: {
     flexDirection: "row",
