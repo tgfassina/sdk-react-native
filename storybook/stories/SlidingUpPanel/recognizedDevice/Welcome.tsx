@@ -4,7 +4,6 @@ import { StyleSheet, Text, View } from "react-native";
 import SonrLogo from "../../icons/SonrLogo";
 import WalletAddress from "../../Input/IconText";
 import SecondaryButton from "../../SecondaryButton";
-import IconUser from "../../icons/User";
 
 type Props = {
   continueButtonHandler?: () => any;

@@ -6,6 +6,7 @@ import VaultPassword from "../../Input/IconText";
 import PrimaryButton from "../../PrimaryButton";
 import BackButton from "../../icons/BackButton";
 import SecondaryButton from "../../SecondaryButton";
+import SecondaryButtonWhite from "../../SecondaryButton/WhiteMode";
 
 type Props = {
   submitButtonHandler?: () => any;
@@ -57,14 +58,9 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
               Password in{" "}
               <Text style={styles.tooltipTextSettings}>Settings</Text>
             </Text>
-            <SecondaryButton
+            <SecondaryButtonWhite
               onPress={() => props.setDisplayTooltip(!props.displayTooltip)}
               text="Dismiss"
-              style={styles.dismissButton}
-              textStyle={{
-                color: "#37324A",
-                fontFamily: "THICCCBOI_ExtraBold",
-              }}
             />
           </View>
         </View>
