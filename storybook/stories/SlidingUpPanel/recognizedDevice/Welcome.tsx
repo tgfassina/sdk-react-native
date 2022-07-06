@@ -47,6 +47,7 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
       <SecondaryButton
         onPress={() => props.vaultPasswordHandler()}
         text="Vault Password"
+        style={{ marginHorizontal: 40, marginTop: 16 }}
       />
       <Text
         onPress={() => props.createAccountHandler()}
@@ -113,6 +114,8 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     color: "#1792FF",
     paddingTop: 24,
+    flex: 1,
+    alignSelf: "center",
   },
 });
 
