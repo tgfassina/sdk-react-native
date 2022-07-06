@@ -6,7 +6,7 @@ install all the dependencies
 yarn
 ```
 
-start the storybook
+start storybook
 
 ```
 yarn storybook
@@ -15,5 +15,5 @@ yarn storybook
 start the project
 
 ```
-yarn ios
+yarn start
 ```
