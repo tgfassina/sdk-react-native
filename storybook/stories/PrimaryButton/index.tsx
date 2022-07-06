@@ -13,7 +13,7 @@ interface Props {
   text: string;
   style?: StyleProp<ViewStyle>;
   icon?: any;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 const PrimaryButton: React.FC<Props> = ({

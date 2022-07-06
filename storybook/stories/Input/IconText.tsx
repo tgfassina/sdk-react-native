@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import SecuritySafe from "../icons/SecuritySafe";
 import IconUser from "../icons/User";
+import WarningOutline from "../icons/WarningOutline";
 
 const iconSvg = {
   user: IconUser,
@@ -49,6 +50,7 @@ const IconText: React.FC<Props> = (props: Props) => {
           onChangeText={props.onChangeText}
           secureTextEntry={props.secureTextEntry}
         />
+        {props.warning && <WarningOutline />}
       </View>
       <Text style={styles.warningText}>{props.warning}</Text>
     </View>

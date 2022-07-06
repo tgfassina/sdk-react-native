@@ -5,18 +5,25 @@ import {
   StyleProp,
   ViewStyle,
   TouchableOpacity,
+  TextStyle,
 } from "react-native";
 
 interface Props {
   onPress: () => void;
   text: string;
   style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
 }
 
-const SecondaryButton: React.FC<Props> = ({ onPress, text, style }) => {
+const SecondaryButton: React.FC<Props> = ({
+  onPress,
+  text,
+  style,
+  textStyle,
+}) => {
   return (
     <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-      <Text style={styles.text}>{text}</Text>
+      <Text style={[styles.text, textStyle]}>{text}</Text>
     </TouchableOpacity>
   );
 };

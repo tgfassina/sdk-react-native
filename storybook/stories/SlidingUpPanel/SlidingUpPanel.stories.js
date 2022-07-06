@@ -9,7 +9,7 @@ import ConnectWithVault from "./recognizedDevice/ConnectWithVault";
 
 storiesOf("SlidingUpPanel", module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
-  .add("Show welcome for unrecognized device", () => {
+  .add("Unrecognized device - Show welcome", () => {
     return (
       <>
         <SlidingUpPanel show={number("Enabled", 320)}>
@@ -25,7 +25,7 @@ storiesOf("SlidingUpPanel", module)
       </>
     );
   })
-  .add("Show welcome for recognized device", () => {
+  .add("1-Recognized device - welcome", () => {
     return (
       <>
         <SlidingUpPanel show={number("Enabled", 640)}>
@@ -34,11 +34,23 @@ storiesOf("SlidingUpPanel", module)
       </>
     );
   })
-  .add("Show recognized device 2nd screen - connect vault", () => {
+  .add("2-Recognized device - connect vault", () => {
     return (
       <>
         <SlidingUpPanel show={number("Enabled", 640)}>
           <ConnectWithVault />
+        </SlidingUpPanel>
+      </>
+    );
+  })
+  .add("3-Recognized device - failed password", () => {
+    return (
+      <>
+        <SlidingUpPanel show={number("Enabled", 640)}>
+          <ConnectWithVault
+            warningMessage="Invalid Password"
+            displayTooltip={true}
+          />
         </SlidingUpPanel>
       </>
     );

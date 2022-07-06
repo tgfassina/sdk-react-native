@@ -5,4 +5,6 @@ import CenterViewDark from "../CenterViewDark";
 
 storiesOf("PrimaryButton", module)
   .addDecorator((getStory) => <CenterViewDark>{getStory()}</CenterViewDark>)
-  .add("with text", () => <PrimaryButton onPress={() => {}} text="Hello" />);
+  .add("button with text", () => (
+    <PrimaryButton onPress={() => {}} text="Hello" />
+  ));

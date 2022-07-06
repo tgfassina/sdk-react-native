@@ -1,15 +1,20 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import SonrLogo from "../../icons/SonrLogo";
+import HelpBallon from "../../icons/HelpBallon";
 import VaultPassword from "../../Input/IconText";
 import PrimaryButton from "../../PrimaryButton";
 import BackButton from "../../icons/BackButton";
+import SecondaryButton from "../../SecondaryButton";
 
 type Props = {
   submitButtonHandler?: () => any;
   vaultPasswordHandler?: () => any;
   createAccountHandler?: () => any;
   closeHandler?: () => any;
+  warningMessage?: string;
+  displayTooltip?: boolean;
+  setDisplayTooltip?: Dispatch<SetStateAction<boolean>>;
 };
 
 const ConnectWithVault: React.FC<Props> = (props: Props) => {
@@ -39,7 +44,28 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
         inputStyle={styles.vaultInputStyle}
         icon="security"
         textInputStyle={{ color: "#37324A" }}
+        warning={props.warningMessage}
       />
+
+      {props.displayTooltip && (
+        <View style={styles.tooltipStyle}>
+          <HelpBallon style={styles.helpBallon} />
+          <View>
+            <Text numberOfLines={5} style={styles.tooltipText}>
+              It looks like you may have forgotten your Vault Password. Please
+              try logging in on a recognized device. You can reset your Vault
+              Password in{" "}
+              <Text style={styles.tooltipTextSettings}>Settings</Text>
+            </Text>
+            <SecondaryButton
+              onPress={() => props.setDisplayTooltip(!props.displayTooltip)}
+              text="Dismiss"
+              style={styles.dismissButton}
+              textStyle={{ color: "#37324A", fontWeight: "800" }}
+            />
+          </View>
+        </View>
+      )}
 
       <PrimaryButton
         style={styles.submitButton}
@@ -48,7 +74,12 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
         disabled={walletAddressInput.length < 1}
       />
 
-      <View style={[styles.centerRow, { justifyContent: "center" }]}>
+      <View
+        style={[
+          styles.centerRow,
+          { justifyContent: "center", marginBottom: 32 },
+        ]}
+      >
         <Text>Don't have an account?</Text>
         <Text
           onPress={() => props.createAccountHandler()}
@@ -62,6 +93,33 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 };
 
 const styles = StyleSheet.create({
+  tooltipTextSettings: {
+    fontWeight: "800",
+    fontFamily: "THICCCBOI_ExtraBold",
+  },
+  helpBallon: {
+    marginBottom: "auto",
+    marginTop: 30,
+    marginHorizontal: 10,
+  },
+  dismissButton: {
+    backgroundColor: "#6763761A",
+  },
+  tooltipText: {
+    width: 215,
+    height: 80,
+    fontSize: 12,
+    lineHeight: 16,
+    fontFamily: "THICCCBOI_Regular",
+  },
+  tooltipStyle: {
+    flexDirection: "row",
+    width: 280,
+    height: 160,
+    alignItems: "center",
+    backgroundColor: "#1D1A270D",
+    marginTop: 16,
+  },
   backButton: {
     backgroundColor: "#6763761A",
     position: "absolute",
@@ -74,7 +132,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   submitButton: {
-    marginTop: 250,
+    marginTop: "auto",
     marginBottom: 16,
     width: 280,
     height: 48,

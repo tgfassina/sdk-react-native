@@ -4,8 +4,6 @@ import CenterViewDark from "../CenterViewDark";
 import IconText from "./IconText";
 import { text } from "@storybook/addon-knobs";
 
-const inputText = "";
-
 storiesOf("Main text input", module)
   .addDecorator((getStory) => <CenterViewDark>{getStory()}</CenterViewDark>)
   .add("Failed State", () => (
