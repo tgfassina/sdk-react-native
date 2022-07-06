@@ -81,14 +81,12 @@ const styles = StyleSheet.create({
   close: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontStyle: "normal",
-    fontWeight: "800",
     fontSize: 14,
     color: "#AEACB8",
   },
   title: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 34,
-    fontWeight: "800",
     textAlign: "center",
     color: "#fff",
     marginBottom: 64,
@@ -96,7 +94,6 @@ const styles = StyleSheet.create({
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 34,
-    fontWeight: "800",
     lineHeight: 40,
     textAlign: "center",
     color: "#fff",
@@ -106,7 +103,6 @@ const styles = StyleSheet.create({
   subtitle3: {
     fontFamily: "THICCCBOI_Regular",
     fontSize: 14,
-    fontWeight: "700",
     lineHeight: 20,
     textAlign: "center",
     color: "#AEACB8",
@@ -115,7 +111,6 @@ const styles = StyleSheet.create({
   createAccount: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 14,
-    fontWeight: "800",
     lineHeight: 16,
     color: "#1792FF",
     paddingTop: 24,

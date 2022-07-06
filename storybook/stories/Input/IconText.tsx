@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
   labelText: {
     fontFamily: "THICCCBOI_Regular",
     fontStyle: "normal",
-    fontWeight: "500",
     textAlign: "left",
     fontSize: 14,
     lineHeight: 16,
@@ -86,7 +85,6 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     fontFamily: "THICCCBOI_Regular",
     fontStyle: "normal",
-    fontWeight: "500",
     fontSize: 16,
     lineHeight: 20,
     color: "#F6F5FA",
@@ -94,7 +92,6 @@ const styles = StyleSheet.create({
   warningText: {
     fontFamily: "THICCCBOI_Medium",
     fontStyle: "normal",
-    fontWeight: "500",
     textAlign: "left",
     fontSize: 12,
     lineHeight: 16,

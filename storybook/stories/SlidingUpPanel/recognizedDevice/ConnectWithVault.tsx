@@ -61,7 +61,10 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
               onPress={() => props.setDisplayTooltip(!props.displayTooltip)}
               text="Dismiss"
               style={styles.dismissButton}
-              textStyle={{ color: "#37324A", fontWeight: "800" }}
+              textStyle={{
+                color: "#37324A",
+                fontFamily: "THICCCBOI_ExtraBold",
+              }}
             />
           </View>
         </View>
@@ -94,7 +97,6 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
 const styles = StyleSheet.create({
   tooltipTextSettings: {
-    fontWeight: "800",
     fontFamily: "THICCCBOI_ExtraBold",
   },
   helpBallon: {
@@ -149,7 +151,6 @@ const styles = StyleSheet.create({
   close: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontStyle: "normal",
-    fontWeight: "800",
     fontSize: 14,
     lineHeight: 16,
     letterSpacing: 0.02,
@@ -164,7 +165,6 @@ const styles = StyleSheet.create({
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 24,
-    fontWeight: "900",
     lineHeight: 28,
     textAlign: "center",
     color: "#1D1A27",
@@ -173,7 +173,6 @@ const styles = StyleSheet.create({
   subtitle3: {
     fontFamily: "THICCCBOI_Bold",
     fontSize: 14,
-    fontWeight: "700",
     lineHeight: 20,
     textAlign: "center",
     color: "#676376",
@@ -183,7 +182,6 @@ const styles = StyleSheet.create({
   createAccount: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 14,
-    fontWeight: "800",
     lineHeight: 16,
     color: "#1792FF",
     marginLeft: 8,
