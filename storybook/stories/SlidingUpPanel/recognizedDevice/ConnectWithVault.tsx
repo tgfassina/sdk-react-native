@@ -1,11 +1,10 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import SonrLogo from "../../icons/SonrLogo";
-import HelpBallon from "../../icons/HelpBallon";
+import HelpBalloon from "../../icons/HelpBalloon";
 import VaultPassword from "../../Input/IconText";
 import PrimaryButton from "../../PrimaryButton";
 import BackButton from "../../icons/BackButton";
-import SecondaryButton from "../../SecondaryButton";
 import SecondaryButtonWhite from "../../SecondaryButton/WhiteMode";
 
 type Props = {
@@ -50,7 +49,7 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
       {props.displayTooltip && (
         <View style={styles.tooltipStyle}>
-          <HelpBallon style={styles.helpBallon} />
+          <HelpBalloon style={styles.helpBalloon} />
           <View>
             <Text numberOfLines={5} style={styles.tooltipText}>
               <Text>It looks like you may have forgotten</Text>
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
   tooltipTextSettings: {
     fontFamily: "THICCCBOI_ExtraBold",
   },
-  helpBallon: {
+  helpBalloon: {
     marginBottom: "auto",
     marginHorizontal: 10,
   },
@@ -185,8 +184,6 @@ const styles = StyleSheet.create({
   },
   vaultInputStyle: {
     borderColor: "#9893A2",
-    width: 256,
-    height: 40,
   },
 });
 

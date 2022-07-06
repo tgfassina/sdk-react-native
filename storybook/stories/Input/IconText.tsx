@@ -61,6 +61,8 @@ const styles = StyleSheet.create({
   containerInput: {
     flexDirection: "column",
     justifyContent: "center",
+    width: "100%",
+    paddingHorizontal: 40,
   },
   input: {
     flexDirection: "row",
