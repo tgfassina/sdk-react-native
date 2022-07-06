@@ -53,9 +53,10 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
           <HelpBallon style={styles.helpBallon} />
           <View>
             <Text numberOfLines={5} style={styles.tooltipText}>
-              It looks like you may have forgotten your Vault Password. Please
-              try logging in on a recognized device. You can reset your Vault
-              Password in{" "}
+              <Text>It looks like you may have forgotten</Text>
+              <Text> your Vault Password. Please try</Text>
+              <Text> logging in on a recognized device.</Text>
+              <Text> You can reset your Vault Password in </Text>
               <Text style={styles.tooltipTextSettings}>Settings</Text>
             </Text>
             <SecondaryButtonWhite
@@ -97,23 +98,23 @@ const styles = StyleSheet.create({
   },
   helpBallon: {
     marginBottom: "auto",
-    marginTop: 30,
     marginHorizontal: 10,
   },
   dismissButton: {
     backgroundColor: "#6763761A",
   },
   tooltipText: {
-    width: 215,
-    height: 80,
     fontSize: 12,
     lineHeight: 16,
+    letterSpacing: 1,
     fontFamily: "THICCCBOI_Regular",
+    marginBottom: 16,
   },
   tooltipStyle: {
     flexDirection: "row",
-    width: 280,
-    height: 160,
+    marginHorizontal: 60,
+    paddingBottom: 16,
+    padding: 10,
     alignItems: "center",
     backgroundColor: "#1D1A270D",
     marginTop: 16,
