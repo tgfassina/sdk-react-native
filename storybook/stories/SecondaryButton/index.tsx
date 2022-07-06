@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: "THICCCBOI_ExtraBold",
     color: "#F6F5FA",
+    letterSpacing: 1,
   },
 });
 
