@@ -1,1 +1,2 @@
-export { Widget } from "./src/Widget";
+import Widget from "./storybook/stories/SlidingUpPanel/unrecognizedDevice/Welcome";
+export { Widget };
