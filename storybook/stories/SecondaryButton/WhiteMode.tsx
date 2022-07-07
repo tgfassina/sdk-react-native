@@ -13,7 +13,7 @@ interface Props {
   style?: StyleProp<ViewStyle>;
 }
 
-const SecondaryButton: React.FC<Props> = ({ onPress, text, style }) => {
+const SecondaryButtonWhite: React.FC<Props> = ({ onPress, text, style }) => {
   return (
     <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
       <Text style={styles.text}>{text}</Text>
@@ -23,7 +23,7 @@ const SecondaryButton: React.FC<Props> = ({ onPress, text, style }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    backgroundColor: "#6763761A",
     paddingVertical: 8,
     paddingHorizontal: 12,
     borderRadius: 6,
@@ -32,9 +32,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 14,
     fontFamily: "THICCCBOI_ExtraBold",
-    color: "#F6F5FA",
-    letterSpacing: 1,
+    color: "#37324A",
   },
 });
 
-export default SecondaryButton;
+export default SecondaryButtonWhite;

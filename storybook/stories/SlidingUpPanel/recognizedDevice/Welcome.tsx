@@ -2,7 +2,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SonrLogo from "../../icons/SonrLogo";
-import WalletAddress from "../../Input/WalletAddress";
+import WalletAddress from "../../Input/IconText";
 import SecondaryButton from "../../SecondaryButton";
 
 type Props = {
@@ -24,43 +24,37 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
         start={{ x: 0.0, y: 0 }}
         end={{ x: 1, y: 1 }}
       />
-
       <View style={styles.header}>
         <SonrLogo />
         <Text style={styles.close} onPress={() => props.closeHandler()}>
           Close
         </Text>
       </View>
-
-      <View style={styles.content}>
-        <Text style={styles.title}>Welcome Back</Text>
-        <WalletAddress
-          label="Walled Address or .snr Domain"
-          text={walletAddressInput}
-        />
-        <SecondaryButton
-          style={{ marginTop: 16 }}
-          onPress={props.onSuccess}
-          text="Login"
-        />
-        {/* <PrimaryButton
+      <Text style={styles.subtitle2}>Welcome Back</Text>
+      <WalletAddress
+        label="Walled Address or .snr Domain"
+        text={walletAddressInput}
+        onChangeText={() => {}}
+        icon="user"
+      />
+      {/* <PrimaryButton
 				style={{ marginTop: 20 }}
 				onPress={() => props.continueButtonHandler}
 				icon={KeyPrint()}
 				text="Continue with Keyprint"
 			/> */}
-        <Text style={styles.subtitle3}>OR CONTINUE WITH</Text>
-        <SecondaryButton
-          onPress={() => props.vaultPasswordHandler()}
-          text="Vault Password"
-        />
-        <Text
-          onPress={() => props.createAccountHandler()}
-          style={styles.createAccount}
-        >
-          Create Account
-        </Text>
-      </View>
+      <Text style={styles.subtitle3}>OR CONTINUE WITH</Text>
+      <SecondaryButton
+        onPress={() => props.vaultPasswordHandler()}
+        text="Vault Password"
+        style={{ marginHorizontal: 40, marginTop: 16 }}
+      />
+      <Text
+        onPress={() => props.createAccountHandler()}
+        style={styles.createAccount}
+      >
+        Create Account
+      </Text>
     </View>
   );
 };
@@ -87,22 +81,28 @@ const styles = StyleSheet.create({
   close: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontStyle: "normal",
-    fontWeight: "800",
     fontSize: 14,
     color: "#AEACB8",
   },
   title: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 34,
-    fontWeight: "800",
     textAlign: "center",
     color: "#fff",
     marginBottom: 64,
   },
+  subtitle2: {
+    fontFamily: "THICCCBOI_ExtraBold",
+    fontSize: 34,
+    lineHeight: 40,
+    textAlign: "center",
+    color: "#fff",
+    paddingBottom: 64,
+    marginTop: 24,
+  },
   subtitle3: {
     fontFamily: "THICCCBOI_Regular",
     fontSize: 14,
-    fontWeight: "700",
     lineHeight: 20,
     textAlign: "center",
     color: "#AEACB8",
@@ -111,10 +111,11 @@ const styles = StyleSheet.create({
   createAccount: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 14,
-    fontWeight: "800",
     lineHeight: 16,
     color: "#1792FF",
     paddingTop: 24,
+    flex: 1,
+    alignSelf: "center",
   },
 });
 
