@@ -7,60 +7,54 @@ interface IProps {
   children: React.ReactNode;
 }
 
-export default class GlobalContext extends React.Component<IProps> {
-  state = {
-    walletAddress: "",
-    show: 640,
-    component: <SlidingUpRecognizedWelcome />,
-  };
+const GlobalContext = (props: IProps) => {
+  const [walletAddress, setWalletAddress] = useState("");
+  const [show, setShow] = useState(640);
+  const [component, setComponent] = useState(<SlidingUpRecognizedWelcome />);
 
-  continueButtonHandler = (walletAddress) => {
+  const continueButtonHandler = (walletAddress) => {
     if (walletAddress === "Dev" || walletAddress === "Test") {
-      this.setState({ component: <ConnectWithVault /> });
+      setComponent(<ConnectWithVault />);
     }
-    this.setState({ walletAddress });
+    setWalletAddress(walletAddress);
   };
 
-  // const success = await sdk.login()
-  vaultPassswordHandler = (vaultPassword) => {
-    this.setState({
-      component: (
-        <ConnectWithVault
-          warningMessage="Invalid Password"
-          displayTooltip={true}
-        />
-      ),
-    });
-  };
-
-  backButtonHandler = () => {
-    this.setState({ component: <SlidingUpRecognizedWelcome /> });
-  };
-
-  closeHandler = () => {
-    this.setState({ show: 0 });
-  };
-
-  //TODO
-  createAccount = () => {
-    console.log("TODO", this.state.walletAddress);
-  };
-
-  render() {
-    return (
-      <AppContext.Provider
-        value={{
-          show: this.state.show,
-          component: this.state.component,
-          createAccount: this.createAccount,
-          closeHandler: this.closeHandler,
-          continueButtonHandler: this.continueButtonHandler,
-          backButtonHandler: this.backButtonHandler,
-          vaultPassswordHandler: this.vaultPassswordHandler,
-        }}
-      >
-        {this.props.children}
-      </AppContext.Provider>
+  const vaultPassswordHandler = (vaultPassword) => {
+    setComponent(
+      <ConnectWithVault
+        warningMessage="Invalid Password"
+        displayTooltip={true}
+      />
     );
-  }
-}
+  };
+
+  const backButtonHandler = () => {
+    setComponent(<SlidingUpRecognizedWelcome />);
+  };
+
+  const closeHandler = () => {
+    setShow(0);
+  };
+
+  const createAccount = () => {
+    console.log("TODO", walletAddress);
+  };
+
+  return (
+    <AppContext.Provider
+      value={{
+        show: show,
+        component: component,
+        createAccount: createAccount,
+        closeHandler: closeHandler,
+        continueButtonHandler: continueButtonHandler,
+        backButtonHandler: backButtonHandler,
+        vaultPassswordHandler: vaultPassswordHandler,
+      }}
+    >
+      {props.children}
+    </AppContext.Provider>
+  );
+};
+
+export default GlobalContext;
