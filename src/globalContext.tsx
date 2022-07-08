@@ -43,9 +43,7 @@ const GlobalContext = (props: IProps) => {
     setShow(0);
   };
 
-  const createAccount = () => {
-    console.log("TODO", walletAddress);
-  };
+  const createAccount = () => {};
 
   return (
     <AppContext.Provider
