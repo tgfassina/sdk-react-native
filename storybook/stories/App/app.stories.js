@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react-native";
 import React from "react";
-import MainApp from ".";
+import MainApp from "../../../src/Widget";
 import CenterViewDark from "../CenterViewDark";
 
 storiesOf("App Showcase", module)

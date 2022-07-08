@@ -1,12 +1,12 @@
 import React, { Dispatch, SetStateAction, useContext } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import SonrLogo from "../../icons/SonrLogo";
-import HelpBalloon from "../../icons/HelpBalloon";
-import VaultPassword from "../../Input/IconText";
-import PrimaryButton from "../../PrimaryButton";
-import BackButton from "../../icons/BackButton";
-import SecondaryButtonWhite from "../../SecondaryButton/WhiteMode";
-import { AppContext } from "../../../context/context";
+import SonrLogo from "./icons/SonrLogo";
+import HelpBalloon from "./icons/HelpBalloon";
+import BackButton from "./icons/BackButton";
+import VaultPassword from "./components/IconText";
+import PrimaryButton from "./components/PrimaryButton";
+import SecondaryButtonWhite from "../storybook/stories/SecondaryButton/WhiteMode";
+import { AppContext } from "./context";
 
 type Props = {
   warningMessage?: string;

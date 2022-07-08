@@ -1,8 +1,16 @@
 import React, { useState } from "react";
-import { AppContext } from "../../context/context";
-import SlidingUpPanelComponent from "../SlidingUpPanel";
-import ConnectWithVault from "../SlidingUpPanel/recognizedDevice/ConnectWithVault";
-import SlidingUpRecognizedWelcome from "../SlidingUpPanel/recognizedDevice/Welcome";
+import { AppContext } from "./context";
+import SlidingUpPanelComponent from "./components/SlidingUpPanelComponent";
+import ConnectWithVault from "./ConnectWithVault";
+import SlidingUpRecognizedWelcome from "./PromptRecognized";
+import * as Font from "expo-font";
+
+Font.loadAsync({
+  THICCCBOI_ExtraBold: require("../assets/fonts/THICCCBOI-ExtraBold.ttf"),
+  THICCCBOI_Bold: require("../assets/fonts/THICCCBOI-Bold.ttf"),
+  THICCCBOI_Medium: require("../assets/fonts/THICCCBOI-Medium.ttf"),
+  THICCCBOI_Regular: require("../assets/fonts/THICCCBOI-Regular.ttf"),
+});
 
 const MainApp = () => {
   const [show, setShow] = useState(640);

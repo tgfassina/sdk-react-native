@@ -1,11 +1,11 @@
 import { storiesOf } from "@storybook/react-native";
 import React from "react";
-import SlidingUpPanel from ".";
-import SlidingUpWelcome from "./unrecognizedDevice/Welcome";
-import SlidingUpRecognizedWelcome from "./recognizedDevice/Welcome";
+import SlidingUpPanel from "../../../src/components/SlidingUpPanelComponent";
+import SlidingUpWelcome from "../../../src/PromptUnrecognized";
+import SlidingUpRecognizedWelcome from "../../../src/PromptRecognized";
 import CenterView from "../CenterView";
 import { number } from "@storybook/addon-knobs";
-import ConnectWithVault from "./recognizedDevice/ConnectWithVault";
+import ConnectWithVault from "../../../src/ConnectWithVault";
 
 storiesOf("SlidingUpPanel", module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
