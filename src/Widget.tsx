@@ -1,6 +1,6 @@
 import React from "react";
-import GlobalContext from "../../context/globalContext";
-// import SlidingUpPanelComponent from "../SlidingUpPanel";
+import GlobalContext from "./globalContext";
+import SlidingUpPanelComponent from "./components/SlidingUpPanelComponent";
 
 import * as Font from "expo-font";
 

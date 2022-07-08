@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ConnectWithVault from "../stories/SlidingUpPanel/recognizedDevice/ConnectWithVault";
-import SlidingUpRecognizedWelcome from "../stories/SlidingUpPanel/recognizedDevice/Welcome";
+import ConnectWithVault from "./ConnectWithVault";
+import PromptRecognized from "./PromptRecognized";
 import { AppContext } from "./context";
 import { login } from "./sdkApi";
 
@@ -13,7 +13,7 @@ interface IProps {
 const GlobalContext = (props: IProps) => {
   const [walletAddress, setWalletAddress] = useState("");
   const [show, setShow] = useState(640);
-  const [component, setComponent] = useState(<SlidingUpRecognizedWelcome />);
+  const [component, setComponent] = useState(<PromptRecognized />);
 
   const continueButtonHandler = (walletAddress) => {
     if (walletAddress === "Dev" || walletAddress === "Test") {
@@ -36,7 +36,7 @@ const GlobalContext = (props: IProps) => {
   };
 
   const backButtonHandler = () => {
-    setComponent(<SlidingUpRecognizedWelcome />);
+    setComponent(<PromptRecognized />);
   };
 
   const closeHandler = () => {
