@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useContext } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import SonrLogo from "../../icons/SonrLogo";
 import HelpBalloon from "../../icons/HelpBalloon";
@@ -6,39 +6,40 @@ import VaultPassword from "../../Input/IconText";
 import PrimaryButton from "../../PrimaryButton";
 import BackButton from "../../icons/BackButton";
 import SecondaryButtonWhite from "../../SecondaryButton/WhiteMode";
+import { AppContext } from "../../../context/context";
 
 type Props = {
-  submitButtonHandler?: () => any;
-  vaultPasswordHandler?: () => any;
-  createAccountHandler?: () => any;
-  closeHandler?: () => any;
   warningMessage?: string;
   displayTooltip?: boolean;
   setDisplayTooltip?: Dispatch<SetStateAction<boolean>>;
 };
 
 const ConnectWithVault: React.FC<Props> = (props: Props) => {
-  const [walletAddressInput, setWalletAddressInput] = React.useState("");
+  const context = useContext(AppContext);
+  const [vaultPasswordInput, setvaultPasswordInput] = React.useState("");
 
   return (
     <View style={styles.slidePanel}>
       <View style={[styles.header, styles.centerRow]}>
         <SonrLogo textFill="#1D1A27" />
-        <Text style={styles.close} onPress={() => props.closeHandler()}>
+        <Text style={styles.close} onPress={() => context.closeHandler()}>
           Close
         </Text>
       </View>
       <Text style={styles.subtitle2}>Connect with Vault</Text>
       <Text style={styles.subtitle3}>ENTER YOUR VAULT PASSWORD</Text>
 
-      <TouchableOpacity style={styles.backButton}>
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => context.backButtonHandler()}
+      >
         <BackButton />
       </TouchableOpacity>
 
       <VaultPassword
         label="Vault Password"
-        text={walletAddressInput}
-        onChangeText={setWalletAddressInput}
+        text={vaultPasswordInput}
+        onChangeText={setvaultPasswordInput}
         secureTextEntry={true}
         icon="security"
         warning={props.warningMessage}
@@ -66,9 +67,9 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
       <PrimaryButton
         style={styles.submitButton}
-        onPress={() => props.submitButtonHandler}
+        onPress={() => context.vaultPassswordHandler(vaultPasswordInput)}
         text="Submit"
-        disabled={walletAddressInput.length < 1}
+        disabled={vaultPasswordInput.length < 1}
       />
 
       <View
@@ -79,7 +80,7 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
       >
         <Text>Don't have an account?</Text>
         <Text
-          onPress={() => props.createAccountHandler()}
+          onPress={() => context.createAccount()}
           style={styles.createAccount}
         >
           Create One
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   submitButton: {
-    marginTop: "auto",
+    marginTop: 235,
     marginBottom: 16,
     width: "100%",
     paddingHorizontal: 60,

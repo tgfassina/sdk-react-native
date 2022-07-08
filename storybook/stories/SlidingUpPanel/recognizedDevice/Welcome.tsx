@@ -1,20 +1,20 @@
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import React, { useContext, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { AppContext } from "../../../context/context";
 import SonrLogo from "../../icons/SonrLogo";
 import WalletAddress from "../../Input/IconText";
 import SecondaryButton from "../../SecondaryButton";
 
 type Props = {
-  continueButtonHandler?: () => any;
   vaultPasswordHandler?: () => any;
   createAccountHandler?: () => any;
   closeHandler?: () => any;
-  onSuccess: () => void;
 };
 
 const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
-  let walletAddressInput;
+  const context = useContext(AppContext);
+  const [walletAddressInput, setSalletAddressInput] = useState("");
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -26,7 +26,7 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
       />
       <View style={styles.header}>
         <SonrLogo />
-        <Text style={styles.close} onPress={() => props.closeHandler()}>
+        <Text style={styles.close} onPress={() => context.closeHandler()}>
           Close
         </Text>
       </View>
@@ -34,9 +34,17 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
       <WalletAddress
         label="Walled Address or .snr Domain"
         text={walletAddressInput}
-        onChangeText={() => {}}
+        onChangeText={(newText) => setSalletAddressInput(newText)}
         icon="user"
       />
+      <SecondaryButton
+        style={{ marginTop: 16, marginHorizontal: 40 }}
+        onPress={() => {
+          context.continueButtonHandler(walletAddressInput);
+        }}
+        text="Login"
+      />
+
       {/* <PrimaryButton
 				style={{ marginTop: 20 }}
 				onPress={() => props.continueButtonHandler}
@@ -45,12 +53,12 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
 			/> */}
       <Text style={styles.subtitle3}>OR CONTINUE WITH</Text>
       <SecondaryButton
-        onPress={() => props.vaultPasswordHandler()}
+        onPress={() => context.createAccount()}
         text="Vault Password"
         style={{ marginHorizontal: 40, marginTop: 16 }}
       />
       <Text
-        onPress={() => props.createAccountHandler()}
+        onPress={() => context.createAccount()}
         style={styles.createAccount}
       >
         Create Account
