@@ -1,10 +1,10 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useContext, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { AppContext } from "../../../context/context";
-import SonrLogo from "../../icons/SonrLogo";
-import WalletAddress from "../../Input/IconText";
-import SecondaryButton from "../../SecondaryButton";
+import { AppContext } from "./context";
+import SonrLogo from "./icons/SonrLogo";
+import WalletAddress from "./components/IconText";
+import SecondaryButton from "./components/SecondaryButton";
 
 type Props = {
   vaultPasswordHandler?: () => any;

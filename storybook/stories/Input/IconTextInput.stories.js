@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react-native";
 import React from "react";
 import CenterViewDark from "../CenterViewDark";
-import IconText from "./IconText";
+import IconText from "../../../src/components/IconText";
 import { text } from "@storybook/addon-knobs";
 
 storiesOf("Main text input", module)

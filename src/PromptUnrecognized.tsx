@@ -1,9 +1,9 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import SonrLogo from "../../icons/SonrLogo";
-import PrimaryButton from "../../PrimaryButton";
-import SecondaryButton from "../../SecondaryButton";
+import SonrLogo from "./icons/SonrLogo";
+import PrimaryButton from "./components/PrimaryButton";
+import SecondaryButton from "./components/SecondaryButton";
 
 type Props = {
   createButtonHandler?: any;
