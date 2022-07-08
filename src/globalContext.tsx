@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import ConnectWithVault from "../stories/SlidingUpPanel/recognizedDevice/ConnectWithVault";
 import SlidingUpRecognizedWelcome from "../stories/SlidingUpPanel/recognizedDevice/Welcome";
 import { AppContext } from "./context";
+import { login } from "./sdkApi";
+
+const environment = "sandbox";
 
 interface IProps {
   children: React.ReactNode;
@@ -20,12 +23,16 @@ const GlobalContext = (props: IProps) => {
   };
 
   const vaultPassswordHandler = (vaultPassword) => {
-    setComponent(
-      <ConnectWithVault
-        warningMessage="Invalid Password"
-        displayTooltip={true}
-      />
-    );
+    if (environment === "sandbox") {
+      setComponent(
+        <ConnectWithVault
+          warningMessage="Invalid Password"
+          displayTooltip={true}
+        />
+      );
+    } else {
+      login(vaultPassword, walletAddress);
+    }
   };
 
   const backButtonHandler = () => {
