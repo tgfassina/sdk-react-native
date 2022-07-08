@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react";
 import SlidingUpPanel from "rn-sliding-up-panel";
-import { AppContext } from "../../context/context";
+import { AppContext } from "../context";
 
 type Props = {
   children?: any;

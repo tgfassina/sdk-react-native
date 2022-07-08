@@ -5,7 +5,7 @@ import SlidingUpWelcome from "../../../src/PromptUnrecognized";
 import SlidingUpRecognizedWelcome from "../../../src/PromptRecognized";
 import CenterView from "../CenterView";
 import ConnectWithVault from "../../../src/ConnectWithVault";
-import GlobalContext from "../../context/globalContext";
+import GlobalContext from "../../../src/globalContext";
 
 storiesOf("SlidingUpPanel", module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
