@@ -29,11 +29,10 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   text: {
-    textAlign: "center",
     fontSize: 14,
     fontFamily: "THICCCBOI_ExtraBold",
+    textAlign: "center",
     color: "#F6F5FA",
-    letterSpacing: 1,
   },
 });
 
