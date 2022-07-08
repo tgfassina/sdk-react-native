@@ -31,10 +31,7 @@ const MainApp = () => {
     setShow(0);
   };
 
-  const createAccount = () => {
-    //TODO
-    console.log("TODO");
-  };
+  const createAccount = () => {};
 
   return (
     <AppContext.Provider
