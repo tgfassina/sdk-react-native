@@ -1,13 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-} from "react-native";
+import { View, Text, StyleSheet, TextInput } from "react-native";
 import SecuritySafe from "../icons/SecuritySafe";
 import IconUser from "../icons/User";
 import WarningOutline from "../icons/WarningOutline";
@@ -30,16 +22,17 @@ type Props = {
 const IconText: React.FC<Props> = (props: Props) => {
   const Icon = iconSvg[props.icon];
 
-  let borderStyle = undefined;
-  if (props.warning) {
-    borderStyle = { borderColor: "#FF2866" };
+  let borderStyle = props.warning && { borderColor: "#FF2866" };
+  let fillColor = undefined;
+  if (props.lightTheme) {
+    fillColor = props.warning ? "#FF2866" : "#9893A2";
   }
 
   return (
     <View style={styles(props).containerInput}>
       <Text style={[styles(props).labelText]}>{props.label}</Text>
       <View style={[styles(props).input, borderStyle]}>
-        {Icon({ fillColor: props.warning && "#FF2866" })}
+        {Icon({ fillColor })}
         <TextInput
           style={[styles(props).textInput]}
           value={props.text}
@@ -63,7 +56,7 @@ const styles = (props) =>
     },
     input: {
       flexDirection: "row",
-      borderColor: props.lightTheme ? "#F6F5FA" : "#9893A2",
+      borderColor: props.lightTheme ? "#9893A2" : "#F6F5FA",
       borderStyle: "solid",
       borderWidth: 1,
       borderRadius: 6,

@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 12,
     color: "#fff",
-    fontSize: 18,
+    fontSize: 16,
   },
 });
 
