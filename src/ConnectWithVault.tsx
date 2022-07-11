@@ -1,12 +1,12 @@
 import React, { Dispatch, SetStateAction, useContext } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import SonrLogo from "./icons/SonrLogo";
 import HelpBalloon from "./icons/HelpBalloon";
 import BackButton from "./icons/BackButton";
 import VaultPassword from "./components/IconText";
 import PrimaryButton from "./components/PrimaryButton";
 import SecondaryButtonWhite from "../storybook/stories/SecondaryButton/WhiteMode";
 import { AppContext } from "./context";
+import SliderHeader from "./components/SliderHeader";
 
 type Props = {
   warningMessage?: string;
@@ -20,12 +20,8 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
   return (
     <View style={styles.slidePanel}>
-      <View style={[styles.header, styles.centerRow]}>
-        <SonrLogo textFill="#1D1A27" />
-        <Text style={styles.close} onPress={() => context.closeHandler()}>
-          Close
-        </Text>
-      </View>
+      <SliderHeader closeHandler={() => context.closeHandler()} />
+
       <Text style={styles.subtitle2}>Connect with Vault</Text>
       <Text style={styles.subtitle3}>ENTER YOUR VAULT PASSWORD</Text>
 
@@ -138,18 +134,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "90%",
     alignItems: "center",
-  },
-  header: {
-    margin: 32,
-    justifyContent: "space-between",
-  },
-  close: {
-    fontFamily: "THICCCBOI_ExtraBold",
-    fontStyle: "normal",
-    fontSize: 14,
-    lineHeight: 16,
-    letterSpacing: 0.02,
-    color: "#AEACB8",
   },
   slidePanel: {
     flex: 1,
