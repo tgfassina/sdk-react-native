@@ -50,11 +50,10 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
         <View style={styles.tooltipStyle}>
           <HelpBalloon style={styles.helpBalloon} />
           <View>
-            <Text numberOfLines={5} style={styles.tooltipText}>
-              <Text>It looks like you may have forgotten</Text>
-              <Text> your Vault Password. Please try</Text>
-              <Text> logging in on a recognized device.</Text>
-              <Text> You can reset your Vault Password in </Text>
+            <Text style={styles.tooltipText}>
+              It looks like you may have forgotten your Vault Password. Please
+              try logging in on a recognized device. You can reset your Vault
+              Password in&nbsp;
               <Text style={styles.tooltipTextSettings}>Settings</Text>
             </Text>
             <SecondaryButtonWhite
