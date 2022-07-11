@@ -14,6 +14,7 @@ const GlobalContext = (props: IProps) => {
   const [walletAddress, setWalletAddress] = useState("");
   const [show, setShow] = useState(640);
   const [component, setComponent] = useState(<PromptRecognized />);
+  const [devices, setDevices] = useState(["Dylan's iMac", "Dylan's iPhone"]);
 
   const continueButtonHandler = (walletAddress) => {
     if (walletAddress === "Dev" || walletAddress === "Test") {
@@ -48,8 +49,9 @@ const GlobalContext = (props: IProps) => {
   return (
     <AppContext.Provider
       value={{
-        show: show,
-        component: component,
+        show,
+        component,
+        devices,
         createAccount: createAccount,
         closeHandler: closeHandler,
         continueButtonHandler: continueButtonHandler,
