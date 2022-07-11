@@ -9,6 +9,7 @@ import PrimaryButton from "./components/PrimaryButton";
 import { AppContext } from "./context";
 
 type Props = {
+  onSuccess: () => void;
   warningMessage?: string;
   displayTooltip?: boolean;
 };
@@ -60,7 +61,7 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
       <PrimaryButton
         style={styles.submitButton}
-        onPress={() => context.vaultPassswordHandler(vaultPasswordInput)}
+        onPress={props.onSuccess}
         text="Submit"
         disabled={vaultPasswordInput.length < 1}
       />

@@ -6,18 +6,19 @@ import { login } from "./sdkApi";
 
 const environment = "sandbox";
 
-interface IProps {
+type Props = {
   children: React.ReactNode;
-}
+  onSuccess: () => void;
+};
 
-const GlobalContext = (props: IProps) => {
+const GlobalContext = (props: Props) => {
   const [walletAddress, setWalletAddress] = useState("");
-  const [show, setShow] = useState(640);
+  const [show, setShow] = useState(1000);
   const [component, setComponent] = useState(<PromptRecognized />);
 
   const continueButtonHandler = (walletAddress) => {
     if (walletAddress === "Dev" || walletAddress === "Test") {
-      setComponent(<ConnectWithVault />);
+      setComponent(<ConnectWithVault onSuccess={props.onSuccess} />);
     }
     setWalletAddress(walletAddress);
   };
@@ -26,6 +27,7 @@ const GlobalContext = (props: IProps) => {
     if (environment === "sandbox") {
       setComponent(
         <ConnectWithVault
+          onSuccess={props.onSuccess}
           warningMessage="Invalid Password"
           displayTooltip={true}
         />

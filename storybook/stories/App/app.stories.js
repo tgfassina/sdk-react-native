@@ -5,4 +5,4 @@ import CenterViewDark from "../CenterViewDark";
 
 storiesOf("App Showcase", module)
   .addDecorator((getStory) => <CenterViewDark>{getStory()}</CenterViewDark>)
-  .add("show app", () => <MainApp />);
+  .add("show app", () => <MainApp onSuccess={alert} />);

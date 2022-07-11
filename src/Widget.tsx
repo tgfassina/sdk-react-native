@@ -11,9 +11,12 @@ Font.loadAsync({
   THICCCBOI_Regular: require("../assets/fonts/THICCCBOI-Regular.ttf"),
 });
 
-const MainApp = () => {
+type Props = {
+  onSuccess: () => void;
+};
+const MainApp = (props: Props) => {
   return (
-    <GlobalContext>
+    <GlobalContext onSuccess={props.onSuccess}>
       <SlidingUpPanelComponent />
     </GlobalContext>
   );
