@@ -1,17 +1,16 @@
-import React, { Dispatch, SetStateAction, useContext } from "react";
+import React, { useContext } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import SonrLogo from "./icons/SonrLogo";
-import HelpBalloon from "./icons/HelpBalloon";
+// import HelpBalloon from "./icons/HelpBalloon";
 import BackButton from "./icons/BackButton";
 import VaultPassword from "./components/IconText";
 import PrimaryButton from "./components/PrimaryButton";
-import SecondaryButtonWhite from "../storybook/stories/SecondaryButton/WhiteMode";
+// import SecondaryButtonWhite from "../storybook/stories/SecondaryButton/WhiteMode";
 import { AppContext } from "./context";
 
 type Props = {
   warningMessage?: string;
   displayTooltip?: boolean;
-  setDisplayTooltip?: Dispatch<SetStateAction<boolean>>;
 };
 
 const ConnectWithVault: React.FC<Props> = (props: Props) => {
@@ -46,23 +45,18 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
         lightTheme={true}
       />
 
-      {props.displayTooltip && (
-        <View style={styles.tooltipStyle}>
-          <HelpBalloon style={styles.helpBalloon} />
-          <View>
-            <Text style={styles.tooltipText}>
-              It looks like you may have forgotten your Vault Password. Please
-              try logging in on a recognized device. You can reset your Vault
-              Password in&nbsp;
-              <Text style={styles.tooltipTextSettings}>Settings</Text>
-            </Text>
-            <SecondaryButtonWhite
-              onPress={() => props.setDisplayTooltip(!props.displayTooltip)}
-              text="Dismiss"
-            />
-          </View>
+      {/* <View style={styles.tooltipStyle}>
+        <HelpBalloon style={styles.helpBalloon} />
+        <View>
+          <Text style={styles.tooltipText}>
+            It looks like you may have forgotten your Vault Password. Please try
+            logging in on a recognized device. You can reset your Vault Password
+            in&nbsp;
+            <Text style={styles.tooltipTextSettings}>Settings</Text>
+          </Text>
+          <SecondaryButtonWhite onPress={() => {}} text="Dismiss" />
         </View>
-      )}
+      </View> */}
 
       <PrimaryButton
         style={styles.submitButton}
@@ -77,13 +71,13 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
           { justifyContent: "center", marginBottom: 32 },
         ]}
       >
-        <Text>Don't have an account?</Text>
+        {/* <Text>Don't have an account?</Text>
         <Text
           onPress={() => context.createAccount()}
           style={styles.createAccount}
         >
           Create One
-        </Text>
+        </Text> */}
       </View>
     </View>
   );
@@ -93,13 +87,10 @@ const styles = StyleSheet.create({
   tooltipTextSettings: {
     fontFamily: "THICCCBOI_ExtraBold",
   },
-  helpBalloon: {
-    marginBottom: "auto",
-    marginHorizontal: 10,
-  },
-  dismissButton: {
-    backgroundColor: "#6763761A",
-  },
+  // helpBalloon: {
+  //   marginBottom: "auto",
+  //   marginHorizontal: 10,
+  // },
   tooltipText: {
     fontSize: 12,
     lineHeight: 16,
