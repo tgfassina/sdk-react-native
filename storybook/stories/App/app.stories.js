@@ -3,5 +3,5 @@ import React from "react";
 import Widget from "../../../src/Widget";
 
 storiesOf("App Showcase", module).add("show app", () => (
-  <Widget onSuccess={alert} />
+  <Widget onSuccess={(payload) => alert(JSON.stringify(payload))} />
 ));

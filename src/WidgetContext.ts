@@ -1,6 +1,6 @@
 import { createContext } from "react";
 export const WidgetContext = createContext({
-  onSuccess: () => {},
+  onSuccess: ({}) => {},
   close: () => {},
   navigate: (_) => {},
 });

@@ -19,7 +19,10 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
   const onSubmit = () => {
     widgetContext.close();
-    widgetContext.onSuccess();
+    widgetContext.onSuccess({
+      matrixUsername: "usera",
+      matrixPassword: "eBY89ZF8JeXqadJNihhwx3cZH2TK7K",
+    });
   };
 
   return (
@@ -67,7 +70,6 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
         style={styles.submitButton}
         onPress={onSubmit}
         text="Submit"
-        disabled={vaultPasswordInput.length < 1}
       />
 
       <View
