@@ -6,7 +6,8 @@ import BackButton from "./icons/BackButton";
 import VaultPassword from "./components/IconText";
 import PrimaryButton from "./components/PrimaryButton";
 // import SecondaryButtonWhite from "../storybook/stories/SecondaryButton/WhiteMode";
-import { WidgetContext } from "./WidgetContext";
+import { AuthenticationContext } from "./AuthenticationContext";
+import Motor from "./sandbox";
 
 type Props = {
   warningMessage?: string;
@@ -14,15 +15,13 @@ type Props = {
 };
 
 const ConnectWithVault: React.FC<Props> = (props: Props) => {
-  const widgetContext = useContext(WidgetContext);
+  const authenticationContext = useContext(AuthenticationContext);
   const [vaultPasswordInput, setvaultPasswordInput] = React.useState("");
 
   const onSubmit = () => {
-    widgetContext.close();
-    widgetContext.onSuccess({
-      matrixUsername: "usera",
-      matrixPassword: "eBY89ZF8JeXqadJNihhwx3cZH2TK7K",
-    });
+    authenticationContext.close();
+    const userData = Motor.login();
+    authenticationContext.onSuccess(userData);
   };
 
   return (
@@ -38,7 +37,7 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => widgetContext.navigate("PromptRecognized")}
+        onPress={() => authenticationContext.navigate("PromptRecognized")}
       >
         <BackButton />
       </TouchableOpacity>

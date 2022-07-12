@@ -5,10 +5,10 @@ import SonrLogo from "./icons/SonrLogo";
 import WalletAddress from "./components/IconText";
 import SecondaryButton from "./components/SecondaryButton";
 // import TextButton from "./components/TextButton";
-import { WidgetContext } from "./WidgetContext";
+import { AuthenticationContext } from "./AuthenticationContext";
 
 const SlidingUpRecognizedWelcome: React.FC = () => {
-  const widgetContext = useContext(WidgetContext);
+  const authenticationContext = useContext(AuthenticationContext);
   const [walletAddressInput, setSalletAddressInput] = useState("");
   return (
     <View style={styles.container}>
@@ -46,7 +46,7 @@ const SlidingUpRecognizedWelcome: React.FC = () => {
         <SecondaryButton
           style={{ marginBottom: 10 }}
           onPress={() => {
-            widgetContext.navigate("ConnectWithVault");
+            authenticationContext.navigate("ConnectWithVault");
           }}
           text="Continue with Vault Password"
         />

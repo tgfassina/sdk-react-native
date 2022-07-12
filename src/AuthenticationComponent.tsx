@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Modal, View } from "react-native";
 import PromptRecognized from "./PromptRecognized";
 import ConnectWithVault from "./ConnectWithVault";
-import { WidgetContext } from "./WidgetContext";
+import { AuthenticationContext } from "./AuthenticationContext";
 
 Font.loadAsync({
   THICCCBOI_ExtraBold: require("../assets/fonts/THICCCBOI-ExtraBold.ttf"),
@@ -15,7 +15,7 @@ Font.loadAsync({
 type Props = {
   onSuccess: () => void;
 };
-const Widget = ({ onSuccess }: Props) => {
+const Component = ({ onSuccess }: Props) => {
   const [visible, setVisible] = useState(true);
   const [screen, setScreen] = useState(<PromptRecognized />);
   const close = () => setVisible(false);
@@ -34,12 +34,12 @@ const Widget = ({ onSuccess }: Props) => {
   return (
     <Modal visible={visible} transparent={true}>
       <View style={style}>
-        <WidgetContext.Provider value={{ onSuccess, close, navigate }}>
+        <AuthenticationContext.Provider value={{ onSuccess, close, navigate }}>
           {screen}
-        </WidgetContext.Provider>
+        </AuthenticationContext.Provider>
       </View>
     </Modal>
   );
 };
 
-export default Widget;
+export default Component;

@@ -1,2 +1,2 @@
-import Widget from "./src/Widget";
-export { Widget };
+import AuthenticationComponent from "./src/AuthenticationComponent";
+export { AuthenticationComponent };

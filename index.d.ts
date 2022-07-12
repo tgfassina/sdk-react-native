@@ -1,3 +1,3 @@
 import React from "react";
 
-export declare const Widget: React.FC;
+export declare const AuthenticationComponent: React.FC;
