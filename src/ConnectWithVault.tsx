@@ -7,6 +7,7 @@ import VaultPassword from "./components/IconText";
 import PrimaryButton from "./components/PrimaryButton";
 // import SecondaryButtonWhite from "../storybook/stories/SecondaryButton/WhiteMode";
 import { AppContext } from "./context";
+import { WidgetContext } from "./WidgetContext";
 
 type Props = {
   onSuccess: () => void;
@@ -16,6 +17,7 @@ type Props = {
 
 const ConnectWithVault: React.FC<Props> = (props: Props) => {
   const context = useContext(AppContext);
+  const widgetContext = useContext(WidgetContext);
   const [vaultPasswordInput, setvaultPasswordInput] = React.useState("");
 
   return (
@@ -61,7 +63,7 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
       <PrimaryButton
         style={styles.submitButton}
-        onPress={props.onSuccess}
+        onPress={widgetContext.onSuccess}
         text="Submit"
         disabled={vaultPasswordInput.length < 1}
       />

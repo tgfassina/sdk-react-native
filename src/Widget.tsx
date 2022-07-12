@@ -1,8 +1,12 @@
-import React from "react";
-import GlobalContext from "./globalContext";
-import SlidingUpPanelComponent from "./components/SlidingUpPanelComponent";
-
 import * as Font from "expo-font";
+import React from "react";
+import { Modal } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import PromptRecognized from "./PromptRecognized";
+import ConnectWithVault from "./ConnectWithVault";
+const Stack = createStackNavigator();
+import { WidgetContext } from "./WidgetContext";
 
 Font.loadAsync({
   THICCCBOI_ExtraBold: require("../assets/fonts/THICCCBOI-ExtraBold.ttf"),
@@ -14,12 +18,25 @@ Font.loadAsync({
 type Props = {
   onSuccess: () => void;
 };
-const MainApp = (props: Props) => {
+const Widget = ({ onSuccess }: Props) => {
   return (
-    <GlobalContext onSuccess={props.onSuccess}>
-      <SlidingUpPanelComponent />
-    </GlobalContext>
+    <Modal style={{ backgroundColor: "pink" }}>
+      <WidgetContext.Provider value={{ onSuccess }}>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen
+              name="PromptRecognized"
+              component={PromptRecognized}
+            />
+            <Stack.Screen
+              name="ConnectWithVault"
+              component={ConnectWithVault}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </WidgetContext.Provider>
+    </Modal>
   );
 };
 
-export default MainApp;
+export default Widget;
