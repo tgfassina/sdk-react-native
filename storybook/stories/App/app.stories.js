@@ -1,8 +1,7 @@
 import { storiesOf } from "@storybook/react-native";
 import React from "react";
-import MainApp from "../../../src/Widget";
-import CenterViewDark from "../CenterViewDark";
+import Widget from "../../../src/Widget";
 
-storiesOf("App Showcase", module)
-  .addDecorator((getStory) => <CenterViewDark>{getStory()}</CenterViewDark>)
-  .add("show app", () => <MainApp />);
+storiesOf("App Showcase", module).add("show app", () => (
+  <Widget onSuccess={(payload) => alert(JSON.stringify(payload))} />
+));

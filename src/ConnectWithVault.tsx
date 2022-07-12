@@ -1,37 +1,44 @@
-import React, { Dispatch, SetStateAction, useContext } from "react";
+import React, { useContext } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import SonrLogo from "./icons/SonrLogo";
-import HelpBalloon from "./icons/HelpBalloon";
+// import HelpBalloon from "./icons/HelpBalloon";
 import BackButton from "./icons/BackButton";
 import VaultPassword from "./components/IconText";
 import PrimaryButton from "./components/PrimaryButton";
-import SecondaryButtonWhite from "../storybook/stories/SecondaryButton/WhiteMode";
-import { AppContext } from "./context";
+// import SecondaryButtonWhite from "../storybook/stories/SecondaryButton/WhiteMode";
+import { WidgetContext } from "./WidgetContext";
 
 type Props = {
   warningMessage?: string;
   displayTooltip?: boolean;
-  setDisplayTooltip?: Dispatch<SetStateAction<boolean>>;
 };
 
 const ConnectWithVault: React.FC<Props> = (props: Props) => {
-  const context = useContext(AppContext);
+  const widgetContext = useContext(WidgetContext);
   const [vaultPasswordInput, setvaultPasswordInput] = React.useState("");
+
+  const onSubmit = () => {
+    widgetContext.close();
+    widgetContext.onSuccess({
+      matrixUsername: "usera",
+      matrixPassword: "eBY89ZF8JeXqadJNihhwx3cZH2TK7K",
+    });
+  };
 
   return (
     <View style={styles.slidePanel}>
       <View style={[styles.header, styles.centerRow]}>
         <SonrLogo textFill="#1D1A27" />
-        <Text style={styles.close} onPress={() => context.closeHandler()}>
+        {/* <Text style={styles.close} onPress={() => context.closeHandler()}>
           Close
-        </Text>
+        </Text> */}
       </View>
       <Text style={styles.subtitle2}>Connect with Vault</Text>
       <Text style={styles.subtitle3}>ENTER YOUR VAULT PASSWORD</Text>
 
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => context.backButtonHandler()}
+        onPress={() => widgetContext.navigate("PromptRecognized")}
       >
         <BackButton />
       </TouchableOpacity>
@@ -46,30 +53,23 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
         lightTheme={true}
       />
 
-      {props.displayTooltip && (
-        <View style={styles.tooltipStyle}>
-          <HelpBalloon style={styles.helpBalloon} />
-          <View>
-            <Text numberOfLines={5} style={styles.tooltipText}>
-              <Text>It looks like you may have forgotten</Text>
-              <Text> your Vault Password. Please try</Text>
-              <Text> logging in on a recognized device.</Text>
-              <Text> You can reset your Vault Password in </Text>
-              <Text style={styles.tooltipTextSettings}>Settings</Text>
-            </Text>
-            <SecondaryButtonWhite
-              onPress={() => props.setDisplayTooltip(!props.displayTooltip)}
-              text="Dismiss"
-            />
-          </View>
+      {/* <View style={styles.tooltipStyle}>
+        <HelpBalloon style={styles.helpBalloon} />
+        <View>
+          <Text style={styles.tooltipText}>
+            It looks like you may have forgotten your Vault Password. Please try
+            logging in on a recognized device. You can reset your Vault Password
+            in&nbsp;
+            <Text style={styles.tooltipTextSettings}>Settings</Text>
+          </Text>
+          <SecondaryButtonWhite onPress={() => {}} text="Dismiss" />
         </View>
-      )}
+      </View> */}
 
       <PrimaryButton
         style={styles.submitButton}
-        onPress={() => context.vaultPassswordHandler(vaultPasswordInput)}
+        onPress={onSubmit}
         text="Submit"
-        disabled={vaultPasswordInput.length < 1}
       />
 
       <View
@@ -78,13 +78,13 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
           { justifyContent: "center", marginBottom: 32 },
         ]}
       >
-        <Text>Don't have an account?</Text>
+        {/* <Text>Don't have an account?</Text>
         <Text
           onPress={() => context.createAccount()}
           style={styles.createAccount}
         >
           Create One
-        </Text>
+        </Text> */}
       </View>
     </View>
   );
@@ -94,13 +94,10 @@ const styles = StyleSheet.create({
   tooltipTextSettings: {
     fontFamily: "THICCCBOI_ExtraBold",
   },
-  helpBalloon: {
-    marginBottom: "auto",
-    marginHorizontal: 10,
-  },
-  dismissButton: {
-    backgroundColor: "#6763761A",
-  },
+  // helpBalloon: {
+  //   marginBottom: "auto",
+  //   marginHorizontal: 10,
+  // },
   tooltipText: {
     fontSize: 12,
     lineHeight: 16,

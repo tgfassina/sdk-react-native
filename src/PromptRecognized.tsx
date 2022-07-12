@@ -1,19 +1,14 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useContext, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { AppContext } from "./context";
 import SonrLogo from "./icons/SonrLogo";
 import WalletAddress from "./components/IconText";
 import SecondaryButton from "./components/SecondaryButton";
+// import TextButton from "./components/TextButton";
+import { WidgetContext } from "./WidgetContext";
 
-type Props = {
-  vaultPasswordHandler?: () => any;
-  createAccountHandler?: () => any;
-  closeHandler?: () => any;
-};
-
-const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
-  const context = useContext(AppContext);
+const SlidingUpRecognizedWelcome: React.FC = () => {
+  const widgetContext = useContext(WidgetContext);
   const [walletAddressInput, setSalletAddressInput] = useState("");
   return (
     <View style={styles.container}>
@@ -21,48 +16,45 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = (props: Props) => {
         style={styles.gradientContainer}
         colors={["#37324A", "#1D1A27"]}
         locations={[0.2, 1]}
-        start={{ x: 0.0, y: 0 }}
+        start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       />
       <View style={styles.header}>
         <SonrLogo />
-        <Text style={styles.close} onPress={() => context.closeHandler()}>
+        {/* <Text style={styles.close} onPress={() => context.closeHandler()}>
           Close
-        </Text>
+        </Text> */}
       </View>
-      <Text style={styles.subtitle2}>Welcome Back</Text>
-      <WalletAddress
-        label="Walled Address or .snr Domain"
-        text={walletAddressInput}
-        onChangeText={(newText) => setSalletAddressInput(newText)}
-        icon="user"
-      />
-      <SecondaryButton
-        style={{ marginTop: 16, marginHorizontal: 40 }}
-        onPress={() => {
-          context.continueButtonHandler(walletAddressInput);
-        }}
-        text="Login"
-      />
 
-      {/* <PrimaryButton
+      <View style={styles.content}>
+        <Text style={styles.subtitle2}>Welcome Back</Text>
+        <WalletAddress
+          label="Wallet Address or .snr Domain"
+          text={walletAddressInput}
+          onChangeText={(newText) => setSalletAddressInput(newText)}
+          icon="user"
+        />
+
+        {/* <PrimaryButton
 				style={{ marginTop: 20 }}
 				onPress={() => props.continueButtonHandler}
 				icon={KeyPrint()}
 				text="Continue with Keyprint"
 			/> */}
-      <Text style={styles.subtitle3}>OR CONTINUE WITH</Text>
-      <SecondaryButton
-        onPress={() => context.createAccount()}
-        text="Vault Password"
-        style={{ marginHorizontal: 40, marginTop: 16 }}
-      />
-      <Text
-        onPress={() => context.createAccount()}
-        style={styles.createAccount}
-      >
-        Create Account
-      </Text>
+      </View>
+      <View style={styles.footer}>
+        <SecondaryButton
+          style={{ marginBottom: 10 }}
+          onPress={() => {
+            widgetContext.navigate("ConnectWithVault");
+          }}
+          text="Continue with Vault Password"
+        />
+        {/* <TextButton
+          text="Create Account"
+          onPress={() => context.createAccount()}
+        /> */}
+      </View>
     </View>
   );
 };
@@ -83,8 +75,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   content: {
-    paddingVertical: 24,
-    paddingHorizontal: 40,
+    flex: 1,
+  },
+  footer: {
+    paddingVertical: 20,
+    marginBottom: 10,
+    alignItems: "center",
   },
   close: {
     fontFamily: "THICCCBOI_ExtraBold",
@@ -107,23 +103,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     paddingBottom: 64,
     marginTop: 24,
-  },
-  subtitle3: {
-    fontFamily: "THICCCBOI_Regular",
-    fontSize: 14,
-    lineHeight: 20,
-    textAlign: "center",
-    color: "#AEACB8",
-    paddingTop: 135,
-  },
-  createAccount: {
-    fontFamily: "THICCCBOI_ExtraBold",
-    fontSize: 14,
-    lineHeight: 16,
-    color: "#1792FF",
-    paddingTop: 24,
-    flex: 1,
-    alignSelf: "center",
   },
 });
 
