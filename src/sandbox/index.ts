@@ -1,6 +1,16 @@
 const database = [
-  { username: "bob", password: "doug" },
-  { username: "doug", password: "bob" },
+  {
+    username: "bob",
+    password: "doug",
+    matrixUsername: "usera",
+    matrixPassword: "eBY89ZF8JeXqadJNihhwx3cZH2TK7K",
+  },
+  {
+    username: "doug",
+    password: "bob",
+    matrixUsername: "userb",
+    matrixPassword: "9S9Wihktc49YYCAvg3h3Fv3KKyNbDF",
+  },
 ];
 
 const login = (username: string, password: string) => {
@@ -10,9 +20,9 @@ const login = (username: string, password: string) => {
   }
 
   return {
-    username: username,
-    matrixUsername: "usera",
-    matrixPassword: "eBY89ZF8JeXqadJNihhwx3cZH2TK7K",
+    username,
+    matrixUsername: user.matrixUsername,
+    matrixPassword: user.matrixPassword,
   };
 };
 
