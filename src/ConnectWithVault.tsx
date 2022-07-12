@@ -6,7 +6,6 @@ import BackButton from "./icons/BackButton";
 import VaultPassword from "./components/IconText";
 import PrimaryButton from "./components/PrimaryButton";
 // import SecondaryButtonWhite from "../storybook/stories/SecondaryButton/WhiteMode";
-import { AppContext } from "./context";
 import { WidgetContext } from "./WidgetContext";
 
 type Props = {
@@ -15,7 +14,6 @@ type Props = {
 };
 
 const ConnectWithVault: React.FC<Props> = (props: Props) => {
-  const context = useContext(AppContext);
   const widgetContext = useContext(WidgetContext);
   const [vaultPasswordInput, setvaultPasswordInput] = React.useState("");
 
@@ -28,9 +26,9 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
     <View style={styles.slidePanel}>
       <View style={[styles.header, styles.centerRow]}>
         <SonrLogo textFill="#1D1A27" />
-        <Text style={styles.close} onPress={() => context.closeHandler()}>
+        {/* <Text style={styles.close} onPress={() => context.closeHandler()}>
           Close
-        </Text>
+        </Text> */}
       </View>
       <Text style={styles.subtitle2}>Connect with Vault</Text>
       <Text style={styles.subtitle3}>ENTER YOUR VAULT PASSWORD</Text>
