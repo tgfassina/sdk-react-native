@@ -1,11 +1,8 @@
 import * as Font from "expo-font";
 import React, { useState } from "react";
 import { Modal } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import PromptRecognized from "./PromptRecognized";
 import ConnectWithVault from "./ConnectWithVault";
-const Stack = createStackNavigator();
 import { WidgetContext } from "./WidgetContext";
 
 Font.loadAsync({
@@ -20,22 +17,20 @@ type Props = {
 };
 const Widget = ({ onSuccess }: Props) => {
   const [visible, setVisible] = useState(true);
+  const [screen, setScreen] = useState(<PromptRecognized />);
   const close = () => setVisible(false);
+  const navigate = (screen: string) => {
+    setScreen(
+      {
+        PromptRecognized: <PromptRecognized />,
+        ConnectWithVault: <ConnectWithVault />,
+      }[screen]
+    );
+  };
   return (
     <Modal visible={visible}>
-      <WidgetContext.Provider value={{ onSuccess, close }}>
-        <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen
-              name="PromptRecognized"
-              component={PromptRecognized}
-            />
-            <Stack.Screen
-              name="ConnectWithVault"
-              component={ConnectWithVault}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
+      <WidgetContext.Provider value={{ onSuccess, close, navigate }}>
+        {screen}
       </WidgetContext.Provider>
     </Modal>
   );

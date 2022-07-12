@@ -6,16 +6,16 @@ import SonrLogo from "./icons/SonrLogo";
 import WalletAddress from "./components/IconText";
 import SecondaryButton from "./components/SecondaryButton";
 import TextButton from "./components/TextButton";
-import { StackScreenProps } from "@react-navigation/stack";
+import { WidgetContext } from "./WidgetContext";
 
 // type Props = {
 //   vaultPasswordHandler?: () => any;
 //   createAccountHandler?: () => any;
 //   closeHandler?: () => any;
 // };
-type Props = StackScreenProps<{}>;
-const SlidingUpRecognizedWelcome: React.FC<Props> = ({ navigation }: Props) => {
+const SlidingUpRecognizedWelcome: React.FC = () => {
   const context = useContext(AppContext);
+  const widgetContext = useContext(WidgetContext);
   const [walletAddressInput, setSalletAddressInput] = useState("");
   return (
     <View style={styles.container}>
@@ -36,7 +36,7 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = ({ navigation }: Props) => {
       <View style={styles.content}>
         <Text style={styles.subtitle2}>Welcome Back</Text>
         <WalletAddress
-          label="Walled Address or .snr Domain"
+          label="Wallet Address or .snr Domain"
           text={walletAddressInput}
           onChangeText={(newText) => setSalletAddressInput(newText)}
           icon="user"
@@ -54,7 +54,7 @@ const SlidingUpRecognizedWelcome: React.FC<Props> = ({ navigation }: Props) => {
           style={{ marginBottom: 10 }}
           onPress={() => {
             // context.continueButtonHandler(walletAddressInput);
-            navigation.navigate("ConnectWithVault", {});
+            widgetContext.navigate("ConnectWithVault");
           }}
           text="Continue with Vault Password"
         />

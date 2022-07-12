@@ -10,7 +10,6 @@ import { AppContext } from "./context";
 import { WidgetContext } from "./WidgetContext";
 
 type Props = {
-  onSuccess: () => void;
   warningMessage?: string;
   displayTooltip?: boolean;
 };
@@ -38,7 +37,7 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => context.backButtonHandler()}
+        onPress={() => widgetContext.navigate("PromptRecognized")}
       >
         <BackButton />
       </TouchableOpacity>
