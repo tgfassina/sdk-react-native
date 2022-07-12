@@ -7,6 +7,7 @@ import WarningOutline from "../icons/WarningOutline";
 const iconSvg = {
   user: IconUser,
   security: SecuritySafe,
+  none: undefined,
 };
 
 type Props = {
@@ -32,7 +33,7 @@ const IconText: React.FC<Props> = (props: Props) => {
     <View style={styles(props).containerInput}>
       <Text style={[styles(props).labelText]}>{props.label}</Text>
       <View style={[styles(props).input, borderStyle]}>
-        {Icon({ fillColor })}
+        {Icon && Icon({ fillColor })}
         <TextInput
           style={[styles(props).textInput]}
           value={props.text}

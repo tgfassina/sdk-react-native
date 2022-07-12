@@ -6,6 +6,7 @@ import CenterViewDark from "../CenterViewDark";
 import GlobalContext from "../../../src/globalContext";
 import SlidingUpPanel from "../../../src/components/SlidingUpPanelComponent";
 import ScanCodeCamera from "../../../src/ScanCodeCamera";
+import AddDeviceName from "../../../src/AddDeviceName";
 
 storiesOf("Unrecognized Device", module)
   .addDecorator((getStory) => <CenterViewDark>{getStory()}</CenterViewDark>)
@@ -27,6 +28,13 @@ storiesOf("Unrecognized Device", module)
     <GlobalContext>
       <SlidingUpPanel storybook={true}>
         <ScanCodeCamera />
+      </SlidingUpPanel>
+    </GlobalContext>
+  ))
+  .add("Add device name", () => (
+    <GlobalContext>
+      <SlidingUpPanel storybook={true}>
+        <AddDeviceName />
       </SlidingUpPanel>
     </GlobalContext>
   ));
