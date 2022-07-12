@@ -1,5 +1,5 @@
 import * as Font from "expo-font";
-import React from "react";
+import React, { useState } from "react";
 import { Modal } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -19,9 +19,11 @@ type Props = {
   onSuccess: () => void;
 };
 const Widget = ({ onSuccess }: Props) => {
+  const [visible, setVisible] = useState(true);
+  const close = () => setVisible(false);
   return (
-    <Modal style={{ backgroundColor: "pink" }}>
-      <WidgetContext.Provider value={{ onSuccess }}>
+    <Modal visible={visible}>
+      <WidgetContext.Provider value={{ onSuccess, close }}>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen

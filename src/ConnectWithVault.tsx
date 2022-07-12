@@ -20,6 +20,11 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
   const widgetContext = useContext(WidgetContext);
   const [vaultPasswordInput, setvaultPasswordInput] = React.useState("");
 
+  const onSubmit = () => {
+    widgetContext.close();
+    widgetContext.onSuccess();
+  };
+
   return (
     <View style={styles.slidePanel}>
       <View style={[styles.header, styles.centerRow]}>
@@ -63,7 +68,7 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
       <PrimaryButton
         style={styles.submitButton}
-        onPress={widgetContext.onSuccess}
+        onPress={onSubmit}
         text="Submit"
         disabled={vaultPasswordInput.length < 1}
       />
