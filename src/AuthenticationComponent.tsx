@@ -19,11 +19,11 @@ const Component = ({ onSuccess }: Props) => {
   const [visible, setVisible] = useState(true);
   const [screen, setScreen] = useState(<PromptRecognized />);
   const close = () => setVisible(false);
-  const navigate = (screen: string) => {
+  const navigate = (screen: string, props: any) => {
     setScreen(
       {
-        PromptRecognized: <PromptRecognized />,
-        ConnectWithVault: <ConnectWithVault />,
+        PromptRecognized: <PromptRecognized {...props} />,
+        ConnectWithVault: <ConnectWithVault {...props} />,
       }[screen]
     );
   };
