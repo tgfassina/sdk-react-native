@@ -1,6 +1,6 @@
 import * as Font from "expo-font";
 import React, { useState } from "react";
-import { Modal } from "react-native";
+import { Modal, View } from "react-native";
 import PromptRecognized from "./PromptRecognized";
 import ConnectWithVault from "./ConnectWithVault";
 import { WidgetContext } from "./WidgetContext";
@@ -27,11 +27,17 @@ const Widget = ({ onSuccess }: Props) => {
       }[screen]
     );
   };
+  const style = {
+    flex: 1,
+    marginTop: 80,
+  };
   return (
-    <Modal visible={visible}>
-      <WidgetContext.Provider value={{ onSuccess, close, navigate }}>
-        {screen}
-      </WidgetContext.Provider>
+    <Modal visible={visible} transparent={true}>
+      <View style={style}>
+        <WidgetContext.Provider value={{ onSuccess, close, navigate }}>
+          {screen}
+        </WidgetContext.Provider>
+      </View>
     </Modal>
   );
 };
