@@ -45,6 +45,9 @@ const IconText: React.FC<Props> = (props: Props) => {
           value={props.value}
           onChangeText={props.onChangeText}
           secureTextEntry={props.secureTextEntry}
+          autoFocus
+          autoCapitalize={"none"}
+          autoCorrect={false}
         />
         {props.warning && <WarningOutline />}
       </View>

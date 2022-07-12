@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import SonrLogo from "./icons/SonrLogo";
-// import HelpBalloon from "./icons/HelpBalloon";
+import HelpBalloon from "./icons/HelpBalloon";
 import BackButton from "./icons/BackButton";
 import VaultPassword from "./components/IconText";
 import PrimaryButton from "./components/PrimaryButton";
-// import SecondaryButtonWhite from "../storybook/stories/SecondaryButton/WhiteMode";
+import SecondaryButton from "./components/SecondaryButton";
 import { AuthenticationContext } from "./AuthenticationContext";
 import Motor from "./sandbox";
 
@@ -18,12 +18,18 @@ type Props = {
 };
 const ConnectWithVault: React.FC<Props> = (props: Props) => {
   const authenticationContext = useContext(AuthenticationContext);
-  const [password, setPassword] = React.useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
   const onSubmit = () => {
-    authenticationContext.close();
     const userData = Motor.login(props.username, password);
+    if (!userData) {
+      setError(true);
+      return;
+    }
+
     authenticationContext.onSuccess(userData);
+    authenticationContext.close();
   };
 
   return (
@@ -54,18 +60,20 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
         lightTheme={true}
       />
 
-      {/* <View style={styles.tooltipStyle}>
-        <HelpBalloon style={styles.helpBalloon} />
-        <View>
-          <Text style={styles.tooltipText}>
-            It looks like you may have forgotten your Vault Password. Please try
-            logging in on a recognized device. You can reset your Vault Password
-            in&nbsp;
-            <Text style={styles.tooltipTextSettings}>Settings</Text>
-          </Text>
-          <SecondaryButtonWhite onPress={() => {}} text="Dismiss" />
+      {error && (
+        <View style={styles.tooltipStyle}>
+          <HelpBalloon style={styles.helpBalloon} />
+          <View>
+            <Text style={styles.tooltipText}>
+              It looks like you may have forgotten your Vault Password. Please
+              try logging in on a recognized device. You can reset your Vault
+              Password in&nbsp;
+              <Text style={styles.tooltipTextSettings}>Settings</Text>
+            </Text>
+            <SecondaryButton onPress={() => {}} text="Dismiss" />
+          </View>
         </View>
-      </View> */}
+      )}
 
       <PrimaryButton
         style={styles.submitButton}
@@ -95,10 +103,10 @@ const styles = StyleSheet.create({
   tooltipTextSettings: {
     fontFamily: "THICCCBOI_ExtraBold",
   },
-  // helpBalloon: {
-  //   marginBottom: "auto",
-  //   marginHorizontal: 10,
-  // },
+  helpBalloon: {
+    marginBottom: "auto",
+    marginHorizontal: 10,
+  },
   tooltipText: {
     fontSize: 12,
     lineHeight: 16,
