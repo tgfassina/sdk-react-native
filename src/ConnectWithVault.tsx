@@ -9,18 +9,20 @@ import PrimaryButton from "./components/PrimaryButton";
 import { AuthenticationContext } from "./AuthenticationContext";
 import Motor from "./sandbox";
 
+// type Props = {
+//   warningMessage?: string;
+//   displayTooltip?: boolean;
+// };
 type Props = {
-  warningMessage?: string;
-  displayTooltip?: boolean;
+  username: string;
 };
-
 const ConnectWithVault: React.FC<Props> = (props: Props) => {
   const authenticationContext = useContext(AuthenticationContext);
-  const [vaultPasswordInput, setvaultPasswordInput] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
   const onSubmit = () => {
     authenticationContext.close();
-    const userData = Motor.login();
+    const userData = Motor.login(props.username, password);
     authenticationContext.onSuccess(userData);
   };
 
@@ -37,18 +39,18 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => authenticationContext.navigate("PromptRecognized")}
+        onPress={() => authenticationContext.navigate("PromptRecognized", {})}
       >
         <BackButton />
       </TouchableOpacity>
 
       <VaultPassword
         label="Vault Password"
-        text={vaultPasswordInput}
-        onChangeText={setvaultPasswordInput}
+        value={password}
+        onChangeText={setPassword}
         secureTextEntry={true}
         icon="security"
-        warning={props.warningMessage}
+        // warning={props.warningMessage}
         lightTheme={true}
       />
 

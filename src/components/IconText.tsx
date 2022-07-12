@@ -19,7 +19,7 @@ const iconSvg = {
 
 type Props = {
   label: string;
-  text: string;
+  value: string;
   warning?: string;
   secureTextEntry?: boolean;
   onChangeText: Dispatch<SetStateAction<string>>;
@@ -42,7 +42,7 @@ const IconText: React.FC<Props> = (props: Props) => {
         {Icon({ fillColor: props.warning && "#FF2866" })}
         <TextInput
           style={[styles(props).textInput]}
-          value={props.text}
+          value={props.value}
           onChangeText={props.onChangeText}
           secureTextEntry={props.secureTextEntry}
         />
