@@ -1,6 +1,6 @@
 import { createContext } from "react";
-export const WidgetContext = createContext({
+export const AuthenticationContext = createContext({
   onSuccess: ({}) => {},
   close: () => {},
-  navigate: (_) => {},
+  navigate: (_, {}) => {},
 });
