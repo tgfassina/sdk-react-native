@@ -45,7 +45,9 @@ const FieldWithIcon: React.FC<Props> = (props: Props) => {
         />
         {props.warning ? <WarningOutline /> : null}
       </View>
-      {props.warning && <Text style={styles.warningText}>{props.warning}</Text>}
+      {!!props.warning && (
+        <Text style={styles.warningText}>{props.warning}</Text>
+      )}
     </>
   );
 };

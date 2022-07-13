@@ -7,8 +7,7 @@ import { AuthenticationContext } from "./AuthenticationContext";
 import TextButton from "./components/TextButton";
 import { ContainerDark } from "./components/ContainerDark";
 
-
-const SlidingUpRecognizedWelcome: React.FC = () => {
+const Component: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
   const [username, setUsername] = useState("");
 
@@ -22,7 +21,9 @@ const SlidingUpRecognizedWelcome: React.FC = () => {
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.subtitle2}>Welcome Back</Text>
+        <Text style={[styles.subtitle2, { marginBottom: 64 }]}>
+          Welcome Back
+        </Text>
         <FieldWithIcon
           label="Wallet Address or .snr Domain"
           value={username}
@@ -89,8 +90,7 @@ const styles = StyleSheet.create({
     fontSize: 34,
     textAlign: "center",
     color: "#fff",
-    marginBottom: 64,
   },
 });
 
-export default SlidingUpRecognizedWelcome;
+export default Component;
