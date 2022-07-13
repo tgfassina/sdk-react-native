@@ -7,6 +7,7 @@ import PrimaryButton from "./components/PrimaryButton";
 import Motor from "./sandbox";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ContainerDark } from "./components/ContainerDark";
+import TextButton from "./components/TextButton";
 
 const CreateAccount: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
@@ -64,6 +65,11 @@ const CreateAccount: React.FC = () => {
           style={{ marginBottom: 10 }}
           onPress={() => onSubmit()}
           text="Next"
+        />
+
+        <TextButton
+          text="Back"
+          onPress={() => authenticationContext.navigate("PromptRecognized", {})}
         />
       </View>
     </ContainerDark>
