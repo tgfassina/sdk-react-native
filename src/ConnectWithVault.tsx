@@ -8,6 +8,7 @@ import PrimaryButton from "./components/PrimaryButton";
 import SecondaryButton from "./components/SecondaryButton";
 import { AuthenticationContext } from "./AuthenticationContext";
 import Motor from "./sandbox";
+import { ContainerLight } from "./components/ContainerLight";
 
 type Props = {
   username: string;
@@ -30,7 +31,7 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
   };
 
   return (
-    <View style={styles.slidePanel}>
+    <ContainerLight>
       <View style={[styles.header, styles.centerRow]}>
         <SonrLogo textFill="#1D1A27" />
         {/* <Text style={styles.close} onPress={() => context.closeHandler()}>
@@ -92,7 +93,7 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
           Create One
         </Text> */}
       </View>
-    </View>
+    </ContainerLight>
   );
 };
 
@@ -153,12 +154,6 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     letterSpacing: 0.02,
     color: "#AEACB8",
-  },
-  slidePanel: {
-    flex: 1,
-    alignItems: "center",
-    borderRadius: 36,
-    backgroundColor: "#fff",
   },
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",

@@ -6,20 +6,15 @@ import WalletAddress from "./components/IconText";
 import SecondaryButton from "./components/SecondaryButton";
 import { AuthenticationContext } from "./AuthenticationContext";
 import TextButton from "./components/TextButton";
+import { ContainerDark } from "./components/ContainerDark";
+
 
 const SlidingUpRecognizedWelcome: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
   const [username, setUsername] = useState("");
 
   return (
-    <View style={styles.container}>
-      <LinearGradient
-        style={styles.gradientContainer}
-        colors={["#37324A", "#1D1A27"]}
-        locations={[0.2, 1]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-      />
+    <ContainerDark>
       <View style={styles.header}>
         <SonrLogo />
         {/* <Text style={styles.close} onPress={() => context.closeHandler()}>
@@ -43,6 +38,7 @@ const SlidingUpRecognizedWelcome: React.FC = () => {
 				text="Continue with Keyprint"
 			/> */}
       </View>
+
       <View style={styles.footer}>
         <SecondaryButton
           style={{ marginBottom: 10 }}
@@ -58,21 +54,11 @@ const SlidingUpRecognizedWelcome: React.FC = () => {
           }
         />
       </View>
-    </View>
+    </ContainerDark>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  gradientContainer: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
-  },
   header: {
     padding: 32,
     flexDirection: "row",
