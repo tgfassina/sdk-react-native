@@ -2,14 +2,25 @@ import { LinearGradient } from "expo-linear-gradient";
 import React, { useContext, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SonrLogo from "./icons/SonrLogo";
-import WalletAddress from "./components/IconText";
-import SecondaryButton from "./components/SecondaryButton";
+import IconText from "./components/IconText";
 import { AuthenticationContext } from "./AuthenticationContext";
-import TextButton from "./components/TextButton";
+import PrimaryButton from "./components/PrimaryButton";
+import Motor from "./sandbox";
 
-const SlidingUpRecognizedWelcome: React.FC = () => {
+const CreateAccount: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
+  const [vaultPassword, setVaultPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [error, setError] = useState(false);
+
+  const onSubmit = async () => {
+    const userData = await Motor.createAccount(username, vaultPassword);
+    if (!userData) {
+      setError(true);
+      return;
+    }
+    alert("Account created");
+  };
 
   return (
     <View style={styles.container}>
@@ -22,40 +33,33 @@ const SlidingUpRecognizedWelcome: React.FC = () => {
       />
       <View style={styles.header}>
         <SonrLogo />
-        {/* <Text style={styles.close} onPress={() => context.closeHandler()}>
+        <Text style={styles.close} onPress={() => {}}>
           Close
-        </Text> */}
+        </Text>
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.subtitle2}>Welcome Back</Text>
-        <WalletAddress
-          label="Wallet Address or .snr Domain"
+        <Text style={styles.subtitle2}>Create your account</Text>
+        <IconText
+          label="Your Username"
           value={username}
           onChangeText={setUsername}
           icon="user"
         />
 
-        {/* <PrimaryButton
-				style={{ marginTop: 20 }}
-				onPress={() => props.continueButtonHandler}
-				icon={KeyPrint()}
-				text="Continue with Keyprint"
-			/> */}
-      </View>
-      <View style={styles.footer}>
-        <SecondaryButton
-          style={{ marginBottom: 10 }}
-          onPress={() => {
-            authenticationContext.navigate("ConnectWithVault", { username });
-          }}
-          text="Continue with Vault Password"
+        <IconText
+          label="Your Vault Password"
+          value={vaultPassword}
+          onChangeText={(newText) => setVaultPassword(newText)}
+          icon="security"
         />
-        <TextButton
-          text="Create Account"
-          onPress={() =>
-            authenticationContext.navigate("CreateAccount", { username })
-          }
+      </View>
+
+      <View style={styles.footer}>
+        <PrimaryButton
+          style={{ marginBottom: 10 }}
+          onPress={() => onSubmit()}
+          text="Next"
         />
       </View>
     </View>
@@ -109,4 +113,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SlidingUpRecognizedWelcome;
+export default CreateAccount;

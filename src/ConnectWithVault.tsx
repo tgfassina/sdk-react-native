@@ -9,10 +9,6 @@ import SecondaryButton from "./components/SecondaryButton";
 import { AuthenticationContext } from "./AuthenticationContext";
 import Motor from "./sandbox";
 
-// type Props = {
-//   warningMessage?: string;
-//   displayTooltip?: boolean;
-// };
 type Props = {
   username: string;
 };
@@ -21,8 +17,9 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
-  const onSubmit = () => {
-    const userData = Motor.login(props.username, password);
+  const onSubmit = async () => {
+    const userData = await Motor.login(props.username, password);
+
     if (!userData) {
       setError(true);
       return;

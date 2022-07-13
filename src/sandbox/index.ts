@@ -1,3 +1,5 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 const database = [
   {
     username: "bob",
@@ -13,7 +15,13 @@ const database = [
   },
 ];
 
-const login = (username: string, password: string) => {
+const login = async (username: string, password: string) => {
+  const sessionUser = await AsyncStorage.getItem("userSessionUsername");
+  const sessionToken = await AsyncStorage.getItem("userSessionPassword");
+  if (sessionToken && sessionToken) {
+    return { username: sessionUser };
+  }
+
   const user = database.find((user) => user.username === username);
   if (!user || user.password !== password) {
     return null;
@@ -26,6 +34,25 @@ const login = (username: string, password: string) => {
   };
 };
 
+const createAccount = async (username: string, password: string) => {
+  if (username.length < 4 || password.length < 4) {
+    return null;
+  }
+  const newRecord = {
+    username,
+    password,
+    matrixUsername: username,
+    matrixPassword: password,
+  };
+  database.push(newRecord);
+
+  AsyncStorage.setItem("userSessionUsername", username);
+  AsyncStorage.setItem("userSessionPassword", password);
+
+  return newRecord;
+};
+
 export default {
   login,
+  createAccount,
 };

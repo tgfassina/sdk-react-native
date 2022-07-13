@@ -4,6 +4,7 @@ import { Modal, View } from "react-native";
 import PromptRecognized from "./PromptRecognized";
 import ConnectWithVault from "./ConnectWithVault";
 import { AuthenticationContext } from "./AuthenticationContext";
+import CreateAccount from "./CreateAccount";
 
 Font.loadAsync({
   THICCCBOI_ExtraBold: require("../assets/fonts/THICCCBOI-ExtraBold.ttf"),
@@ -14,8 +15,9 @@ Font.loadAsync({
 
 type Props = {
   onSuccess: () => void;
+  createAccount: () => void;
 };
-const Component = ({ onSuccess }: Props) => {
+const Component = ({ onSuccess, createAccount }: Props) => {
   const [visible, setVisible] = useState(true);
   const [screen, setScreen] = useState(<PromptRecognized />);
   const close = () => setVisible(false);
@@ -24,6 +26,7 @@ const Component = ({ onSuccess }: Props) => {
       {
         PromptRecognized: <PromptRecognized {...props} />,
         ConnectWithVault: <ConnectWithVault {...props} />,
+        CreateAccount: <CreateAccount {...props} />,
       }[screen]
     );
   };
@@ -34,7 +37,9 @@ const Component = ({ onSuccess }: Props) => {
   return (
     <Modal visible={visible} transparent={true}>
       <View style={style}>
-        <AuthenticationContext.Provider value={{ onSuccess, close, navigate }}>
+        <AuthenticationContext.Provider
+          value={{ onSuccess, close, navigate, createAccount }}
+        >
           {screen}
         </AuthenticationContext.Provider>
       </View>
