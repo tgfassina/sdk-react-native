@@ -24,8 +24,7 @@ const CreateAccount: React.FC = () => {
   };
 
   const clearStorage = async () => {
-    AsyncStorage.removeItem("userSessionUsername");
-    AsyncStorage.removeItem("userSessionPassword");
+    AsyncStorage.removeItem("database");
   };
 
   return (
@@ -39,7 +38,10 @@ const CreateAccount: React.FC = () => {
       />
       <View style={styles.header}>
         <SonrLogo onPress={() => clearStorage()} />
-        <Text style={styles.close} onPress={() => {}}>
+        <Text
+          style={styles.close}
+          onPress={() => authenticationContext.close()}
+        >
           Close
         </Text>
       </View>

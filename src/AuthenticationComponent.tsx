@@ -39,9 +39,7 @@ const Component = ({ onSuccess, createAccount }: Props) => {
   return (
     <Modal visible={visible} transparent={true}>
       <View style={style}>
-        <AuthenticationContext.Provider
-          value={{ onSuccess, close, navigate, createAccount }}
-        >
+        <AuthenticationContext.Provider value={{ onSuccess, close, navigate }}>
           {screen}
         </AuthenticationContext.Provider>
       </View>

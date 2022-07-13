@@ -16,10 +16,11 @@ const database = [
 ];
 
 const login = async (username: string, password: string) => {
-  const sessionUser = await AsyncStorage.getItem("userSessionUsername");
-  const sessionToken = await AsyncStorage.getItem("userSessionPassword");
-  if (sessionToken && sessionToken) {
-    return { username: sessionUser };
+  const sessionDB = await AsyncStorage.getItem("database");
+  const database = sessionDB != null ? JSON.parse(sessionDB) : null;
+
+  if (!database) {
+    return null;
   }
 
   const user = database.find((user) => user.username === username);
@@ -44,12 +45,19 @@ const createAccount = async (username: string, password: string) => {
     matrixUsername: username,
     matrixPassword: password,
   };
-  database.push(newRecord);
 
-  AsyncStorage.setItem("userSessionUsername", username);
-  AsyncStorage.setItem("userSessionPassword", password);
-
-  return newRecord;
+  const sessionDB = await AsyncStorage.getItem("database");
+  if (!sessionDB) {
+    database.push(newRecord);
+    const jsonValue = JSON.stringify(database);
+    AsyncStorage.setItem("database", jsonValue);
+  } else {
+    const jsonValue: any[] = JSON.parse(sessionDB);
+    jsonValue.push(newRecord);
+    const strJsonValue = JSON.stringify(jsonValue);
+    AsyncStorage.setItem("database", strJsonValue);
+  }
+  return true;
 };
 
 export default {
