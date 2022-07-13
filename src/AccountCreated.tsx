@@ -3,13 +3,11 @@ import React, { useContext, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SonrLogo from "./icons/SonrLogo";
 import WalletAddress from "./components/IconText";
-import SecondaryButton from "./components/SecondaryButton";
 import { AuthenticationContext } from "./AuthenticationContext";
-import TextButton from "./components/TextButton";
+import PrimaryButton from "./components/PrimaryButton";
 
-const SlidingUpRecognizedWelcome: React.FC = () => {
+const AccountCreated: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
-  const [username, setUsername] = useState("");
 
   return (
     <View style={styles.container}>
@@ -22,40 +20,22 @@ const SlidingUpRecognizedWelcome: React.FC = () => {
       />
       <View style={styles.header}>
         <SonrLogo />
-        {/* <Text style={styles.close} onPress={() => context.closeHandler()}>
+        <Text style={styles.close} onPress={() => {}}>
           Close
-        </Text> */}
+        </Text>
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.subtitle2}>Welcome Back</Text>
-        <WalletAddress
-          label="Wallet Address or .snr Domain"
-          value={username}
-          onChangeText={setUsername}
-          icon="user"
-        />
-
-        {/* <PrimaryButton
-				style={{ marginTop: 20 }}
-				onPress={() => props.continueButtonHandler}
-				icon={KeyPrint()}
-				text="Continue with Keyprint"
-			/> */}
+        <Text style={styles.subtitle2}>Account Created!</Text>
       </View>
+
       <View style={styles.footer}>
-        <SecondaryButton
+        <PrimaryButton
           style={{ marginBottom: 10 }}
           onPress={() => {
-            authenticationContext.navigate("ConnectWithVault", { username });
+            authenticationContext.close();
           }}
-          text="Continue with Vault Password"
-        />
-        <TextButton
-          text="Create Account"
-          onPress={() =>
-            authenticationContext.navigate("CreateAccount", { username })
-          }
+          text="Next"
         />
       </View>
     </View>
@@ -109,4 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SlidingUpRecognizedWelcome;
+export default AccountCreated;

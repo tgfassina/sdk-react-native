@@ -2,14 +2,30 @@ import { LinearGradient } from "expo-linear-gradient";
 import React, { useContext, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SonrLogo from "./icons/SonrLogo";
-import WalletAddress from "./components/IconText";
-import SecondaryButton from "./components/SecondaryButton";
+import IconText from "./components/IconText";
 import { AuthenticationContext } from "./AuthenticationContext";
-import TextButton from "./components/TextButton";
+import PrimaryButton from "./components/PrimaryButton";
+import Motor from "./sandbox";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const SlidingUpRecognizedWelcome: React.FC = () => {
+const CreateAccount: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
+  const [vaultPassword, setVaultPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [invalidInput, setInvalidInput] = useState("");
+
+  const onSubmit = async () => {
+    const userData = await Motor.createAccount(username, vaultPassword);
+    if (!userData) {
+      setInvalidInput("Input data is invalid");
+      return;
+    }
+    authenticationContext.navigate("AccountCreated", { username });
+  };
+
+  const clearStorage = async () => {
+    AsyncStorage.removeItem("database");
+  };
 
   return (
     <View style={styles.container}>
@@ -21,41 +37,42 @@ const SlidingUpRecognizedWelcome: React.FC = () => {
         end={{ x: 1, y: 1 }}
       />
       <View style={styles.header}>
-        <SonrLogo />
-        {/* <Text style={styles.close} onPress={() => context.closeHandler()}>
+        <SonrLogo onPress={() => clearStorage()} />
+        <Text
+          style={styles.close}
+          onPress={() => authenticationContext.close()}
+        >
           Close
-        </Text> */}
+        </Text>
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.subtitle2}>Welcome Back</Text>
-        <WalletAddress
-          label="Wallet Address or .snr Domain"
+        <Text style={styles.subtitle2}>Create your account</Text>
+        <IconText
+          label="Your Username"
           value={username}
           onChangeText={setUsername}
+          warning={invalidInput}
+          autoFocus={true}
           icon="user"
         />
 
-        {/* <PrimaryButton
-				style={{ marginTop: 20 }}
-				onPress={() => props.continueButtonHandler}
-				icon={KeyPrint()}
-				text="Continue with Keyprint"
-			/> */}
-      </View>
-      <View style={styles.footer}>
-        <SecondaryButton
-          style={{ marginBottom: 10 }}
-          onPress={() => {
-            authenticationContext.navigate("ConnectWithVault", { username });
-          }}
-          text="Continue with Vault Password"
+        <IconText
+          label="Your Vault Password"
+          value={vaultPassword}
+          onChangeText={setVaultPassword}
+          icon="security"
+          warning={invalidInput}
+          autoFocus={false}
+          secureTextEntry={true}
         />
-        <TextButton
-          text="Create Account"
-          onPress={() =>
-            authenticationContext.navigate("CreateAccount", { username })
-          }
+      </View>
+
+      <View style={styles.footer}>
+        <PrimaryButton
+          style={{ marginBottom: 10 }}
+          onPress={() => onSubmit()}
+          text="Next"
         />
       </View>
     </View>
@@ -109,4 +126,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SlidingUpRecognizedWelcome;
+export default CreateAccount;

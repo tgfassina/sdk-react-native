@@ -4,6 +4,8 @@ import { Modal, View } from "react-native";
 import PromptRecognized from "./PromptRecognized";
 import ConnectWithVault from "./ConnectWithVault";
 import { AuthenticationContext } from "./AuthenticationContext";
+import CreateAccount from "./CreateAccount";
+import AccountCreated from "./AccountCreated";
 
 Font.loadAsync({
   THICCCBOI_ExtraBold: require("../assets/fonts/THICCCBOI-ExtraBold.ttf"),
@@ -24,6 +26,8 @@ const Component = ({ onSuccess }: Props) => {
       {
         PromptRecognized: <PromptRecognized {...props} />,
         ConnectWithVault: <ConnectWithVault {...props} />,
+        CreateAccount: <CreateAccount {...props} />,
+        AccountCreated: <AccountCreated {...props} />,
       }[screen]
     );
   };
