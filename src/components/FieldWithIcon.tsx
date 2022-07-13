@@ -1,5 +1,12 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  ViewStyle,
+  StyleProp,
+} from "react-native";
 import SecuritySafe from "../icons/SecuritySafe";
 import IconUser from "../icons/User";
 import WarningOutline from "../icons/WarningOutline";
@@ -18,8 +25,8 @@ type Props = {
   icon: string;
   lightTheme?: boolean;
   autoFocus?: boolean;
+  style?: StyleProp<ViewStyle>;
 };
-
 const FieldWithIcon: React.FC<Props> = (props: Props) => {
   const styles = getStyles(props.lightTheme);
   const Icon = iconSvg[props.icon];
@@ -30,7 +37,7 @@ const FieldWithIcon: React.FC<Props> = (props: Props) => {
   }
 
   return (
-    <>
+    <View style={props.style}>
       <Text style={[styles.labelText]}>{props.label}</Text>
       <View style={[styles.input, borderStyle]}>
         {Icon({ fillColor: props.warning && "#FF2866" })}
@@ -48,7 +55,7 @@ const FieldWithIcon: React.FC<Props> = (props: Props) => {
       {!!props.warning && (
         <Text style={styles.warningText}>{props.warning}</Text>
       )}
-    </>
+    </View>
   );
 };
 

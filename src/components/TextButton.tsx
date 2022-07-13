@@ -7,7 +7,10 @@ type Props = {
 };
 const TextButton = (props: Props) => {
   return (
-    <TouchableOpacity style={{ padding: 5 }} onPress={props.onPress}>
+    <TouchableOpacity
+      style={{ padding: 5, alignItems: "center" }}
+      onPress={props.onPress}
+    >
       <Text style={styles.textButton}>{props.text}</Text>
     </TouchableOpacity>
   );

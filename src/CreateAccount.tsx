@@ -45,6 +45,7 @@ const CreateAccount: React.FC = () => {
           warning={invalidInput}
           autoFocus={true}
           icon="user"
+          style={{ marginBottom: 20 }}
         />
 
         <FieldWithIcon
@@ -80,14 +81,9 @@ const styles = StyleSheet.create({
   },
   footer: {
     paddingVertical: 20,
-    marginBottom: 10,
-    alignItems: "center",
-  },
-  close: {
-    fontFamily: "THICCCBOI_ExtraBold",
-    fontStyle: "normal",
-    fontSize: 14,
-    color: "#AEACB8",
+    marginVertical: 24,
+    marginHorizontal: 48,
+    alignItems: "stretch",
   },
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",

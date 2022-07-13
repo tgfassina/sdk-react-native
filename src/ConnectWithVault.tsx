@@ -138,14 +138,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#1D1A270D",
     marginTop: 16,
   },
-  close: {
-    fontFamily: "THICCCBOI_ExtraBold",
-    fontStyle: "normal",
-    fontSize: 14,
-    lineHeight: 16,
-    letterSpacing: 0.02,
-    color: "#AEACB8",
-  },
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 24,

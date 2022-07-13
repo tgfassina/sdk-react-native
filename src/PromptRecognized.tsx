@@ -15,9 +15,6 @@ const Component: React.FC = () => {
     <ContainerDark>
       <View style={styles.header}>
         <SonrLogo />
-        {/* <Text style={styles.close} onPress={() => context.closeHandler()}>
-          Close
-        </Text> */}
       </View>
 
       <View style={styles.content}>
@@ -69,21 +66,9 @@ const styles = StyleSheet.create({
   },
   footer: {
     paddingVertical: 20,
-    marginBottom: 20,
+    marginVertical: 24,
+    marginHorizontal: 48,
     alignItems: "center",
-  },
-  close: {
-    fontFamily: "THICCCBOI_ExtraBold",
-    fontStyle: "normal",
-    fontSize: 14,
-    color: "#AEACB8",
-  },
-  title: {
-    fontFamily: "THICCCBOI_ExtraBold",
-    fontSize: 34,
-    textAlign: "center",
-    color: "#fff",
-    marginBottom: 64,
   },
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",
