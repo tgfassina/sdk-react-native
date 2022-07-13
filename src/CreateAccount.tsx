@@ -6,20 +6,26 @@ import IconText from "./components/IconText";
 import { AuthenticationContext } from "./AuthenticationContext";
 import PrimaryButton from "./components/PrimaryButton";
 import Motor from "./sandbox";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const CreateAccount: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
   const [vaultPassword, setVaultPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [error, setError] = useState(false);
+  const [invalidInput, setInvalidInput] = useState("");
 
   const onSubmit = async () => {
     const userData = await Motor.createAccount(username, vaultPassword);
     if (!userData) {
-      setError(true);
+      setInvalidInput("Input data is invalid");
       return;
     }
-    alert("Account created");
+    authenticationContext.navigate("AccountCreated", { username });
+  };
+
+  const clearStorage = async () => {
+    AsyncStorage.removeItem("userSessionUsername");
+    AsyncStorage.removeItem("userSessionPassword");
   };
 
   return (
@@ -32,7 +38,7 @@ const CreateAccount: React.FC = () => {
         end={{ x: 1, y: 1 }}
       />
       <View style={styles.header}>
-        <SonrLogo />
+        <SonrLogo onPress={() => clearStorage()} />
         <Text style={styles.close} onPress={() => {}}>
           Close
         </Text>
@@ -44,6 +50,7 @@ const CreateAccount: React.FC = () => {
           label="Your Username"
           value={username}
           onChangeText={setUsername}
+          warning={invalidInput}
           icon="user"
         />
 
@@ -52,6 +59,8 @@ const CreateAccount: React.FC = () => {
           value={vaultPassword}
           onChangeText={(newText) => setVaultPassword(newText)}
           icon="security"
+          warning={invalidInput}
+          secureTextEntry={true}
         />
       </View>
 
