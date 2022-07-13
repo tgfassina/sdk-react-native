@@ -40,7 +40,7 @@ const AccountCreated: React.FC = () => {
         <PrimaryButton
           style={{ marginBottom: 10 }}
           onPress={() => {
-            authenticationContext.navigate("PromptRecognized", { deviceName });
+            authenticationContext.onSuccess({});
           }}
           text="Next"
         />

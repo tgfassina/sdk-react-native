@@ -16,9 +16,8 @@ Font.loadAsync({
 
 type Props = {
   onSuccess: () => void;
-  createAccount: () => void;
 };
-const Component = ({ onSuccess, createAccount }: Props) => {
+const Component = ({ onSuccess }: Props) => {
   const [visible, setVisible] = useState(true);
   const [screen, setScreen] = useState(<PromptRecognized />);
   const close = () => setVisible(false);
