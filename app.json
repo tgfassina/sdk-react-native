@@ -4,7 +4,7 @@
     "slug": "sdk-react-native",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
-    "entryPoint": "/App"
+    "entryPoint": "/storybook"
   },
   "name": "sdk-react-native"
 }
