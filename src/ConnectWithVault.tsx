@@ -154,13 +154,6 @@ const styles = StyleSheet.create({
     marginTop: 8,
     textTransform: "uppercase",
   },
-  createAccount: {
-    fontFamily: "THICCCBOI_ExtraBold",
-    fontSize: 14,
-    lineHeight: 16,
-    color: "#1792FF",
-    marginLeft: 8,
-  },
 });
 
 export default ConnectWithVault;
