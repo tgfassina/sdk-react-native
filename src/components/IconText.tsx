@@ -1,13 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-} from "react-native";
+import { View, Text, StyleSheet, TextInput } from "react-native";
 import SecuritySafe from "../icons/SecuritySafe";
 import IconUser from "../icons/User";
 import WarningOutline from "../icons/WarningOutline";
@@ -39,7 +31,7 @@ const IconText: React.FC<Props> = (props: Props) => {
     <View style={styles(props).containerInput}>
       <Text style={[styles(props).labelText]}>{props.label}</Text>
       <View style={[styles(props).input, borderStyle]}>
-        {Icon({ fillColor: props.warning && "#FF2866" })}
+        {Icon({ fillColor: props?.warning && "#FF2866" })}
         <TextInput
           style={[styles(props).textInput]}
           value={props.value}
@@ -49,7 +41,7 @@ const IconText: React.FC<Props> = (props: Props) => {
           autoCapitalize={"none"}
           autoCorrect={false}
         />
-        {props.warning && <WarningOutline />}
+        {props.warning ? <WarningOutline /> : null}
       </View>
       <Text style={styles(props).warningText}>{props.warning}</Text>
     </View>
