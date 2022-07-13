@@ -1,8 +1,7 @@
-import { LinearGradient } from "expo-linear-gradient";
 import React, { useContext, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SonrLogo from "./icons/SonrLogo";
-import WalletAddress from "./components/IconText";
+import FieldWithIcon from "./components/FieldWithIcon";
 import SecondaryButton from "./components/SecondaryButton";
 import { AuthenticationContext } from "./AuthenticationContext";
 import TextButton from "./components/TextButton";
@@ -24,7 +23,7 @@ const SlidingUpRecognizedWelcome: React.FC = () => {
 
       <View style={styles.content}>
         <Text style={styles.subtitle2}>Welcome Back</Text>
-        <WalletAddress
+        <FieldWithIcon
           label="Wallet Address or .snr Domain"
           value={username}
           onChangeText={setUsername}
@@ -61,12 +60,11 @@ const SlidingUpRecognizedWelcome: React.FC = () => {
 const styles = StyleSheet.create({
   header: {
     padding: 32,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
   },
   content: {
     flex: 1,
+    paddingVertical: 24,
+    paddingHorizontal: 48,
   },
   footer: {
     paddingVertical: 20,
@@ -89,11 +87,9 @@ const styles = StyleSheet.create({
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 34,
-    lineHeight: 40,
     textAlign: "center",
     color: "#fff",
-    paddingBottom: 64,
-    marginTop: 24,
+    marginBottom: 64,
   },
 });
 

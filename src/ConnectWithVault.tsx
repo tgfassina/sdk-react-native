@@ -3,12 +3,12 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import SonrLogo from "./icons/SonrLogo";
 import HelpBalloon from "./icons/HelpBalloon";
 import BackButton from "./icons/BackButton";
-import VaultPassword from "./components/IconText";
+import FieldWithIcon from "./components/FieldWithIcon";
 import PrimaryButton from "./components/PrimaryButton";
 import SecondaryButton from "./components/SecondaryButton";
 import { AuthenticationContext } from "./AuthenticationContext";
-import Motor from "./sandbox";
 import { ContainerLight } from "./components/ContainerLight";
+import Motor from "./sandbox";
 
 type Props = {
   username: string;
@@ -32,72 +32,89 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
   return (
     <ContainerLight>
-      <View style={[styles.header, styles.centerRow]}>
+      <View style={styles.header}>
         <SonrLogo textFill="#1D1A27" />
-        {/* <Text style={styles.close} onPress={() => context.closeHandler()}>
-          Close
-        </Text> */}
       </View>
-      <Text style={styles.subtitle2}>Connect with Vault</Text>
-      <Text style={styles.subtitle3}>ENTER YOUR VAULT PASSWORD</Text>
 
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => authenticationContext.navigate("PromptRecognized", {})}
-      >
-        <BackButton />
-      </TouchableOpacity>
-
-      <VaultPassword
-        label="Vault Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry={true}
-        icon="security"
-        // warning={props.warningMessage}
-        lightTheme={true}
-      />
-
-      {error && (
-        <View style={styles.tooltipStyle}>
-          <HelpBalloon style={styles.helpBalloon} />
-          <View>
-            <Text style={styles.tooltipText}>
-              It looks like you may have forgotten your Vault Password. Please
-              try logging in on a recognized device. You can reset your Vault
-              Password in&nbsp;
-              <Text style={styles.tooltipTextSettings}>Settings</Text>
-            </Text>
-            <SecondaryButton onPress={() => {}} text="Dismiss" />
-          </View>
-        </View>
-      )}
-
-      <PrimaryButton
-        style={styles.submitButton}
-        onPress={onSubmit}
-        text="Submit"
-      />
-
-      <View
-        style={[
-          styles.centerRow,
-          { justifyContent: "center", marginBottom: 32 },
-        ]}
-      >
-        {/* <Text>Don't have an account?</Text>
-        <Text
-          onPress={() => context.createAccount()}
-          style={styles.createAccount}
+      <View style={styles.content}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => authenticationContext.navigate("PromptRecognized", {})}
         >
-          Create One
-        </Text> */}
+          <BackButton />
+        </TouchableOpacity>
+
+        <View style={{ marginBottom: 48 }}>
+          <Text style={styles.subtitle2}>Connect with Vault</Text>
+          <Text style={styles.subtitle3}>Enter your Vault Password</Text>
+        </View>
+
+        <FieldWithIcon
+          label="Vault Password"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry={true}
+          icon="security"
+          lightTheme={true}
+        />
+        {error && <Text style={styles.errorMessage}>Invalid password</Text>}
+
+        {false && (
+          <View style={styles.tooltipStyle}>
+            <HelpBalloon style={styles.helpBalloon} />
+            <View>
+              <Text style={styles.tooltipText}>
+                It looks like you may have forgotten your Vault Password. Please
+                try logging in on a recognized device. You can reset your Vault
+                Password in&nbsp;
+                <Text style={styles.tooltipTextSettings}>Settings</Text>
+              </Text>
+              <SecondaryButton onPress={() => {}} text="Dismiss" />
+            </View>
+          </View>
+        )}
+      </View>
+
+      <View style={styles.footer}>
+        <PrimaryButton onPress={onSubmit} text="Submit" />
       </View>
     </ContainerLight>
   );
 };
 
 const styles = StyleSheet.create({
+  header: {
+    padding: 32,
+  },
+  content: {
+    flex: 1,
+    paddingVertical: 24,
+    paddingHorizontal: 48,
+  },
+  footer: {
+    paddingVertical: 20,
+    marginVertical: 24,
+    marginHorizontal: 48,
+    alignItems: "stretch",
+  },
+  backButton: {
+    backgroundColor: "#6763761A",
+    position: "absolute",
+    width: 32,
+    height: 32,
+    left: 16,
+    top: 20,
+    borderRadius: 6,
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1,
+  },
+  errorMessage: {
+    color: "#CC154A",
+    fontFamily: "THICCCBOI_Medium",
+    fontSize: 12,
+    padding: 4,
+  },
   tooltipTextSettings: {
     fontFamily: "THICCCBOI_ExtraBold",
   },
@@ -121,32 +138,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#1D1A270D",
     marginTop: 16,
   },
-  backButton: {
-    backgroundColor: "#6763761A",
-    position: "absolute",
-    width: 32,
-    height: 32,
-    left: 16,
-    top: 136,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  submitButton: {
-    marginTop: 235,
-    marginBottom: 16,
-    width: "100%",
-    paddingHorizontal: 60,
-  },
-  centerRow: {
-    flexDirection: "row",
-    width: "90%",
-    alignItems: "center",
-  },
-  header: {
-    margin: 32,
-    justifyContent: "space-between",
-  },
   close: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontStyle: "normal",
@@ -161,7 +152,6 @@ const styles = StyleSheet.create({
     lineHeight: 28,
     textAlign: "center",
     color: "#1D1A27",
-    marginTop: 24,
   },
   subtitle3: {
     fontFamily: "THICCCBOI_Bold",
@@ -170,7 +160,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#676376",
     marginTop: 8,
-    marginBottom: 48,
+    textTransform: "uppercase",
   },
   createAccount: {
     fontFamily: "THICCCBOI_ExtraBold",
