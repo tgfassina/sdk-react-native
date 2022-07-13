@@ -32,12 +32,13 @@ const CreateAccount: React.FC = () => {
   };
 
   const validatePassword = (newText: string) => {
-    if (newText.length < 12) {
-      setInvalidPassword([true, false, false]);
-    }
-    if (newText.length >= 12) {
-      setInvalidPassword([false, false, false]);
-    }
+    const assert1 = newText.length < 12;
+    const assert2 = /\s/.test(newText);
+    const assert3 = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$/.test(
+      newText
+    );
+
+    setInvalidPassword([assert1, assert2, !assert3]);
     setVaultPassword(newText);
   };
 
@@ -78,14 +79,17 @@ const CreateAccount: React.FC = () => {
             <Text style={styles.rules}>At least 12 characters</Text>
           </View>
           <View style={styles.ruleRow}>
-            <Check />
+            {invalidPassword[1] ? <CheckNot /> : <Check />}
             <Text style={styles.rules}>No spaces</Text>
           </View>
-          <Text style={styles.rules}>
-            <Check />
-            Combination of numbers, lowercase letters, uppercase letters, and
-            special characters:(~!@#$%^&*_-+=`|\(){}[]:;"'`{">"}`,.?/`)
-          </Text>
+          <View style={styles.ruleRow}>
+            {invalidPassword[2] ? <CheckNot /> : <Check />}
+            <Text style={styles.rules}>
+              Combination of numbers, lowercase letters, uppercase letters, and
+              special characters:(~!@#$%^&*_-+=`|\(){}[]:;"'`{"<"}
+              {">"}`,.?/`)
+            </Text>
+          </View>
         </View>
       </ContainerContent>
 
@@ -94,6 +98,9 @@ const CreateAccount: React.FC = () => {
           style={{ marginBottom: 10 }}
           onPress={() => onSubmit()}
           text="Next"
+          disabled={
+            invalidPassword[0] || invalidPassword[1] || invalidPassword[2]
+          }
         />
 
         <TextButton
