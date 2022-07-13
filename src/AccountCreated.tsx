@@ -8,7 +8,6 @@ import PrimaryButton from "./components/PrimaryButton";
 
 const AccountCreated: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
-  const [deviceName, setDeviceName] = useState("");
 
   return (
     <View style={styles.container}>
@@ -28,19 +27,13 @@ const AccountCreated: React.FC = () => {
 
       <View style={styles.content}>
         <Text style={styles.subtitle2}>Account Created!</Text>
-        <WalletAddress
-          label="Device Name"
-          value={deviceName}
-          onChangeText={(newText) => setDeviceName(newText)}
-          icon="security"
-        />
       </View>
 
       <View style={styles.footer}>
         <PrimaryButton
           style={{ marginBottom: 10 }}
           onPress={() => {
-            authenticationContext.onSuccess({});
+            authenticationContext.close();
           }}
           text="Next"
         />

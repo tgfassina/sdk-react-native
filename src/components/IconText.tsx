@@ -17,6 +17,7 @@ type Props = {
   onChangeText: Dispatch<SetStateAction<string>>;
   icon: string;
   lightTheme?: boolean;
+  autoFocus?: boolean;
 };
 
 const IconText: React.FC<Props> = (props: Props) => {
@@ -37,7 +38,7 @@ const IconText: React.FC<Props> = (props: Props) => {
           value={props.value}
           onChangeText={props.onChangeText}
           secureTextEntry={props.secureTextEntry}
-          autoFocus
+          autoFocus={props.autoFocus}
           autoCapitalize={"none"}
           autoCorrect={false}
         />
