@@ -1,15 +1,9 @@
-import React, { Dispatch, SetStateAction } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  ViewStyle,
-  StyleProp,
-} from "react-native";
 import { InputIcon } from "../../types";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import { View, Text, StyleSheet, TextInput } from "react-native";
 import SecuritySafe from "../icons/SecuritySafe";
 import IconUser from "../icons/User";
+import Visibility from "../icons/visibility";
 import WarningOutline from "../icons/WarningOutline";
 
 const icons = {
@@ -26,11 +20,13 @@ type Props = {
   icon: InputIcon;
   lightTheme?: boolean;
   autoFocus?: boolean;
-  style?: StyleProp<ViewStyle>;
+  style?: any;
 };
 const FieldWithIcon: React.FC<Props> = (props: Props) => {
   const styles = getStyles(!!props.lightTheme);
   const Icon = icons[props.icon];
+
+  const [visibility, setVisibility] = useState(props.secureTextEntry);
 
   let borderStyle = undefined;
   if (props.warning) {
@@ -46,12 +42,15 @@ const FieldWithIcon: React.FC<Props> = (props: Props) => {
           style={[styles.textInput]}
           value={props.value}
           onChangeText={props.onChangeText}
-          secureTextEntry={props.secureTextEntry}
+          secureTextEntry={visibility}
           autoFocus={props.autoFocus}
           autoCapitalize={"none"}
           autoCorrect={false}
         />
         {props.warning ? <WarningOutline /> : null}
+        {props.secureTextEntry ? (
+          <Visibility onPress={() => setVisibility(!visibility)} />
+        ) : null}
       </View>
       {!!props.warning && (
         <Text style={styles.warningText}>{props.warning}</Text>
