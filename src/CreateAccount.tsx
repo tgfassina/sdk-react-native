@@ -122,10 +122,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 40,
   },
   rules: {
-    color: "#AEACB8",
+    color: "#9693A2",
     fontFamily: "THICCCBOI_Medium",
     fontSize: 14,
     paddingVertical: 5,
+    marginLeft: 8,
   },
   container: {
     flex: 1,
