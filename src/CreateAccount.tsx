@@ -73,7 +73,7 @@ const CreateAccount: React.FC = () => {
           secureTextEntry={true}
         />
 
-        <View style={styles.rulesContent}>
+        <View>
           <View style={styles.ruleRow}>
             {invalidPassword[0] ? <CheckNot /> : <Check />}
             <Text style={styles.rules}>At least 12 characters</Text>
@@ -117,9 +117,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-  },
-  rulesContent: {
-    marginHorizontal: 40,
   },
   rules: {
     color: "#9693A2",
