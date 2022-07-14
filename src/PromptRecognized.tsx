@@ -1,35 +1,27 @@
-import { LinearGradient } from "expo-linear-gradient";
 import React, { useContext, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SonrLogo from "./icons/SonrLogo";
-import WalletAddress from "./components/IconText";
+import FieldWithIcon from "./components/FieldWithIcon";
 import SecondaryButton from "./components/SecondaryButton";
 import { AuthenticationContext } from "./AuthenticationContext";
 import TextButton from "./components/TextButton";
+import { ContainerDark } from "./components/ContainerDark";
 
-const SlidingUpRecognizedWelcome: React.FC = () => {
+const Component: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
   const [username, setUsername] = useState("");
 
   return (
-    <View style={styles.container}>
-      <LinearGradient
-        style={styles.gradientContainer}
-        colors={["#37324A", "#1D1A27"]}
-        locations={[0.2, 1]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-      />
+    <ContainerDark>
       <View style={styles.header}>
         <SonrLogo />
-        {/* <Text style={styles.close} onPress={() => context.closeHandler()}>
-          Close
-        </Text> */}
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.subtitle2}>Welcome Back</Text>
-        <WalletAddress
+        <Text style={[styles.subtitle2, { marginBottom: 64 }]}>
+          Welcome Back
+        </Text>
+        <FieldWithIcon
           label="Wallet Address or .snr Domain"
           value={username}
           onChangeText={setUsername}
@@ -43,6 +35,7 @@ const SlidingUpRecognizedWelcome: React.FC = () => {
 				text="Continue with Keyprint"
 			/> */}
       </View>
+
       <View style={styles.footer}>
         <SecondaryButton
           style={{ marginBottom: 10 }}
@@ -58,55 +51,31 @@ const SlidingUpRecognizedWelcome: React.FC = () => {
           }
         />
       </View>
-    </View>
+    </ContainerDark>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  gradientContainer: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-  },
   header: {
     padding: 32,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
   },
   content: {
     flex: 1,
+    paddingVertical: 24,
+    paddingHorizontal: 48,
   },
   footer: {
     paddingVertical: 20,
-    marginBottom: 10,
+    marginVertical: 24,
+    marginHorizontal: 48,
     alignItems: "center",
-  },
-  close: {
-    fontFamily: "THICCCBOI_ExtraBold",
-    fontStyle: "normal",
-    fontSize: 14,
-    color: "#AEACB8",
-  },
-  title: {
-    fontFamily: "THICCCBOI_ExtraBold",
-    fontSize: 34,
-    textAlign: "center",
-    color: "#fff",
-    marginBottom: 64,
   },
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 34,
-    lineHeight: 40,
     textAlign: "center",
     color: "#fff",
-    paddingBottom: 64,
-    marginTop: 24,
   },
 });
 
-export default SlidingUpRecognizedWelcome;
+export default Component;

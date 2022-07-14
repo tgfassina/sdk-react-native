@@ -36,7 +36,7 @@ const Component = ({ onSuccess }: Props) => {
     marginTop: 80,
   };
   return (
-    <Modal visible={visible} transparent={true}>
+    <Modal visible={visible} transparent={true} animationType="slide">
       <View style={style}>
         <AuthenticationContext.Provider value={{ onSuccess, close, navigate }}>
           {screen}

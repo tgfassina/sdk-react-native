@@ -1,5 +1,12 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  ViewStyle,
+  StyleProp,
+} from "react-native";
 import SecuritySafe from "../icons/SecuritySafe";
 import IconUser from "../icons/User";
 import WarningOutline from "../icons/WarningOutline";
@@ -18,9 +25,10 @@ type Props = {
   icon: string;
   lightTheme?: boolean;
   autoFocus?: boolean;
+  style?: StyleProp<ViewStyle>;
 };
-
-const IconText: React.FC<Props> = (props: Props) => {
+const FieldWithIcon: React.FC<Props> = (props: Props) => {
+  const styles = getStyles(props.lightTheme);
   const Icon = iconSvg[props.icon];
 
   let borderStyle = undefined;
@@ -29,12 +37,12 @@ const IconText: React.FC<Props> = (props: Props) => {
   }
 
   return (
-    <View style={styles(props).containerInput}>
-      <Text style={[styles(props).labelText]}>{props.label}</Text>
-      <View style={[styles(props).input, borderStyle]}>
-        {Icon({ fillColor: props?.warning && "#FF2866" })}
+    <View style={props.style}>
+      <Text style={[styles.labelText]}>{props.label}</Text>
+      <View style={[styles.input, borderStyle]}>
+        {Icon({ fillColor: props.warning && "#FF2866" })}
         <TextInput
-          style={[styles(props).textInput]}
+          style={[styles.textInput]}
           value={props.value}
           onChangeText={props.onChangeText}
           secureTextEntry={props.secureTextEntry}
@@ -44,22 +52,18 @@ const IconText: React.FC<Props> = (props: Props) => {
         />
         {props.warning ? <WarningOutline /> : null}
       </View>
-      <Text style={styles(props).warningText}>{props.warning}</Text>
+      {!!props.warning && (
+        <Text style={styles.warningText}>{props.warning}</Text>
+      )}
     </View>
   );
 };
 
-const styles = (props) =>
+const getStyles = (lightTheme) =>
   StyleSheet.create({
-    containerInput: {
-      flexDirection: "column",
-      justifyContent: "center",
-      width: "100%",
-      paddingHorizontal: 40,
-    },
     input: {
       flexDirection: "row",
-      borderColor: props.lightTheme ? "#F6F5FA" : "#9893A2",
+      borderColor: lightTheme ? "#AEACB8" : "#9893A2",
       borderStyle: "solid",
       borderWidth: 1,
       borderRadius: 6,
@@ -72,7 +76,7 @@ const styles = (props) =>
       textAlign: "left",
       fontSize: 14,
       lineHeight: 16,
-      color: props.lightTheme ? "#4F4A60" : "#F6F5FA",
+      color: lightTheme ? "#4F4A60" : "#F6F5FA",
       marginBottom: 8,
     },
     textInput: {
@@ -83,7 +87,7 @@ const styles = (props) =>
       fontStyle: "normal",
       fontSize: 16,
       lineHeight: 20,
-      color: props.lightTheme ? "#37324A" : "#F6F5FA",
+      color: lightTheme ? "#37324A" : "#F6F5FA",
     },
     warningText: {
       fontFamily: "THICCCBOI_Medium",
@@ -95,4 +99,4 @@ const styles = (props) =>
     },
   });
 
-export default IconText;
+export default FieldWithIcon;

@@ -1,12 +1,13 @@
-import { LinearGradient } from "expo-linear-gradient";
 import React, { useContext, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SonrLogo from "./icons/SonrLogo";
-import IconText from "./components/IconText";
+import FieldWithIcon from "./components/FieldWithIcon";
 import { AuthenticationContext } from "./AuthenticationContext";
 import PrimaryButton from "./components/PrimaryButton";
 import Motor from "./sandbox";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ContainerDark } from "./components/ContainerDark";
+import TextButton from "./components/TextButton";
 
 const CreateAccount: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
@@ -28,36 +29,27 @@ const CreateAccount: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <LinearGradient
-        style={styles.gradientContainer}
-        colors={["#37324A", "#1D1A27"]}
-        locations={[0.2, 1]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-      />
+    <ContainerDark>
       <View style={styles.header}>
         <SonrLogo onPress={() => clearStorage()} />
-        <Text
-          style={styles.close}
-          onPress={() => authenticationContext.close()}
-        >
-          Close
-        </Text>
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.subtitle2}>Create your account</Text>
-        <IconText
+        <Text style={[styles.subtitle2, { marginBottom: 64 }]}>
+          Create your account
+        </Text>
+
+        <FieldWithIcon
           label="Your Username"
           value={username}
           onChangeText={setUsername}
           warning={invalidInput}
           autoFocus={true}
           icon="user"
+          style={{ marginBottom: 20 }}
         />
 
-        <IconText
+        <FieldWithIcon
           label="Your Vault Password"
           value={vaultPassword}
           onChangeText={setVaultPassword}
@@ -74,55 +66,37 @@ const CreateAccount: React.FC = () => {
           onPress={() => onSubmit()}
           text="Next"
         />
+
+        <TextButton
+          text="Back"
+          onPress={() => authenticationContext.navigate("PromptRecognized", {})}
+        />
       </View>
-    </View>
+    </ContainerDark>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  gradientContainer: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-  },
   header: {
     padding: 32,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
   },
   content: {
     flex: 1,
+    paddingVertical: 24,
+    paddingHorizontal: 48,
   },
   footer: {
     paddingVertical: 20,
-    marginBottom: 10,
-    alignItems: "center",
-  },
-  close: {
-    fontFamily: "THICCCBOI_ExtraBold",
-    fontStyle: "normal",
-    fontSize: 14,
-    color: "#AEACB8",
-  },
-  title: {
-    fontFamily: "THICCCBOI_ExtraBold",
-    fontSize: 34,
-    textAlign: "center",
-    color: "#fff",
-    marginBottom: 64,
+    marginVertical: 24,
+    marginHorizontal: 48,
+    alignItems: "stretch",
   },
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",
-    fontSize: 34,
+    fontSize: 33,
     lineHeight: 40,
     textAlign: "center",
     color: "#fff",
-    paddingBottom: 64,
-    marginTop: 24,
   },
 });
 
