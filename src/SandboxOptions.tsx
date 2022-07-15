@@ -3,6 +3,11 @@ import React, { useContext } from "react";
 import { Text, StyleSheet, View } from "react-native";
 import { AuthenticationContext } from "./AuthenticationContext";
 import { ContainerDark } from "./components/ContainerDark";
+import {
+  ContainerContent,
+  ContainerFooter,
+  ContainerHeader,
+} from "./components/ContainerParts";
 import SecondaryButton from "./components/SecondaryButton";
 import TextButton from "./components/TextButton";
 
@@ -13,39 +18,25 @@ export const SandboxOptions: React.FC = () => {
 
   return (
     <ContainerDark>
-      <View style={styles.header}>
+      <ContainerHeader>
         <Text style={styles.title}>Sandbox Options</Text>
-      </View>
+      </ContainerHeader>
 
-      <View style={styles.content}>
+      <ContainerContent>
         <SecondaryButton text="Erase database" onPress={erase} />
-      </View>
+      </ContainerContent>
 
-      <View style={styles.footer}>
+      <ContainerFooter>
         <TextButton
           text="Back"
           onPress={() => authenticationContext.navigate("PromptRecognized", {})}
         />
-      </View>
+      </ContainerFooter>
     </ContainerDark>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    padding: 32,
-  },
-  content: {
-    flex: 1,
-    paddingVertical: 24,
-    paddingHorizontal: 48,
-  },
-  footer: {
-    paddingVertical: 20,
-    marginVertical: 24,
-    marginHorizontal: 48,
-    alignItems: "center",
-  },
   title: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 34,

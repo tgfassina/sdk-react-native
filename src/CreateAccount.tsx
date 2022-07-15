@@ -7,6 +7,11 @@ import PrimaryButton from "./components/PrimaryButton";
 import Motor from "./sandbox";
 import { ContainerDark } from "./components/ContainerDark";
 import TextButton from "./components/TextButton";
+import {
+  ContainerHeader,
+  ContainerContent,
+  ContainerFooter,
+} from "./components/ContainerParts";
 
 const CreateAccount: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
@@ -25,11 +30,11 @@ const CreateAccount: React.FC = () => {
 
   return (
     <ContainerDark>
-      <View style={styles.header}>
+      <ContainerHeader>
         <SonrLogo />
-      </View>
+      </ContainerHeader>
 
-      <View style={styles.content}>
+      <ContainerContent>
         <Text style={[styles.subtitle2, { marginBottom: 64 }]}>
           Create your account
         </Text>
@@ -53,9 +58,9 @@ const CreateAccount: React.FC = () => {
           autoFocus={false}
           secureTextEntry={true}
         />
-      </View>
+      </ContainerContent>
 
-      <View style={styles.footer}>
+      <ContainerFooter>
         <PrimaryButton
           style={{ marginBottom: 10 }}
           onPress={() => onSubmit()}
@@ -66,25 +71,12 @@ const CreateAccount: React.FC = () => {
           text="Back"
           onPress={() => authenticationContext.navigate("PromptRecognized", {})}
         />
-      </View>
+      </ContainerFooter>
     </ContainerDark>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    padding: 32,
-  },
-  content: {
-    flex: 1,
-    paddingVertical: 24,
-    paddingHorizontal: 48,
-  },
-  footer: {
-    paddingVertical: 20,
-    marginVertical: 24,
-    marginHorizontal: 48,
-  },
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 33,

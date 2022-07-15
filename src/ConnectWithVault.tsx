@@ -9,6 +9,11 @@ import SecondaryButton from "./components/SecondaryButton";
 import { AuthenticationContext } from "./AuthenticationContext";
 import { ContainerLight } from "./components/ContainerLight";
 import Motor from "./sandbox";
+import {
+  ContainerHeader,
+  ContainerContent,
+  ContainerFooter,
+} from "./components/ContainerParts";
 
 type Props = {
   username: string;
@@ -32,11 +37,11 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
 
   return (
     <ContainerLight>
-      <View style={styles.header}>
+      <ContainerHeader>
         <SonrLogo textFill="#1D1A27" />
-      </View>
+      </ContainerHeader>
 
-      <View style={styles.content}>
+      <ContainerContent>
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => authenticationContext.navigate("PromptRecognized", {})}
@@ -73,29 +78,16 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
             </View>
           </View>
         )}
-      </View>
+      </ContainerContent>
 
-      <View style={styles.footer}>
+      <ContainerFooter>
         <PrimaryButton onPress={onSubmit} text="Submit" />
-      </View>
+      </ContainerFooter>
     </ContainerLight>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    padding: 32,
-  },
-  content: {
-    flex: 1,
-    paddingVertical: 24,
-    paddingHorizontal: 48,
-  },
-  footer: {
-    paddingVertical: 20,
-    marginVertical: 24,
-    marginHorizontal: 48,
-  },
   backButton: {
     backgroundColor: "#6763761A",
     position: "absolute",

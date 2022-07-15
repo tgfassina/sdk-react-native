@@ -6,6 +6,11 @@ import SecondaryButton from "./components/SecondaryButton";
 import { AuthenticationContext } from "./AuthenticationContext";
 import TextButton from "./components/TextButton";
 import { ContainerDark } from "./components/ContainerDark";
+import {
+  ContainerHeader,
+  ContainerContent,
+  ContainerFooter,
+} from "./components/ContainerParts";
 
 const Component: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
@@ -13,15 +18,15 @@ const Component: React.FC = () => {
 
   return (
     <ContainerDark>
-      <View style={styles.header}>
+      <ContainerHeader>
         <TouchableOpacity
           onPress={() => authenticationContext.navigate("SandboxOptions", {})}
         >
           <SonrLogo />
         </TouchableOpacity>
-      </View>
+      </ContainerHeader>
 
-      <View style={styles.content}>
+      <ContainerContent>
         <Text style={[styles.subtitle2, { marginBottom: 64 }]}>
           Welcome Back
         </Text>
@@ -31,16 +36,9 @@ const Component: React.FC = () => {
           onChangeText={setUsername}
           icon="IconUser"
         />
+      </ContainerContent>
 
-        {/* <PrimaryButton
-				style={{ marginTop: 20 }}
-				onPress={() => props.continueButtonHandler}
-				icon={KeyPrint()}
-				text="Continue with Keyprint"
-			/> */}
-      </View>
-
-      <View style={styles.footer}>
+      <ContainerFooter>
         <SecondaryButton
           style={{ marginBottom: 10, alignSelf: "center" }}
           onPress={() => {
@@ -54,25 +52,12 @@ const Component: React.FC = () => {
             authenticationContext.navigate("CreateAccount", { username })
           }
         />
-      </View>
+      </ContainerFooter>
     </ContainerDark>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    padding: 32,
-  },
-  content: {
-    flex: 1,
-    paddingVertical: 24,
-    paddingHorizontal: 48,
-  },
-  footer: {
-    paddingVertical: 20,
-    marginVertical: 24,
-    marginHorizontal: 48,
-  },
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 34,
