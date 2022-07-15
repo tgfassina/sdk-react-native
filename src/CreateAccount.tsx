@@ -45,7 +45,7 @@ const CreateAccount: React.FC = () => {
           onChangeText={setUsername}
           warning={invalidInput}
           autoFocus={true}
-          icon="user"
+          icon="IconUser"
           style={{ marginBottom: 20 }}
         />
 
@@ -53,7 +53,7 @@ const CreateAccount: React.FC = () => {
           label="Your Vault Password"
           value={vaultPassword}
           onChangeText={setVaultPassword}
-          icon="security"
+          icon="SecuritySafe"
           warning={invalidInput}
           autoFocus={false}
           secureTextEntry={true}

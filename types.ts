@@ -12,3 +12,5 @@ export type ScreenTitle =
   | "ConnectWithVault"
   | "CreateAccount"
   | "AccountCreated";
+
+export type InputIcon = "IconUser" | "SecuritySafe";

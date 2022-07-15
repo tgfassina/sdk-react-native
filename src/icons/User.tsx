@@ -1,7 +1,7 @@
 import * as React from "react";
 import Svg, { Path } from "react-native-svg";
 
-function SvgComponent({ fillColor }) {
+function User(fillColor?: string) {
   return (
     <Svg width={17} height={16} viewBox="0 0 17 16" fill="none">
       <Path
@@ -12,4 +12,4 @@ function SvgComponent({ fillColor }) {
   );
 }
 
-export default SvgComponent;
+export default User;

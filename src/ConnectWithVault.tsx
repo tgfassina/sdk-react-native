@@ -54,7 +54,7 @@ const ConnectWithVault: React.FC<Props> = (props: Props) => {
           value={password}
           onChangeText={setPassword}
           secureTextEntry={true}
-          icon="security"
+          icon="SecuritySafe"
           lightTheme={true}
         />
         {error && <Text style={styles.errorMessage}>Invalid password</Text>}
