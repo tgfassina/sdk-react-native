@@ -14,3 +14,7 @@ export type ScreenTitle =
   | "AccountCreated";
 
 export type InputIcon = "IconUser" | "SecuritySafe";
+
+export type AuthenticationProps = {
+  onSuccess: (userData: SonrUserData) => void;
+};

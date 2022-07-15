@@ -6,7 +6,7 @@ import ConnectWithVault from "./ConnectWithVault";
 import { AuthenticationContext } from "./AuthenticationContext";
 import CreateAccount from "./CreateAccount";
 import AccountCreated from "./AccountCreated";
-import { ScreenTitle, SonrUserData } from "../types";
+import { AuthenticationProps, ScreenTitle, SonrUserData } from "../types";
 
 Font.loadAsync({
   THICCCBOI_ExtraBold: require("../assets/fonts/THICCCBOI-ExtraBold.ttf"),
@@ -15,10 +15,7 @@ Font.loadAsync({
   THICCCBOI_Regular: require("../assets/fonts/THICCCBOI-Regular.ttf"),
 });
 
-type Props = {
-  onSuccess: (userData: SonrUserData) => void;
-};
-const Component = ({ onSuccess }: Props) => {
+const Component = ({ onSuccess }: AuthenticationProps) => {
   const [visible, setVisible] = useState(true);
   const [screen, setScreen] = useState(<PromptRecognized />);
   const close = () => setVisible(false);
