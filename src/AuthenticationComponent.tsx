@@ -6,6 +6,7 @@ import ConnectWithVault from "./ConnectWithVault";
 import { AuthenticationContext } from "./AuthenticationContext";
 import CreateAccount from "./CreateAccount";
 import AccountCreated from "./AccountCreated";
+import CheckBiometrics from "./CheckBiometrics";
 
 Font.loadAsync({
   THICCCBOI_ExtraBold: require("../assets/fonts/THICCCBOI-ExtraBold.ttf"),
@@ -19,7 +20,7 @@ type Props = {
 };
 const Component = ({ onSuccess }: Props) => {
   const [visible, setVisible] = useState(true);
-  const [screen, setScreen] = useState(<PromptRecognized />);
+  const [screen, setScreen] = useState(<CheckBiometrics />);
   const close = () => setVisible(false);
   const navigate = (screen: string, props: any) => {
     setScreen(

@@ -4,7 +4,12 @@
     "slug": "sdk-react-native",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
-    "entryPoint": "/storybook"
+    "entryPoint": "/storybook",
+    "ios": {
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "This app uses faceid to auth user again bean matrix"
+      }
+    }
   },
   "name": "sdk-react-native"
 }
