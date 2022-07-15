@@ -31,7 +31,6 @@ const CreateAccountMatrix: React.FC<IProps> = (props: IProps) => {
       usernameMatrix,
       matrixPassword
     );
-    console.log("here userdar", userData);
 
     if (!userData) {
       setInvalidInput("Input data is invalid");
