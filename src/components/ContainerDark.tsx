@@ -27,9 +27,8 @@ const styles = StyleSheet.create({
   },
   gradient: {
     width: "100%",
-    height: "100%",
+    height: "120%",
     position: "absolute",
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
+    borderRadius: 16,
   },
 });
