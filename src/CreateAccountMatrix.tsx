@@ -7,6 +7,11 @@ import PrimaryButton from "./components/PrimaryButton";
 import Motor from "./sandbox";
 import { ContainerDark } from "./components/ContainerDark";
 import TextButton from "./components/TextButton";
+import {
+  ContainerHeader,
+  ContainerContent,
+  ContainerFooter,
+} from "./components/ContainerParts";
 
 interface IProps {
   username: string;
@@ -26,6 +31,8 @@ const CreateAccountMatrix: React.FC<IProps> = (props: IProps) => {
       usernameMatrix,
       matrixPassword
     );
+    console.log("here userdar", userData);
+
     if (!userData) {
       setInvalidInput("Input data is invalid");
       return;
@@ -35,11 +42,11 @@ const CreateAccountMatrix: React.FC<IProps> = (props: IProps) => {
 
   return (
     <ContainerDark>
-      <View style={styles.header}>
+      <ContainerHeader>
         <SonrLogo />
-      </View>
+      </ContainerHeader>
 
-      <View style={styles.content}>
+      <ContainerContent>
         <Text style={[styles.subtitle2, { marginBottom: 64 }]}>
           Set your Matrix account
         </Text>
@@ -63,9 +70,9 @@ const CreateAccountMatrix: React.FC<IProps> = (props: IProps) => {
           autoFocus={false}
           secureTextEntry={true}
         />
-      </View>
+      </ContainerContent>
 
-      <View style={styles.footer}>
+      <ContainerFooter>
         <PrimaryButton
           style={{ marginBottom: 10 }}
           onPress={() => onSubmit()}
@@ -76,26 +83,12 @@ const CreateAccountMatrix: React.FC<IProps> = (props: IProps) => {
           text="Back"
           onPress={() => authenticationContext.navigate("CreateAccount", {})}
         />
-      </View>
+      </ContainerFooter>
     </ContainerDark>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    padding: 32,
-  },
-  content: {
-    flex: 1,
-    paddingVertical: 24,
-    paddingHorizontal: 48,
-  },
-  footer: {
-    paddingVertical: 20,
-    marginVertical: 24,
-    marginHorizontal: 48,
-    alignItems: "stretch",
-  },
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 33,

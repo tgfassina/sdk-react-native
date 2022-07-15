@@ -26,7 +26,7 @@ const createAccount = async (
   matrixUsername: string,
   matrixPassword: string
 ): Promise<boolean> => {
-  if (username.length < 4 || password.length < 4) {
+  if (matrixUsername.length < 2 || matrixPassword.length < 4) {
     return false;
   }
   const newRecord = {

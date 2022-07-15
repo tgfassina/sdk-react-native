@@ -10,7 +10,6 @@ import { AuthenticationProps, ScreenTitle, SonrUserData } from "../types";
 import { SandboxOptions } from "./SandboxOptions";
 import CreateAccountMatrix from "./CreateAccountMatrix";
 import { SandboxOptions } from "./SandboxOptions";
-import CreateAccountMatrix from "./CreateAccountMatrix";
 
 Font.loadAsync({
   THICCCBOI_ExtraBold: require("../assets/fonts/THICCCBOI-ExtraBold.ttf"),
