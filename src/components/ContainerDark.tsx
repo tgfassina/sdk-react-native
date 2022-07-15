@@ -1,6 +1,8 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { ImageBackground, StyleSheet, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+
+import logo from "../logo_trans.png";
 
 type Props = {
   children: React.ReactNode;
@@ -15,13 +17,22 @@ export const ContainerDark: React.FC<Props> = ({ children }) => {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       />
-
       {children}
+      <ImageBackground style={styles.img} source={logo}></ImageBackground>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  img: {
+    resizeMode: "contain",
+    height: 320,
+    width: 320,
+    position: "absolute",
+    bottom: -56,
+    right: -48,
+    zIndex: 1,
+  },
   container: {
     flex: 1,
   },
