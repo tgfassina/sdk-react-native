@@ -12,7 +12,8 @@ export type ScreenTitle =
   | "ConnectWithVault"
   | "CreateAccount"
   | "AccountCreated"
-  | "SandboxOptions";
+  | "SandboxOptions"
+  | "CreateAccountMatrix";
 
 export type InputIcon = "IconUser" | "SecuritySafe";
 

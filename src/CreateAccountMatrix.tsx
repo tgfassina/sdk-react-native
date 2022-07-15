@@ -7,40 +7,47 @@ import PrimaryButton from "./components/PrimaryButton";
 import Motor from "./sandbox";
 import { ContainerDark } from "./components/ContainerDark";
 import TextButton from "./components/TextButton";
-import {
-  ContainerHeader,
-  ContainerContent,
-  ContainerFooter,
-} from "./components/ContainerParts";
 
-const CreateAccount: React.FC = () => {
+interface IProps {
+  username: string;
+  vaultPassword: string;
+}
+
+const CreateAccountMatrix: React.FC<IProps> = (props: IProps) => {
   const authenticationContext = useContext(AuthenticationContext);
-  const [vaultPassword, setVaultPassword] = useState("");
-  const [username, setUsername] = useState("");
+  const [matrixPassword, setMatrixPassword] = useState("");
+  const [usernameMatrix, setUsernameMatrix] = useState("");
   const [invalidInput, setInvalidInput] = useState("");
 
   const onSubmit = async () => {
-    authenticationContext.navigate("CreateAccountMatrix", {
-      username,
-      vaultPassword,
-    });
+    const userData = await Motor.createAccount(
+      props.username,
+      props.vaultPassword,
+      usernameMatrix,
+      matrixPassword
+    );
+    if (!userData) {
+      setInvalidInput("Input data is invalid");
+      return;
+    }
+    authenticationContext.navigate("AccountCreated", {});
   };
 
   return (
     <ContainerDark>
-      <ContainerHeader>
+      <View style={styles.header}>
         <SonrLogo />
-      </ContainerHeader>
+      </View>
 
-      <ContainerContent>
+      <View style={styles.content}>
         <Text style={[styles.subtitle2, { marginBottom: 64 }]}>
-          Create your accountx
+          Set your Matrix account
         </Text>
 
         <FieldWithIcon
-          label="Your Username"
-          value={username}
-          onChangeText={setUsername}
+          label="Your Matrix Username"
+          value={usernameMatrix}
+          onChangeText={setUsernameMatrix}
           warning={invalidInput}
           autoFocus={true}
           icon="IconUser"
@@ -48,17 +55,17 @@ const CreateAccount: React.FC = () => {
         />
 
         <FieldWithIcon
-          label="Your Vault Password"
-          value={vaultPassword}
-          onChangeText={setVaultPassword}
+          label="Your Matrix Password"
+          value={matrixPassword}
+          onChangeText={setMatrixPassword}
           icon="SecuritySafe"
           warning={invalidInput}
           autoFocus={false}
           secureTextEntry={true}
         />
-      </ContainerContent>
+      </View>
 
-      <ContainerFooter>
+      <View style={styles.footer}>
         <PrimaryButton
           style={{ marginBottom: 10 }}
           onPress={() => onSubmit()}
@@ -67,14 +74,28 @@ const CreateAccount: React.FC = () => {
 
         <TextButton
           text="Back"
-          onPress={() => authenticationContext.navigate("PromptRecognized", {})}
+          onPress={() => authenticationContext.navigate("CreateAccount", {})}
         />
-      </ContainerFooter>
+      </View>
     </ContainerDark>
   );
 };
 
 const styles = StyleSheet.create({
+  header: {
+    padding: 32,
+  },
+  content: {
+    flex: 1,
+    paddingVertical: 24,
+    paddingHorizontal: 48,
+  },
+  footer: {
+    paddingVertical: 20,
+    marginVertical: 24,
+    marginHorizontal: 48,
+    alignItems: "stretch",
+  },
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 33,
@@ -84,4 +105,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateAccount;
+export default CreateAccountMatrix;
