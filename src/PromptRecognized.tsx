@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import SonrLogo from "./icons/SonrLogo";
 import FieldWithIcon from "./components/FieldWithIcon";
 import SecondaryButton from "./components/SecondaryButton";
@@ -14,7 +14,11 @@ const Component: React.FC = () => {
   return (
     <ContainerDark>
       <View style={styles.header}>
-        <SonrLogo />
+        <TouchableOpacity
+          onPress={() => authenticationContext.navigate("SandboxOptions", {})}
+        >
+          <SonrLogo />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.content}>

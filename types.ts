@@ -11,7 +11,8 @@ export type ScreenTitle =
   | "PromptRecognized"
   | "ConnectWithVault"
   | "CreateAccount"
-  | "AccountCreated";
+  | "AccountCreated"
+  | "SandboxOptions";
 
 export type InputIcon = "IconUser" | "SecuritySafe";
 

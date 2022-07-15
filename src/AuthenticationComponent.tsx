@@ -7,6 +7,7 @@ import { AuthenticationContext } from "./AuthenticationContext";
 import CreateAccount from "./CreateAccount";
 import AccountCreated from "./AccountCreated";
 import { AuthenticationProps, ScreenTitle, SonrUserData } from "../types";
+import { SandboxOptions } from "./SandboxOptions";
 
 Font.loadAsync({
   THICCCBOI_ExtraBold: require("../assets/fonts/THICCCBOI-ExtraBold.ttf"),
@@ -26,6 +27,7 @@ const Component = ({ onSuccess }: AuthenticationProps) => {
         ConnectWithVault: <ConnectWithVault {...props} />,
         CreateAccount: <CreateAccount {...props} />,
         AccountCreated: <AccountCreated {...props} />,
+        SandboxOptions: <SandboxOptions {...props} />,
       }[screen]
     );
   };

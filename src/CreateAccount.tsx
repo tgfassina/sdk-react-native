@@ -5,7 +5,6 @@ import FieldWithIcon from "./components/FieldWithIcon";
 import { AuthenticationContext } from "./AuthenticationContext";
 import PrimaryButton from "./components/PrimaryButton";
 import Motor from "./sandbox";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ContainerDark } from "./components/ContainerDark";
 import TextButton from "./components/TextButton";
 
@@ -24,14 +23,10 @@ const CreateAccount: React.FC = () => {
     authenticationContext.navigate("AccountCreated", { username });
   };
 
-  const clearStorage = async () => {
-    AsyncStorage.removeItem("database");
-  };
-
   return (
     <ContainerDark>
       <View style={styles.header}>
-        <SonrLogo onPress={() => clearStorage()} />
+        <SonrLogo />
       </View>
 
       <View style={styles.content}>
