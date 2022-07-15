@@ -34,7 +34,7 @@ const CreateAccount: React.FC = () => {
 
       <ContainerContent>
         <Text style={[styles.subtitle2, { marginBottom: 64 }]}>
-          Create your account
+          Create your accountx
         </Text>
 
         <FieldWithIcon
