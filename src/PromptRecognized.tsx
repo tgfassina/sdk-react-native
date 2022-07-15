@@ -25,7 +25,7 @@ const Component: React.FC = () => {
           label="Wallet Address or .snr Domain"
           value={username}
           onChangeText={setUsername}
-          icon="user"
+          icon="IconUser"
         />
 
         {/* <PrimaryButton

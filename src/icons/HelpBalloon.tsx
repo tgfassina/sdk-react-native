@@ -1,7 +1,8 @@
 import * as React from "react";
+import { StyleProp, ViewStyle } from "react-native";
 import Svg, { Path } from "react-native-svg";
 
-function SvgComponent({ style }) {
+function HelpBalloon({ style }: { style: StyleProp<ViewStyle> }) {
   return (
     <Svg width="24" height="24" style={style} viewBox="0 0 24 24" fill="none">
       <Path
@@ -20,4 +21,4 @@ function SvgComponent({ style }) {
   );
 }
 
-export default SvgComponent;
+export default HelpBalloon;

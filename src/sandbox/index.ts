@@ -1,8 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { SonrUser, SonrUserData } from "../../types";
 
-const login = async (username: string, password: string) => {
+const login = async (
+  username: string,
+  password: string
+): Promise<SonrUserData | null> => {
   const sessionDB = await AsyncStorage.getItem("database");
-  const database = JSON.parse(sessionDB || "[]");
+  const database: SonrUser[] = JSON.parse(sessionDB || "[]");
 
   const user = database.find((user) => user.username === username);
   if (!user || user.password !== password) {
@@ -16,9 +20,12 @@ const login = async (username: string, password: string) => {
   };
 };
 
-const createAccount = async (username: string, password: string) => {
+const createAccount = async (
+  username: string,
+  password: string
+): Promise<boolean> => {
   if (username.length < 4 || password.length < 4) {
-    return null;
+    return false;
   }
   const newRecord = {
     username,

@@ -7,13 +7,14 @@ import {
   ViewStyle,
   StyleProp,
 } from "react-native";
+import { InputIcon } from "../../types";
 import SecuritySafe from "../icons/SecuritySafe";
 import IconUser from "../icons/User";
 import WarningOutline from "../icons/WarningOutline";
 
-const iconSvg = {
-  user: IconUser,
-  security: SecuritySafe,
+const icons = {
+  IconUser: IconUser,
+  SecuritySafe: SecuritySafe,
 };
 
 type Props = {
@@ -22,14 +23,14 @@ type Props = {
   warning?: string;
   secureTextEntry?: boolean;
   onChangeText: Dispatch<SetStateAction<string>>;
-  icon: string;
+  icon: InputIcon;
   lightTheme?: boolean;
   autoFocus?: boolean;
   style?: StyleProp<ViewStyle>;
 };
 const FieldWithIcon: React.FC<Props> = (props: Props) => {
-  const styles = getStyles(props.lightTheme);
-  const Icon = iconSvg[props.icon];
+  const styles = getStyles(!!props.lightTheme);
+  const Icon = icons[props.icon];
 
   let borderStyle = undefined;
   if (props.warning) {
@@ -40,7 +41,7 @@ const FieldWithIcon: React.FC<Props> = (props: Props) => {
     <View style={props.style}>
       <Text style={[styles.labelText]}>{props.label}</Text>
       <View style={[styles.input, borderStyle]}>
-        {Icon({ fillColor: props.warning && "#FF2866" })}
+        {Icon(props.warning && "#FF2866")}
         <TextInput
           style={[styles.textInput]}
           value={props.value}
@@ -59,7 +60,7 @@ const FieldWithIcon: React.FC<Props> = (props: Props) => {
   );
 };
 
-const getStyles = (lightTheme) =>
+const getStyles = (lightTheme: boolean) =>
   StyleSheet.create({
     input: {
       flexDirection: "row",
