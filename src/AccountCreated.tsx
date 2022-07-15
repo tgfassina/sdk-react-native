@@ -5,49 +5,40 @@ import SonrLogo from "./icons/SonrLogo";
 import { AuthenticationContext } from "./AuthenticationContext";
 import PrimaryButton from "./components/PrimaryButton";
 import { ContainerDark } from "./components/ContainerDark";
+import {
+  ContainerHeader,
+  ContainerContent,
+  ContainerFooter,
+} from "./components/ContainerParts";
 
 const AccountCreated: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
 
   return (
     <ContainerDark>
-      <View style={styles.header}>
+      <ContainerHeader>
         <SonrLogo />
-      </View>
+      </ContainerHeader>
 
-      <View style={styles.content}>
+      <ContainerContent>
         <Text style={[styles.subtitle2, { marginBottom: 64 }]}>
           Account Created!
         </Text>
-      </View>
+      </ContainerContent>
 
-      <View style={styles.footer}>
+      <ContainerFooter>
         <PrimaryButton
           onPress={() => {
             authenticationContext.close();
           }}
           text="Next"
         />
-      </View>
+      </ContainerFooter>
     </ContainerDark>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    padding: 32,
-  },
-  content: {
-    flex: 1,
-    paddingVertical: 24,
-    paddingHorizontal: 48,
-  },
-  footer: {
-    paddingVertical: 20,
-    marginVertical: 24,
-    marginHorizontal: 48,
-    alignItems: "stretch",
-  },
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",
     fontSize: 34,

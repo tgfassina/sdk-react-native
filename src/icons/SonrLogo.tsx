@@ -3,12 +3,11 @@ import Svg, { Path } from "react-native-svg";
 
 type Props = {
   textFill?: string;
-  onPress?: () => {};
 };
 
-function SvgComponent(props: Props) {
+function SonrLogo(props: Props) {
   return (
-    <Svg width={117} height={40} onPress={props.onPress} fill="none">
+    <Svg width={117} height={40} fill="none">
       <Path
         d="M18.712 14.071l-4.685 4.703a1.734 1.734 0 000 2.445l4.685 4.703a1.72 1.72 0 002.438 0l4.686-4.703a1.734 1.734 0 000-2.445L21.15 14.07a1.72 1.72 0 00-2.438 0z"
         fill="#1792FF"
@@ -25,4 +24,4 @@ function SvgComponent(props: Props) {
   );
 }
 
-export default SvgComponent;
+export default SonrLogo;
