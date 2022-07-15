@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     marginVertical: 24,
     marginHorizontal: 48,
-    alignItems: "stretch",
   },
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",

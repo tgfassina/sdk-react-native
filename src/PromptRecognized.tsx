@@ -42,7 +42,7 @@ const Component: React.FC = () => {
 
       <View style={styles.footer}>
         <SecondaryButton
-          style={{ marginBottom: 10 }}
+          style={{ marginBottom: 10, alignSelf: "center" }}
           onPress={() => {
             authenticationContext.navigate("ConnectWithVault", { username });
           }}
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     marginVertical: 24,
     marginHorizontal: 48,
-    alignItems: "center",
   },
   subtitle2: {
     fontFamily: "THICCCBOI_ExtraBold",
