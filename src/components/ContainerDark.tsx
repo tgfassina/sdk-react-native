@@ -2,7 +2,7 @@ import React from "react";
 import { ImageBackground, StyleSheet, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import logo from "../logo_trans.png";
+import logo from "../icons/logo_background.png";
 
 type Props = {
   children: React.ReactNode;
@@ -25,7 +25,6 @@ export const ContainerDark: React.FC<Props> = ({ children }) => {
 
 const styles = StyleSheet.create({
   img: {
-    resizeMode: "contain",
     height: 320,
     width: 320,
     position: "absolute",
