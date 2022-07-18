@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react-native";
 import React from "react";
-import { AuthenticationComponent } from "../../../index";
+import AuthenticationComponent from "../../../src/AuthenticationComponent";
 
 storiesOf("App Showcase", module).add("show app", () => (
   <AuthenticationComponent

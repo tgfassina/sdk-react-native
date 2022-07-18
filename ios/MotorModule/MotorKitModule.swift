@@ -27,6 +27,8 @@ class MotorKitModule : RCTEventEmitter {
   ) -> Void {
     let motor = MotorKit()
     let passwd = "Hello"
-    resolve(motor.createAccount(password: passwd)) //password
+    let account = motor.createAccount(password: passwd) //password
+    print("debug", account)
+    resolve(account) 
   }
 }
