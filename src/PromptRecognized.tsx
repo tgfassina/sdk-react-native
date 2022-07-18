@@ -11,10 +11,18 @@ import {
   ContainerContent,
   ContainerFooter,
 } from "./components/ContainerParts";
+import Bridge from "./NativeBridge";
 
 const Component: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
   const [username, setUsername] = useState("");
+
+  const createAccount = async () => {
+    console.log("createAccount");
+
+    const resp = await Bridge.createAccount(username);
+    console.log("Ended", resp);
+  };
 
   return (
     <ContainerDark>
@@ -42,7 +50,7 @@ const Component: React.FC = () => {
         <SecondaryButton
           style={{ marginBottom: 10, alignSelf: "center" }}
           onPress={() => {
-            authenticationContext.navigate("ConnectWithVault", { username });
+            createAccount();
           }}
           text="Continue with Vault Password"
         />

@@ -21,9 +21,12 @@ class MotorKitModule : RCTEventEmitter {
     return []
   }
   
-  @objc(createAccount:)
-  public func createAccount(_ password : String) -> String? {
+  @objc func createAccount(
+    _ resolve: @escaping RCTPromiseResolveBlock,
+    rejecter reject: @escaping RCTPromiseRejectBlock
+  ) -> Void {
     let motor = MotorKit()
-    return motor.createAccount(password: password)
+    let passwd = "Hello"
+    resolve(motor.createAccount(password: passwd)) //password
   }
 }

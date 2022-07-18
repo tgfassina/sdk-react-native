@@ -11,6 +11,8 @@
 
 @interface RCT_EXTERN_MODULE(MotorKitModule, RCTEventEmitter)
 RCT_EXTERN_METHOD(
-      createAccount:(NSString)password
+    createAccount:(RCTPromiseResolveBlock)resolve
+        rejecter:(RCTPromiseRejectBlock)reject
+      // createAccount:(NSString)password
   )
 @end
