@@ -22,16 +22,18 @@ const login = async (
 
 const createAccount = async (
   username: string,
-  password: string
+  password: string,
+  matrixUsername: string,
+  matrixPassword: string
 ): Promise<boolean> => {
-  if (username.length < 4 || password.length < 4) {
+  if (matrixUsername.length < 2 || matrixPassword.length < 4) {
     return false;
   }
   const newRecord = {
     username,
     password,
-    matrixUsername: username,
-    matrixPassword: password,
+    matrixUsername,
+    matrixPassword,
   };
 
   const sessionDB = await AsyncStorage.getItem("database");
