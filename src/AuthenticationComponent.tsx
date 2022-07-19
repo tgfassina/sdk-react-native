@@ -8,7 +8,7 @@ import CreateAccount from "./CreateAccount";
 import AccountCreated from "./AccountCreated";
 import { AuthenticationProps, ScreenTitle, SonrUserData } from "../types";
 import { SandboxOptions } from "./SandboxOptions";
-import CreateAccountSandbox from "./CreateAccountSandbox";
+import { CreateAccountSandbox } from "./CreateAccountSandbox";
 
 Font.loadAsync({
   THICCCBOI_ExtraBold: require("../assets/fonts/THICCCBOI-ExtraBold.ttf"),

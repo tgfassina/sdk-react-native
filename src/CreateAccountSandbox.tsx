@@ -13,16 +13,15 @@ import {
   ContainerFooter,
 } from "./components/ContainerParts";
 
-interface IProps {
+type Props = {
   username: string;
   vaultPassword: string;
-}
-
-const CreateAccountSandbox: React.FC<IProps> = (props: IProps) => {
+};
+export const CreateAccountSandbox: React.FC<Props> = (props) => {
   const authenticationContext = useContext(AuthenticationContext);
   const [matrixPassword, setMatrixPassword] = useState("");
   const [usernameMatrix, setUsernameMatrix] = useState("");
-  const [invalidInput, setInvalidInput] = useState("");
+  const [warning, setWarning] = useState("");
 
   const onSubmit = async () => {
     const userData = await Motor.createAccount(
@@ -33,7 +32,7 @@ const CreateAccountSandbox: React.FC<IProps> = (props: IProps) => {
     );
 
     if (!userData) {
-      setInvalidInput("Input data is invalid");
+      setWarning("Input data is invalid");
       return;
     }
     authenticationContext.navigate("AccountCreated", {});
@@ -42,19 +41,15 @@ const CreateAccountSandbox: React.FC<IProps> = (props: IProps) => {
   return (
     <ContainerDark>
       <ContainerHeader>
-        <SonrLogo />
+        <Text style={styles.title}>Sandbox Options</Text>
       </ContainerHeader>
 
       <ContainerContent>
-        <Text style={[styles.subtitle2, { marginBottom: 64 }]}>
-          Set your Matrix account
-        </Text>
-
         <FieldWithIcon
           label="Your Matrix Username"
           value={usernameMatrix}
           onChangeText={setUsernameMatrix}
-          warning={invalidInput}
+          warning={warning}
           autoFocus={true}
           icon="IconUser"
           style={{ marginBottom: 20 }}
@@ -65,7 +60,7 @@ const CreateAccountSandbox: React.FC<IProps> = (props: IProps) => {
           value={matrixPassword}
           onChangeText={setMatrixPassword}
           icon="SecuritySafe"
-          warning={invalidInput}
+          warning={warning}
           autoFocus={false}
           secureTextEntry={true}
         />
@@ -88,13 +83,10 @@ const CreateAccountSandbox: React.FC<IProps> = (props: IProps) => {
 };
 
 const styles = StyleSheet.create({
-  subtitle2: {
+  title: {
     fontFamily: "THICCCBOI_ExtraBold",
-    fontSize: 33,
-    lineHeight: 40,
+    fontSize: 34,
     textAlign: "center",
     color: "#fff",
   },
 });
-
-export default CreateAccountSandbox;
