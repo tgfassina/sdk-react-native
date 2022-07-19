@@ -17,10 +17,9 @@ const CreateAccount: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
   const [vaultPassword, setVaultPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [invalidInput, setInvalidInput] = useState("");
 
   const onSubmit = async () => {
-    authenticationContext.navigate("CreateAccountMatrix", {
+    authenticationContext.navigate("CreateAccountSandbox", {
       username,
       vaultPassword,
     });
@@ -41,7 +40,6 @@ const CreateAccount: React.FC = () => {
           label="Your Username"
           value={username}
           onChangeText={setUsername}
-          warning={invalidInput}
           autoFocus={true}
           icon="IconUser"
           style={{ marginBottom: 20 }}
@@ -52,7 +50,6 @@ const CreateAccount: React.FC = () => {
           value={vaultPassword}
           onChangeText={setVaultPassword}
           icon="SecuritySafe"
-          warning={invalidInput}
           autoFocus={false}
           secureTextEntry={true}
         />

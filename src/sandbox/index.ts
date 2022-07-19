@@ -9,9 +9,7 @@ const login = async (
   const database: SonrUser[] = JSON.parse(sessionDB || "[]");
 
   const user = database.find((user) => user.username === username);
-  if (!user || user.password !== password) {
-    return null;
-  }
+  if (!user || user.password !== password) return null;
 
   return {
     username,
@@ -25,10 +23,9 @@ const createAccount = async (
   password: string,
   matrixUsername: string,
   matrixPassword: string
-): Promise<boolean> => {
-  if (matrixUsername.length < 2 || matrixPassword.length < 4) {
-    return false;
-  }
+): Promise<SonrUserData> => {
+  if (matrixUsername.length < 2 || matrixPassword.length < 4) null;
+
   const newRecord = {
     username,
     password,
@@ -41,7 +38,8 @@ const createAccount = async (
   database.push(newRecord);
   AsyncStorage.setItem("database", JSON.stringify(database));
 
-  return true;
+  const { password: _, ...userData } = newRecord;
+  return userData;
 };
 
 export default {
