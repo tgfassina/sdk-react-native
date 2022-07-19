@@ -20,7 +20,7 @@ const CreateAccount: React.FC = () => {
   const [invalidInput, setInvalidInput] = useState("");
 
   const onSubmit = async () => {
-    authenticationContext.navigate("CreateAccountMatrix", {
+    authenticationContext.navigate("CreateAccountSandbox", {
       username,
       vaultPassword,
     });

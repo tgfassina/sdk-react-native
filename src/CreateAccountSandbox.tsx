@@ -18,7 +18,7 @@ interface IProps {
   vaultPassword: string;
 }
 
-const CreateAccountMatrix: React.FC<IProps> = (props: IProps) => {
+const CreateAccountSandbox: React.FC<IProps> = (props: IProps) => {
   const authenticationContext = useContext(AuthenticationContext);
   const [matrixPassword, setMatrixPassword] = useState("");
   const [usernameMatrix, setUsernameMatrix] = useState("");
@@ -97,4 +97,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateAccountMatrix;
+export default CreateAccountSandbox;
