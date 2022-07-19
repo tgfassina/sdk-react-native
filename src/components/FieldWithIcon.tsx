@@ -27,9 +27,13 @@ type Props = {
   lightTheme?: boolean;
   autoFocus?: boolean;
   style?: StyleProp<ViewStyle>;
+  domain?: boolean;
 };
 const FieldWithIcon: React.FC<Props> = (props: Props) => {
-  const styles = getStyles(!!props.lightTheme);
+  const styles = getStyles(
+    !!props.lightTheme,
+    !!props.domain && props.value?.length > 0
+  );
   const Icon = icons[props.icon];
 
   let borderStyle = undefined;
@@ -43,7 +47,7 @@ const FieldWithIcon: React.FC<Props> = (props: Props) => {
       <View style={[styles.input, borderStyle]}>
         {Icon(props.warning && "#FF2866")}
         <TextInput
-          style={[styles.textInput]}
+          style={styles.textInput}
           value={props.value}
           onChangeText={props.onChangeText}
           secureTextEntry={props.secureTextEntry}
@@ -52,6 +56,9 @@ const FieldWithIcon: React.FC<Props> = (props: Props) => {
           autoCorrect={false}
         />
         {props.warning ? <WarningOutline /> : null}
+        {props.domain && props.value?.length > 0 ? (
+          <Text style={styles.domain}>.snr</Text>
+        ) : null}
       </View>
       {!!props.warning && (
         <Text style={styles.warningText}>{props.warning}</Text>
@@ -60,7 +67,7 @@ const FieldWithIcon: React.FC<Props> = (props: Props) => {
   );
 };
 
-const getStyles = (lightTheme: boolean) =>
+const getStyles = (lightTheme: boolean, domain: boolean) =>
   StyleSheet.create({
     input: {
       flexDirection: "row",
@@ -81,14 +88,17 @@ const getStyles = (lightTheme: boolean) =>
       marginBottom: 8,
     },
     textInput: {
-      flex: 1,
+      flex: domain ? 0 : 1,
       paddingVertical: 12,
       marginLeft: 12,
       fontFamily: "THICCCBOI_Regular",
-      fontStyle: "normal",
       fontSize: 16,
-      lineHeight: 20,
       color: lightTheme ? "#37324A" : "#F6F5FA",
+    },
+    domain: {
+      fontFamily: "THICCCBOI_Regular",
+      fontSize: 16,
+      color: lightTheme ? "#37324A" : "#9693a2",
     },
     warningText: {
       fontFamily: "THICCCBOI_Medium",
