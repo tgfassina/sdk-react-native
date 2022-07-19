@@ -20,21 +20,17 @@ type Props = {
 export const CreateAccountSandbox: React.FC<Props> = (props) => {
   const authenticationContext = useContext(AuthenticationContext);
   const [matrixPassword, setMatrixPassword] = useState("");
-  const [usernameMatrix, setUsernameMatrix] = useState("");
-  const [warning, setWarning] = useState("");
+  const [matrixUsername, setMatrixUsername] = useState("");
 
   const onSubmit = async () => {
     const userData = await Motor.createAccount(
       props.username,
       props.vaultPassword,
-      usernameMatrix,
+      matrixUsername,
       matrixPassword
     );
 
-    if (!userData) {
-      setWarning("Input data is invalid");
-      return;
-    }
+    authenticationContext.onSuccess(userData);
     authenticationContext.navigate("AccountCreated", {});
   };
 
@@ -47,9 +43,8 @@ export const CreateAccountSandbox: React.FC<Props> = (props) => {
       <ContainerContent>
         <FieldWithIcon
           label="Your Matrix Username"
-          value={usernameMatrix}
-          onChangeText={setUsernameMatrix}
-          warning={warning}
+          value={matrixUsername}
+          onChangeText={setMatrixUsername}
           autoFocus={true}
           icon="IconUser"
           style={{ marginBottom: 20 }}
@@ -60,7 +55,6 @@ export const CreateAccountSandbox: React.FC<Props> = (props) => {
           value={matrixPassword}
           onChangeText={setMatrixPassword}
           icon="SecuritySafe"
-          warning={warning}
           autoFocus={false}
           secureTextEntry={true}
         />
