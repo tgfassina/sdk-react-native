@@ -1,10 +1,22 @@
 import { NativeModules } from "react-native";
 
-class SampleModule {
+class MotorKitBridgeModule {
   createAccount = async (username: string) => {
-    console.log("here-bridge", username);
-    return NativeModules.MotorKitModule.createAccount(); //username
+    return NativeModules.MotorKitModule.createAccount(username);
+  };
+  loginAccount = (
+    did: String,
+    password: String,
+    dscKey: any,
+    pskKey: any
+  ): boolean => {
+    return NativeModules.MotorKitModule.loginAccount(
+      did,
+      password,
+      dscKey,
+      pskKey
+    );
   };
 }
-const Bridge = new SampleModule();
+const Bridge = new MotorKitBridgeModule();
 export default Bridge;
