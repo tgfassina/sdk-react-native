@@ -40,8 +40,7 @@ class MotorKitModule : RCTEventEmitter {
     resolve(account)
   }
 
-  @objc(loginAccount:password:dscKey:pskey:)
-  public func loginAccount(
+  @objc func loginAccount(
     _ did : String, 
     password : String?, 
     dscKey: Data?, 
