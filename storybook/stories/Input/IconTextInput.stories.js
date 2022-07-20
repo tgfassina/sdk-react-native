@@ -13,7 +13,7 @@ storiesOf("Main text input", module)
       textInputStyle={{ color: "#4F4A60" }}
       text={text("test", "test input")}
       onChangeText={() => ""}
-      icon="security"
+      icon="SecuritySafe"
       warning="Input failed"
     />
   ));

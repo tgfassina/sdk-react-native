@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "expo start",
+    "native": "expo run:ios",
     "storybook": "start-storybook -p 7007",
     "build-storybook": "build-storybook",
     "lint": "prettier --check .",
