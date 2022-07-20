@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import SonrLogo from "./icons/SonrLogo";
 import FieldWithIcon from "./components/FieldWithIcon";
@@ -17,9 +17,18 @@ const Component: React.FC = () => {
   const authenticationContext = useContext(AuthenticationContext);
   const [username, setUsername] = useState("");
 
+  useEffect(() => {
+    const main = async () => {
+      const isBridgeWorking = await Bridge.checkBridge(
+        "the bridge is working!"
+      );
+      console.log({ isBridgeWorking });
+    };
+    main();
+  }, []);
+
   const createAccount = async () => {
     console.log("createAccount");
-
     const resp = await Bridge.createAccount(username);
     console.log("Ended", resp);
   };

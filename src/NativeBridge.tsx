@@ -1,21 +1,26 @@
 import { NativeModules } from "react-native";
 
 class MotorKitBridgeModule {
-  createAccount = async (username: string) => {
-    return NativeModules.MotorKitModule.createAccount(username);
+  createAccount = async (password: string): Promise<string> => {
+    return NativeModules.MotorKitModule.createAccount(password);
   };
-  loginAccount = (
+
+  loginAccount = async (
     did: String,
     password: String,
     dscKey: any,
     pskKey: any
-  ): boolean => {
+  ): Promise<boolean> => {
     return NativeModules.MotorKitModule.loginAccount(
       did,
       password,
       dscKey,
       pskKey
     );
+  };
+
+  checkBridge = async (data: string): Promise<string> => {
+    return NativeModules.MotorKitModule.checkBridge(data);
   };
 }
 const Bridge = new MotorKitBridgeModule();
