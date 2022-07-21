@@ -2,7 +2,7 @@ import React from "react";
 import { ImageBackground, StyleSheet, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-const logo = require("../icons/logo_background.png");
+const logo = require("../../assets/logo_background.png");
 
 type Props = {
   children: React.ReactNode;

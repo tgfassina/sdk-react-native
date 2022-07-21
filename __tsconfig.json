@@ -2,7 +2,7 @@
   "compilerOptions": {
     "jsx": "react",
     "strict": true,
-    "outDir": "/dist",
+    "outDir": "/dist"
   },
   "files": ["index.ts"],
   "extends": "expo/tsconfig.base"

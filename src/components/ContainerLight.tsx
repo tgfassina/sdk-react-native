@@ -1,7 +1,7 @@
 import React from "react";
 import { ImageBackground, StyleSheet, View } from "react-native";
 
-const logo = require("../icons/logo_background_white.png");
+const logo = require("../../assets/logo_background_white.png");
 
 type Props = {
   children: React.ReactNode;
