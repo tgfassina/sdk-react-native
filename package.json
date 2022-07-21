@@ -5,7 +5,9 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build-test": "tsc",
+    "build": "yarn clean && tsc && yarn copy-files",
+    "clean": "rm -rf ./dist",
+    "copy-files": "cp -r ./assets ./dist/assets",
     "start": "expo start",
     "storybook": "start-storybook -p 7007",
     "build-storybook": "build-storybook",
