@@ -18,6 +18,7 @@ jobs:
           node-version: 16
       - run: npm install yarn -g
       - run: yarn
+      - run: npm run build-test
 
   publish-npm:
     needs: build
