@@ -1,8 +1,9 @@
 {
-  "name": "sdk-react-native",
+  "name": "test2-sdk-react-native",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build-test": "tsc",
     "start": "expo start",
