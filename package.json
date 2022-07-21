@@ -4,6 +4,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
+    "build-test": "tsc",
     "start": "expo start",
     "storybook": "start-storybook -p 7007",
     "build-storybook": "build-storybook",
